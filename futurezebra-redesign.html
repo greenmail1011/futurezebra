@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>未來斑馬程式教育學苑 | Future Zebra</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f5f0;
+    --zebra-cream: #f0ece0;
+    --zebra-yellow: #f5d84b;
+    --zebra-gold: #e8c22a;
+    --zebra-dark: #1a1a1a;
+    --zebra-gray: #888;
+    --zebra-stripe: #141414;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--zebra-yellow);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--zebra-yellow);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+    mix-blend-mode: difference;
+  }
+  a:hover ~ body .cursor, button:hover ~ body .cursor { transform: translate(-50%,-50%) scale(3); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: transparent;
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(10,10,10,0.95); backdrop-filter: blur(12px); }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem; font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--zebra-yellow);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .nav-logo-icon {
+    width: 32px; height: 32px;
+    display: inline-block;
+    background: var(--zebra-yellow);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--white); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 0.1em;
+    font-family: 'Space Mono', monospace;
+    opacity: 0.7; transition: opacity 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--zebra-yellow);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--zebra-yellow);
+    color: var(--black) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 700;
+    opacity: 1 !important;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    transition: background 0.2s, transform 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--zebra-gold) !important; transform: translateY(-2px) !important; }
+  .nav-cta::after { display: none !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 6rem 3rem 3rem;
+  }
+
+  /* Zebra stripe background */
+  .hero-stripes {
+    position: absolute; inset: 0; z-index: 0;
+    background: repeating-linear-gradient(
+      -12deg,
+      transparent 0px,
+      transparent 28px,
+      rgba(255,255,255,0.025) 28px,
+      rgba(255,255,255,0.025) 56px
+    );
+  }
+
+  .hero-bg-text {
+    position: absolute; right: -2%;
+    top: 50%; transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28vw; line-height: 0.85;
+    color: rgba(245,216,75,0.04);
+    pointer-events: none; user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative; z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    color: var(--zebra-yellow);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-tag::before {
+    content: ''; display: block;
+    width: 30px; height: 1px;
+    background: var(--zebra-yellow);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.35s forwards;
+  }
+  .hero-title span { color: var(--zebra-yellow); }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    color: rgba(245,245,240,0.65);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.5s forwards;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--zebra-yellow);
+    color: var(--black);
+    padding: 1rem 2.5rem;
+    font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover { background: var(--zebra-gold); transform: translateY(-3px); }
+
+  .btn-outline {
+    border: 1px solid rgba(245,245,240,0.3);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--zebra-yellow); color: var(--zebra-yellow); transform: translateY(-3px); }
+
+  .hero-stats {
+    position: absolute; right: 4rem; bottom: 4rem;
+    display: flex; gap: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+    z-index: 1;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem; line-height: 1;
+    color: var(--zebra-yellow);
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    color: var(--zebra-gray);
+    margin-top: 0.3rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem; z-index: 1;
+    animation: fadeIn 1s 1.2s forwards; opacity: 0;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--zebra-yellow), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  .scroll-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--zebra-gray);
+    writing-mode: vertical-rl;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    background: var(--zebra-stripe);
+  }
+  .marquee-track {
+    display: flex; gap: 4rem;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem; letter-spacing: 0.15em;
+    white-space: nowrap; color: var(--zebra-gray);
+  }
+  .marquee-dot { color: var(--zebra-yellow); font-size: 1.2rem; }
+
+  /* ─── ABOUT SECTION ─── */
+  .section {
+    padding: 8rem 3rem;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    color: var(--zebra-yellow);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 24px; height: 1px;
+    background: var(--zebra-yellow);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1; letter-spacing: 0.03em;
+    margin-bottom: 3rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+
+  .about-text { font-size: 1.05rem; line-height: 1.85; color: rgba(245,245,240,0.72); }
+  .about-text p + p { margin-top: 1.5rem; }
+
+  .about-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .about-card {
+    background: var(--zebra-stripe);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 1.8rem 1.5rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .about-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--zebra-yellow);
+    transform: scaleX(0); transition: transform 0.3s;
+    transform-origin: left;
+  }
+  .about-card:hover { border-color: rgba(245,216,75,0.3); transform: translateY(-4px); }
+  .about-card:hover::before { transform: scaleX(1); }
+  .about-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .about-card-title {
+    font-weight: 700; font-size: 0.95rem;
+    margin-bottom: 0.5rem; color: var(--white);
+  }
+  .about-card-desc { font-size: 0.82rem; color: var(--zebra-gray); line-height: 1.6; }
+
+  /* ─── COURSES ─── */
+  .courses-section { background: var(--zebra-stripe); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    margin-top: 3rem;
+    border: 1.5px solid rgba(255,255,255,0.06);
+  }
+
+  .course-card {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    border: 1.5px solid rgba(255,255,255,0.06);
+  }
+  .course-card::after {
+    content: ''; position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(245,216,75,0.06), transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .course-card:hover { background: #111; }
+  .course-card:hover::after { opacity: 1; }
+
+  .course-level {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--zebra-yellow);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .course-level-dot {
+    width: 6px; height: 6px;
+    background: var(--zebra-yellow);
+    border-radius: 50%;
+  }
+
+  .course-title {
+    font-size: 1.4rem; font-weight: 700;
+    margin-bottom: 0.8rem; line-height: 1.3;
+  }
+  .course-target {
+    font-size: 0.82rem; color: var(--zebra-gray);
+    margin-bottom: 1.5rem;
+  }
+  .course-features {
+    list-style: none; margin-bottom: 2rem;
+  }
+  .course-features li {
+    font-size: 0.85rem; color: rgba(245,245,240,0.65);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .course-features li::before { content: '→'; color: var(--zebra-yellow); font-size: 0.8rem; }
+
+  .course-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; color: var(--zebra-yellow);
+    line-height: 1;
+  }
+  .course-price-unit {
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.75rem; color: var(--zebra-gray);
+    display: block; margin-top: 0.2rem;
+  }
+
+  .course-arrow {
+    position: absolute; bottom: 2rem; right: 2rem;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--zebra-yellow);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .course-card:hover .course-arrow {
+    background: var(--zebra-yellow); color: var(--black);
+    border-color: var(--zebra-yellow); transform: rotate(45deg);
+  }
+
+  /* ─── PHILOSOPHY ─── */
+  .philosophy-section { overflow: hidden; }
+
+  .philosophy-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0; margin-top: 4rem;
+  }
+
+  .philosophy-item {
+    padding: 3rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .philosophy-item:last-child { border-right: none; }
+  .philosophy-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem; line-height: 1;
+    color: rgba(245,216,75,0.1);
+    position: absolute; top: 1.5rem; right: 1.5rem;
+  }
+  .philosophy-title {
+    font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 1rem; color: var(--zebra-yellow);
+  }
+  .philosophy-text {
+    font-size: 0.9rem; color: rgba(245,245,240,0.65);
+    line-height: 1.8;
+  }
+
+  /* ─── ACHIEVEMENTS ─── */
+  .achievements-section { background: var(--zebra-stripe); }
+
+  .achievements-row {
+    display: flex; gap: 0;
+    margin-top: 4rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+  }
+  .achievement-item {
+    flex: 1; padding: 3rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .achievement-item:last-child { border-right: none; }
+  .achievement-item:hover { background: rgba(245,216,75,0.04); }
+  .achievement-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem; line-height: 1;
+    color: var(--zebra-yellow);
+    display: block; margin-bottom: 0.5rem;
+  }
+  .achievement-label {
+    font-size: 0.82rem; color: var(--zebra-gray);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+  }
+
+  .apcs-section {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--black);
+    border: 1px solid rgba(245,216,75,0.2);
+    position: relative; overflow: hidden;
+  }
+  .apcs-section::before {
+    content: 'APCS';
+    position: absolute; right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem; color: rgba(245,216,75,0.05);
+    pointer-events: none;
+  }
+  .apcs-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem; color: var(--zebra-yellow);
+    margin-bottom: 1rem;
+  }
+  .apcs-text {
+    font-size: 0.9rem; color: rgba(245,245,240,0.65);
+    max-width: 600px; line-height: 1.7;
+  }
+
+  /* ─── CAMPS ─── */
+  .camps-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .camp-card {
+    position: relative; overflow: hidden;
+    padding: 3rem;
+    background: var(--zebra-stripe);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: border-color 0.3s;
+  }
+  .camp-card:hover { border-color: rgba(245,216,75,0.3); }
+  .camp-season {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem; color: rgba(245,216,75,0.08);
+    position: absolute; top: 1rem; right: 2rem;
+    line-height: 1;
+  }
+  .camp-tag {
+    display: inline-block;
+    background: var(--zebra-yellow);
+    color: var(--black);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.25rem 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  .camp-title {
+    font-size: 1.6rem; font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .camp-desc {
+    font-size: 0.88rem; color: rgba(245,245,240,0.6);
+    line-height: 1.7;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-section { }
+
+  .faq-list { margin-top: 3rem; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%; background: none; border: none;
+    color: var(--white); text-align: left;
+    padding: 1.8rem 0;
+    font-size: 1rem; font-weight: 500;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem;
+    transition: color 0.2s;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .faq-question:hover { color: var(--zebra-yellow); }
+  .faq-icon {
+    font-size: 1.5rem; color: var(--zebra-yellow);
+    transition: transform 0.3s; flex-shrink: 0;
+    font-family: 'Space Mono', monospace;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    font-size: 0.9rem; color: rgba(245,245,240,0.65);
+    line-height: 1.8;
+    padding: 0;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 500px;
+    padding-bottom: 1.8rem;
+  }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    padding: 8rem 3rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+    background: var(--zebra-yellow);
+  }
+  .cta-section * { color: var(--black) !important; }
+  .cta-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -12deg, transparent 0px, transparent 20px,
+      rgba(0,0,0,0.04) 20px, rgba(0,0,0,0.04) 40px
+    );
+  }
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 7rem);
+    line-height: 0.9; margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+  .cta-text {
+    font-size: 1.1rem; opacity: 0.7;
+    margin-bottom: 3rem; position: relative; z-index: 1;
+  }
+  .cta-btns { position: relative; z-index: 1; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-black {
+    background: var(--black); color: var(--white) !important;
+    padding: 1rem 2.5rem; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 0.12em;
+    text-decoration: none; display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-black:hover { background: #222; transform: translateY(-3px); }
+  .btn-black-outline {
+    border: 2px solid var(--black);
+    color: var(--black) !important;
+    padding: 1rem 2.5rem;
+    font-size: 0.9rem; letter-spacing: 0.12em;
+    text-decoration: none; display: inline-block;
+    transition: transform 0.2s, background 0.2s;
+    font-weight: 700;
+  }
+  .btn-black-outline:hover { background: rgba(0,0,0,0.1); transform: translateY(-3px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #050505;
+    padding: 4rem 3rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem; margin-bottom: 4rem;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem; font-weight: 700;
+    color: var(--zebra-yellow);
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .footer-tagline {
+    font-size: 0.85rem; color: var(--zebra-gray);
+    line-height: 1.7; margin-bottom: 1.5rem;
+  }
+  .footer-contact {
+    font-size: 0.82rem; color: var(--zebra-gray);
+    line-height: 2;
+  }
+  .footer-contact a { color: var(--zebra-yellow); text-decoration: none; }
+  .footer-col-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    color: var(--white); margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li + li { margin-top: 0.7rem; }
+  .footer-links a {
+    font-size: 0.85rem; color: var(--zebra-gray);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--zebra-yellow); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; color: rgba(136,136,136,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-stats { position: static; margin-top: 3rem; justify-content: flex-start; }
+    .section { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .philosophy-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .achievements-row { flex-wrap: wrap; }
+    .achievement-item { min-width: 45%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .camps-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="nav-logo-icon"></span>
+    FUTURE ZEBRA
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">關於我們</a></li>
+    <li><a href="#courses">課程</a></li>
+    <li><a href="#camps">營隊</a></li>
+    <li><a href="#achievements">榮耀</a></li>
+    <li><a href="#faq">常見問題</a></li>
+    <li><a href="https://forms.gle/Ds5gWpa74pngeamy8" class="nav-cta">立即報名</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stripes"></div>
+  <div class="hero-bg-text">ZEBRA</div>
+
+  <div class="hero-content">
+    <div class="hero-tag">未來斑馬程式教育學苑 · 新竹市</div>
+    <h1 class="hero-title">
+      用程式<br>
+      <span>定義</span><br>
+      未來
+    </h1>
+    <p class="hero-subtitle">
+      從 Scratch 到 Python、C/C++、APCS，<br>
+      專業師資帶領孩子建立運算思維，<br>
+      培養解決問題的能力，迎接 AI 時代的挑戰。
+    </p>
+    <div class="hero-btns">
+      <a href="https://forms.gle/Ds5gWpa74pngeamy8" class="btn-primary">免費體驗課程 →</a>
+      <a href="#courses" class="btn-outline">了解所有課程</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">年教學經驗</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3:1</div>
+      <div class="stat-label">黃金教學比例</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">24</div>
+      <div class="stat-label">堂/期課程</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <div class="scroll-text">SCROLL</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><span class="marquee-dot">✦</span> Scratch 程式設計</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 創意機器人</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> Python 基礎班</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> C/C++ 語法班</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> APCS 認證培訓</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 夏令營 / 冬令營</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 競賽殊榮</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 亞洲盃機器人大賽</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> Scratch 程式設計</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 創意機器人</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> Python 基礎班</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> C/C++ 語法班</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> APCS 認證培訓</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 夏令營 / 冬令營</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 競賽殊榮</div>
+    <div class="marquee-item"><span class="marquee-dot">✦</span> 亞洲盃機器人大賽</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-label reveal">ABOUT US · 關於富志</div>
+  <h2 class="section-title reveal">富而好禮<br>志在天下</h2>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>世界不斷進步，物聯網、大數據、機器人、人工智慧將是未來世界的主流。程式設計可以說是現代科技最核心的科目，也是這些科技的根基。</p>
+      <p>臺灣在 108 年課綱已將程式設計列為國高中必修、國小鼓勵。未來斑馬本著多年程式設計的專業與經驗，為孩子提供快樂、有效的學習環境，培養「運算思維」及解決問題的能力。</p>
+      <p>我們專為國小、國中、高中的孩子提供程式語言與機器人相關課程，扎實的課程設計，有經驗的老師引導，引領他們邁向未來創新的世界。</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card reveal reveal-delay-1">
+        <div class="about-card-icon">🧠</div>
+        <div class="about-card-title">運算思維</div>
+        <div class="about-card-desc">培養邏輯分析與問題拆解能力，不只學語法，更學思維方式。</div>
+      </div>
+      <div class="about-card reveal reveal-delay-2">
+        <div class="about-card-icon">🤖</div>
+        <div class="about-card-title">機器人整合</div>
+        <div class="about-card-desc">3:1 黃金比例，程式結合機器人，理論與實作完美融合。</div>
+      </div>
+      <div class="about-card reveal reveal-delay-3">
+        <div class="about-card-icon">🏆</div>
+        <div class="about-card-title">競賽培訓</div>
+        <div class="about-card-desc">亞洲盃、APCS 等多項國內外競賽豐富得獎記錄。</div>
+      </div>
+      <div class="about-card reveal reveal-delay-1">
+        <div class="about-card-icon">📈</div>
+        <div class="about-card-title">系統化學習</div>
+        <div class="about-card-desc">從初階到高階，完整的程式學習路線圖，循序漸進。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="section courses-section" id="courses">
+  <div class="section-label reveal">COURSES · 斑馬課程</div>
+  <h2 class="section-title reveal">找到適合<br>你孩子的課程</h2>
+
+  <div class="courses-grid">
+    <div class="course-card reveal">
+      <div class="course-level"><span class="course-level-dot"></span> LEVEL 01 · 初階班</div>
+      <h3 class="course-title">Scratch Jr.<br>程式機器人</h3>
+      <p class="course-target">適合：大班 ～ 3 年級</p>
+      <ul class="course-features">
+        <li>頂級 ASUS 平板電腦教學</li>
+        <li>MIT Scratch Jr. 程式語言</li>
+        <li>百變創意積木機器人</li>
+        <li>每期 24 堂課（6 個月）</li>
+      </ul>
+      <div class="course-price">$25,500 <span class="course-price-unit">元 / 期（含機器人材料費）</span></div>
+      <div class="course-arrow">↗</div>
+    </div>
+
+    <div class="course-card reveal reveal-delay-1">
+      <div class="course-level"><span class="course-level-dot"></span> LEVEL 02 · 進階班</div>
+      <h3 class="course-title">Scratch 3.0<br>mBot 機器人</h3>
+      <p class="course-target">適合：4 年級 ～ 9 年級</p>
+      <ul class="course-features">
+        <li>頂級 ASUS 小筆電教學</li>
+        <li>MIT Scratch 3.0 語言</li>
+        <li>mBot 機器人免費提供使用</li>
+        <li>每期 24 堂課（6 個月）</li>
+      </ul>
+      <div class="course-price">$24,000 <span class="course-price-unit">元 / 期</span></div>
+      <div class="course-arrow">↗</div>
+    </div>
+
+    <div class="course-card reveal reveal-delay-2">
+      <div class="course-level"><span class="course-level-dot"></span> LEVEL 03 · 高階</div>
+      <h3 class="course-title">Python<br>基礎班</h3>
+      <p class="course-target">適合：有 Scratch 基礎學員</p>
+      <ul class="course-features">
+        <li>Python 語法與應用</li>
+        <li>資料結構與演算法入門</li>
+        <li>實作專案練習</li>
+        <li>接軌 AI 與數據科學</li>
+      </ul>
+      <div class="course-price">洽詢報價 <span class="course-price-unit">請來電或填表</span></div>
+      <div class="course-arrow">↗</div>
+    </div>
+
+    <div class="course-card reveal reveal-delay-3">
+      <div class="course-level"><span class="course-level-dot"></span> LEVEL 04 · 競賽</div>
+      <h3 class="course-title">C/C++ &<br>APCS 認證</h3>
+      <p class="course-target">適合：有志參加程式檢定學員</p>
+      <ul class="course-features">
+        <li>C/C++ 語法完整教學</li>
+        <li>C/C++ 實戰演練班</li>
+        <li>APCS 程式認證專班</li>
+        <li>歷屆試題完整解析</li>
+      </ul>
+      <div class="course-price">洽詢報價 <span class="course-price-unit">請來電或填表</span></div>
+      <div class="course-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="section philosophy-section">
+  <div class="section-label reveal">PHILOSOPHY · 教學理念</div>
+  <h2 class="section-title reveal">教育從心<br>開始</h2>
+
+  <div class="philosophy-grid">
+    <div class="philosophy-item reveal">
+      <div class="philosophy-num">01</div>
+      <div class="philosophy-title">3:1 黃金比例</div>
+      <p class="philosophy-text">首創業界 3:1 黃金教學比例，每 3 堂程式課搭配 1 堂機器人課。讓孩子從程式中吸收邏輯思維，恍然大悟程式與機器人息息相關，回家主動研究改裝機器人。</p>
+    </div>
+    <div class="philosophy-item reveal reveal-delay-1">
+      <div class="philosophy-num">02</div>
+      <div class="philosophy-title">STEM 跨域整合</div>
+      <p class="philosophy-text">強調動手實做的務實精神，融合科學、技術、工程、數學的跨學科整合教學，培養孩子面對未來挑戰所需的解決問題能力與創新思維。</p>
+    </div>
+    <div class="philosophy-item reveal reveal-delay-2">
+      <div class="philosophy-num">03</div>
+      <div class="philosophy-title">快樂有效學習</div>
+      <p class="philosophy-text">不只讓孩子玩得開心，更要讓孩子真正學懂。課後記錄成長歷程回報家長，讓爸媽掌握孩子每週的學習進展，陪伴孩子每個成長里程碑。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section achievements-section" id="achievements">
+  <div class="section-label reveal">ACHIEVEMENTS · 千里斑馬</div>
+  <h2 class="section-title reveal">競賽殊榮<br>實力見真章</h2>
+
+  <div class="achievements-row">
+    <div class="achievement-item reveal">
+      <span class="achievement-num">2023</span>
+      <span class="achievement-label">亞洲盃機器人大賽得獎</span>
+    </div>
+    <div class="achievement-item reveal reveal-delay-1">
+      <span class="achievement-num">APCS</span>
+      <span class="achievement-label">程式認證佳績榜</span>
+    </div>
+    <div class="achievement-item reveal reveal-delay-2">
+      <span class="achievement-num">國際</span>
+      <span class="achievement-label">級競賽參賽殊榮</span>
+    </div>
+    <div class="achievement-item reveal reveal-delay-3">
+      <span class="achievement-num">全台</span>
+      <span class="achievement-label">多縣市學員慕名而來</span>
+    </div>
+  </div>
+
+  <div class="apcs-section reveal" style="margin-top: 2rem;">
+    <div class="apcs-title">APCS 程式檢測佳績榜</div>
+    <p class="apcs-text">未來斑馬學員屢屢在 APCS（Advanced Placement Computer Science）程式能力檢定中取得優異成績，多位學員達到滿分或高分等級，彰顯扎實的教學品質。</p>
+  </div>
+</section>
+
+<!-- CAMPS -->
+<section class="section" id="camps">
+  <div class="section-label reveal">CAMPS · 營隊首選</div>
+  <h2 class="section-title reveal">沉浸式<br>密集學習</h2>
+
+  <div class="camps-grid">
+    <div class="camp-card reveal">
+      <div class="camp-season">夏</div>
+      <span class="camp-tag">SUMMER CAMP</span>
+      <h3 class="camp-title">夏令營</h3>
+      <p class="camp-desc">利用暑假長假，進行密集程式與機器人學習。沉浸式的學習環境，讓孩子在短時間內大幅提升程式能力，結交志同道合的朋友，留下難忘的夏日記憶。</p>
+    </div>
+    <div class="camp-card reveal reveal-delay-1">
+      <div class="camp-season">冬</div>
+      <span class="camp-tag">WINTER CAMP</span>
+      <h3 class="camp-title">冬令營</h3>
+      <p class="camp-desc">寒假期間舉辦的密集課程，結合趣味競賽與實作挑戰，讓孩子在玩中學、學中玩。特別適合想要在新學期前強化程式能力的學生參加。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background: var(--zebra-stripe);">
+  <div class="section-label reveal">FAQ · 常見問題</div>
+  <h2 class="section-title reveal">您想知道<br>的都在這裡</h2>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        未來斑馬的課程有什麼特色？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        未來斑馬首創業界 3:1 黃金教學比例，即每 3 堂程式課搭配 1 堂機器人課。每週上課 2 小時，一期課程約半年 24 堂課（18 堂程式 + 6 堂機器人）。我們有別於一般只讓孩子按步驟操作的學習方式，讓孩子真正融會貫通，知其然更知其所以然。
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        初階班的課程大綱與學費？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        初階班（大班～3年級）使用頂級 ASUS 平板電腦，搭配 MIT 媒體實驗室研發的 Scratch Jr. 和 Scratch 3.0 課程。學費為 24,000 元/期，另加百變創意積木機器人材料費 1,500 元，合計 25,500 元。初期若同學沒有設備，本公司可免費提供教學設備使用。
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        進階班的課程大綱與學費？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        進階班（4年級～9年級）使用頂級 ASUS 小筆電，搭配 Scratch 3.0 程式語言。學費為 24,000 元/期（每堂課 2 小時，每週 1 次）。mBot 機器人免費提供教學使用，下課後需歸還，若有損壞照價賠償，有興趣可另行購買。
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        上課需要自備平板或電腦嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        學員請盡量自備平板或筆電上課，以方便回家複習。若暫時沒有相關電腦設備，初期本公司可提供平板或筆記型電腦免費供學習操作，用畢需歸還，若有損壞需照價賠償。機器人部分，學員若有興趣可另行購買深入研究。
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        外縣市學員也可以報名嗎？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        完全可以！我們有許多來自外縣市的學員每週遠道而來，正是因為未來斑馬專業級師資的卓越教學效果。課後老師也會將孩子的成長歷程記錄下來回報給家長，讓遠道而來的家長也能隨時掌握孩子的學習狀況。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <h2 class="cta-title reveal">讓孩子<br>站在未來<br>的最前線</h2>
+  <p class="cta-text reveal">立即預約體驗課程，讓專業老師帶您的孩子踏上程式設計的精彩旅程</p>
+  <div class="cta-btns reveal">
+    <a href="https://forms.gle/Ds5gWpa74pngeamy8" class="btn-black">免費體驗報名 →</a>
+    <a href="tel:035403463" class="btn-black-outline">📞 03-540-3463</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span style="width:20px;height:20px;background:var(--zebra-yellow);clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);display:inline-block;"></span>
+        未來斑馬程式教育學苑
+      </div>
+      <p class="footer-tagline">富志科技｜未來斑馬程式教育學苑<br>讓您的孩子成為世界一流的軟體人才<br>富而好禮，志在天下</p>
+      <div class="footer-contact">
+        📍 新竹市經國路三段 78 巷 23-6 號<br>
+        📞 <a href="tel:035403463">03-540-3463</a><br>
+        ✉ <a href="mailto:greenmail1011@gmail.com">greenmail1011@gmail.com</a><br>
+        <a href="https://www.facebook.com/groups/fzt168" style="color: var(--zebra-yellow);">Facebook 粉絲專頁</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">課程系列</div>
+      <ul class="footer-links">
+        <li><a href="https://www.futurezebra.com/blank-1">初階班（大班～3年級）</a></li>
+        <li><a href="https://www.futurezebra.com/course">進階班（4年級～9年級）</a></li>
+        <li><a href="https://www.futurezebra.com/highlevel1">Python 基礎班</a></li>
+        <li><a href="https://www.futurezebra.com/highlevel2">C/C++ 語法班</a></li>
+        <li><a href="https://www.futurezebra.com/highlevel3">C/C++ 實戰演練班</a></li>
+        <li><a href="https://www.futurezebra.com/apcs">APCS 認證專班</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">關於富志</div>
+      <ul class="footer-links">
+        <li><a href="https://www.futurezebra.com/aboutfzt">公司介紹</a></li>
+        <li><a href="https://www.futurezebra.com/teachingphilosophy">教學理念</a></li>
+        <li><a href="https://www.futurezebra.com/teachers">師資陣容</a></li>
+        <li><a href="https://www.futurezebra.com/programdesign">程式設計</a></li>
+        <li><a href="https://www.futurezebra.com/creativerobots">創意機器人</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">更多資訊</div>
+      <ul class="footer-links">
+        <li><a href="https://www.futurezebra.com/summer">夏令營</a></li>
+        <li><a href="https://www.futurezebra.com/winter">冬令營</a></li>
+        <li><a href="https://www.futurezebra.com/honor">參賽殊榮</a></li>
+        <li><a href="https://www.futurezebra.com/classphoto">課程剪影</a></li>
+        <li><a href="https://www.futurezebra.com/faq">常見問題</a></li>
+        <li><a href="https://www.futurezebra.com/parking">停車資訊</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 富志科技 FUTURE ZEBRA · ALL RIGHTS RESERVED</div>
+    <div class="footer-copy">新竹市經國路三段 78 巷 23-6 號 · TEL: 03-540-3463</div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 60);
+});
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+    ring.style.transform = 'translate(-50%, -50%) scale(1.5)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    ring.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+});
+
+// Nav scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
