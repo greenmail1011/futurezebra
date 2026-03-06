@@ -722,7 +722,6 @@ footer {
         <div class="c-title">Scratch Jr. 程式課程</div>
         <div class="c-target">👧 適合：大班 ～ 3 年級</div>
         <ul class="c-features">
-          <li>頂級 ASUS 平板電腦教學</li>
           <li>MIT Scratch Jr. 程式語言</li>
           <li>創意積木機器人實作</li>
           <li>每期 24 堂課（約 6 個月）</li>
@@ -738,8 +737,7 @@ footer {
         <ul class="c-features">
           <li>頂級 ASUS 小筆電教學</li>
           <li>MIT Scratch 3.0 程式語言</li>
-          <li>創意機器人實作課程</li>
-          <li>專利黃金 3:1 教學比例</li>
+          <li>小班教學黃金師生比 1:5</li>
           <li>每期 24 堂課（約 6 個月）</li>
         </ul>
         <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="c-btn">預約課程 →</a>
@@ -798,36 +796,35 @@ footer {
     </div>
 
     <!-- APCS 成績榜 -->
-    <div class="reveal">
-      <img class="apcs-img"
-        src="images/apcs.png"
-        alt="APCS 成績榜"
-      >
+    <!-- APCS 成績榜（最優先顯示） -->
+    <div class="reveal" style="margin-bottom:2rem;">
+      <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:0.8rem; text-align:center;">🔍 點擊圖片可放大觀看</p>
+      <img class="apcs-img lightbox-trigger" src="images/apcs.png" alt="APCS 成績榜" style="cursor:zoom-in;">
     </div>
 
     <!-- 2023 亞洲盃 + 競賽 banners -->
     <div class="award-banners reveal" style="margin-top:2rem;">
-      <img class="award-banner-img"
-        src="images/award1.png"
-        alt="競賽獲獎殊榮"
-      >
-      <img class="award-banner-img"
-        src="images/award2.png"
-        alt="2023 亞洲盃賀圖"
-      >
+      <img class="award-banner-img lightbox-trigger" src="images/award1.png" alt="競賽獲獎殊榮" style="cursor:zoom-in;">
+      <img class="award-banner-img lightbox-trigger" src="images/award2.png" alt="2023 亞洲盃賀圖" style="cursor:zoom-in;">
     </div>
 
     <!-- 得獎照片 -->
     <div class="award-photos reveal" style="margin-top:2rem;">
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo1.jpg" alt="競賽得獎照片 1"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo2.jpg" alt="競賽得獎照片 2"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo3.jpg" alt="競賽得獎照片 3"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo4.jpg" alt="競賽得獎照片 4"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo5.jpg" alt="競賽得獎照片 5"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo6.jpg" alt="競賽得獎照片 6"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo1.jpg" alt="競賽得獎照片 1" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo2.jpg" alt="競賽得獎照片 2" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo3.jpg" alt="競賽得獎照片 3" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo4.jpg" alt="競賽得獎照片 4" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo5.jpg" alt="競賽得獎照片 5" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo6.jpg" alt="競賽得獎照片 6" class="lightbox-trigger" style="cursor:zoom-in;"></div>
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; padding:1.5rem;" onclick="closeLightbox()">
+  <button onclick="closeLightbox()" style="position:absolute; top:1rem; right:1.5rem; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer; line-height:1;">✕</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6);">
+</div>
 
 <!-- LEARNING MAP -->
 <section class="section map-section">
@@ -1048,6 +1045,23 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Lightbox
+document.querySelectorAll('.lightbox-trigger').forEach(img => {
+  img.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = this.src;
+    document.getElementById('lightbox-img').alt = this.alt;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 // FAQ
 function toggleFaq(btn) {
