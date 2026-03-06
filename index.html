@@ -972,7 +972,7 @@ footer {
         <div class="footer-contact">
           📍 新竹市經國路三段 78 巷 23-6 號<br>
           📞 <a href="tel:035403463">03-540-3463</a><br>
-          ✉ <a href="/cdn-cgi/l/email-protection#7c1b0e191912111d15104d4c4d4d3c1b111d1510521f1311"><span class="__cf_email__" data-cfemail="a6c1d4c3c3c8cbc7cfca97969797e6c1cbc7cfca88c5c9cb">[email&#160;protected]</span></a><br>
+          ✉ <a href="mailto:greenmail1011@gmail.com">greenmail1011@gmail.com</a><br>
           💬 <a href="https://www.facebook.com/groups/fzt168" target="_blank">Facebook 粉絲專頁</a>
         </div>
       </div>
@@ -1016,7 +1016,7 @@ footer {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Load Wix images via fetch with no-referrer to bypass hotlink protection
 async function loadWixImages() {
   const imgs = document.querySelectorAll('img[referrerpolicy="no-referrer"]');
@@ -1067,4 +1067,12 @@ function closeLightbox() {
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 // FAQ
-function toggleFa
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
