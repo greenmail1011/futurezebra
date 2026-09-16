@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>富志科技｜未來斑馬 AI 創新學苑｜AI 無人機 × 程式教育｜新竹市</title>
-<meta name="description" content="富志科技（未來斑馬）深耕新竹程式教育，全力推廣無人機足球：校園社團、市府合作課程、國際規格賽事，並以 AI 自主開發賽事管理系統與模擬飛行系統。">
+<meta name="description" content="富志科技（未來斑馬）深耕新竹程式教育，全力推廣無人機足球：校園社團、認證課程、國際規則賽事，並以 AI 自主開發賽事管理系統與模擬飛行系統。">
 <meta property="og:title" content="富志科技｜AI 無人機 × 程式教育">
 <meta property="og:description" content="無人機足球推廣成果、無人機課程、AI 自研賽事管理系統與模擬飛行系統。">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://greenmail1011.github.io/futurezebra/images/drone/classroom.jpg">
+<meta property="og:image" content="https://greenmail1011.github.io/futurezebra/images/drone/simulator-fly.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -213,8 +213,9 @@ nav.scrolled { box-shadow:var(--shadow); }
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
 .about-img-wrap { position:relative; }
 .about-img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:20px; box-shadow:var(--shadow-lg); display:block; background:var(--blue-sky); }
+.about-img.brand { aspect-ratio:auto; object-fit:contain; background:#fff; border:1px solid var(--gray-200); }
 .about-img-tag {
-  position:absolute; top:20px; left:-16px;
+  position:absolute; top:-16px; left:-16px; z-index:1;
   background:var(--blue-mid); color:white;
   padding:0.6rem 1.2rem; border-radius:0 50px 50px 0;
   font-weight:700; font-size:0.85rem; box-shadow:var(--shadow);
@@ -229,12 +230,6 @@ nav.scrolled { box-shadow:var(--shadow); }
 .pillar-icon { font-size:1.7rem; flex-shrink:0; line-height:1.2; }
 .pillar-title { font-weight:800; font-size:1rem; color:var(--blue-dark); margin-bottom:0.25rem; }
 .pillar-text { font-size:0.87rem; color:var(--gray-700); line-height:1.75; }
-.partner-note {
-  margin-top:1.2rem; font-size:0.85rem; color:var(--gray-500); line-height:1.7;
-}
-.partner-note a { color:var(--blue-mid); font-weight:700; text-decoration:none; }
-.partner-note a:hover { text-decoration:underline; }
-
 /* ── DRONE IMPACT ── */
 .impact-section { background:linear-gradient(160deg,#0b2447 0%,#0f3460 45%,#1a5fa8 100%); position:relative; overflow:hidden; }
 .impact-stats {
@@ -268,15 +263,6 @@ nav.scrolled { box-shadow:var(--shadow); }
   font-size:0.72rem; font-weight:700; padding:0.15rem 0.6rem; border-radius:50px;
 }
 
-.photo-wall { display:grid; grid-template-columns:repeat(2,1fr); gap:0.8rem; }
-.pw-item {
-  position:relative; border-radius:14px; overflow:hidden; cursor:zoom-in;
-  background:rgba(255,255,255,0.06); aspect-ratio:4/3;
-  box-shadow:0 6px 24px rgba(0,0,0,0.25);
-}
-.pw-item.wide { grid-column:span 2; aspect-ratio:16/8; }
-.pw-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
-.pw-item:hover img { transform:scale(1.05); }
 .pw-cap {
   position:absolute; left:0; right:0; bottom:0;
   padding:1.6rem 0.8rem 0.6rem;
@@ -285,7 +271,13 @@ nav.scrolled { box-shadow:var(--shadow); }
   pointer-events:none;
 }
 .photo-credit { color:rgba(255,255,255,0.5); font-size:0.75rem; margin-top:0.8rem; text-align:right; }
-.photo-credit a { color:#a5f3fc; }
+.impact-shot { position:relative; border-radius:16px; overflow:hidden; cursor:zoom-in; box-shadow:0 10px 36px rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.15); }
+.impact-shot img { width:100%; display:block; aspect-ratio:16/10; object-fit:cover; }
+.hl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; margin-top:0.9rem; }
+.hl-card { display:flex; gap:0.6rem; align-items:flex-start; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:0.9rem; }
+.hl-ic { font-size:1.5rem; line-height:1; }
+.hl-card b { display:block; color:white; font-size:0.92rem; margin-bottom:0.2rem; }
+.hl-card span { display:block; color:rgba(255,255,255,0.65); font-size:0.76rem; line-height:1.55; }
 
 /* ── AI SYSTEMS ── */
 .systems-section { background:var(--gray-50); }
@@ -570,7 +562,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   .hero-chip.c2 { right:8px; top:-18px; }
   .section { padding:3.5rem 1rem; }
   .about-grid { grid-template-columns:1fr; gap:2rem; }
-  .about-img-tag { left:0; }
+  .about-img-tag { left:0; top:-14px; }
   .impact-stats { grid-template-columns:repeat(2,1fr); }
   .impact-grid { grid-template-columns:1fr; gap:2.5rem; }
   .system, .system.reverse { grid-template-columns:1fr; padding:1.2rem; gap:1.5rem; }
@@ -591,8 +583,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   .sys-shot-row { grid-template-columns:1fr 1fr; }
   .sys-shot-row.three { grid-template-columns:1fr 1fr 1fr; }
   .sys-shot-row.three .shot-label { display:none; }
-  .photo-wall { grid-template-columns:1fr 1fr; }
-  .pw-item.wide { aspect-ratio:4/3; }
+  .hl-grid { grid-template-columns:1fr; }
   .footer-top { grid-template-columns:1fr; }
   .cta-btns a { flex:1 1 100%; }
 }
@@ -635,7 +626,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       </h1>
       <p class="hero-desc">
         富志科技（未來斑馬）深耕新竹程式教育，並全力推動<strong>無人機足球</strong>：
-        校園社團、市府合作課程、國際規格賽事，
+        校園社團、認證課程、國際規則賽事，
         以及運用 AI 自主開發的<strong>賽事管理系統</strong>與<strong>模擬飛行系統</strong>。
       </p>
       <div class="hero-btns">
@@ -652,18 +643,18 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     </div>
     <div class="hero-right">
       <div class="hero-photo">
-        <img src="images/drone/classroom.jpg"
-             alt="國小學生在無人機足球課堂上操控無人機" class="lightbox-trigger" data-cap="國小無人機足球課程現場">
+        <img src="images/drone/simulator-fly.jpg"
+             alt="AI 模擬飛行系統 3D 無人機足球畫面" class="lightbox-trigger" data-cap="AI 模擬飛行系統｜3D 無人機足球練習畫面">
         <a class="hero-chip c2" href="#ai-systems">
           <span class="ic">🏆</span>
           <span><b>AI 賽事管理系統</b><span>賽程・計分・現場看板</span></span>
         </a>
-        <a class="hero-chip c1" href="#ai-systems">
-          <span class="ic">🎮</span>
-          <span><b>AI 模擬飛行系統</b><span>3D 闖關・連線對戰</span></span>
+        <a class="hero-chip c1" href="#drone-courses">
+          <span class="ic">🏫</span>
+          <span><b>校園無人機社團</b><span>民富・竹蓮・香山國小</span></span>
         </a>
       </div>
-      <p class="hero-caption">國小無人機足球課程現場</p>
+      <p class="hero-caption">AI 模擬飛行系統｜3D 無人機足球練習畫面</p>
     </div>
   </div>
 </section>
@@ -676,7 +667,6 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="mitem d"><span>✦</span> AI 賽事管理系統</div>
     <div class="mitem d"><span>✦</span> AI 模擬飛行系統</div>
     <div class="mitem d"><span>✦</span> RoboRAVE 新竹無人機足球賽</div>
-    <div class="mitem d"><span>✦</span> 追風少年科技培力課程</div>
     <div class="mitem"><span>✦</span> Scratch Jr. 初階班</div>
     <div class="mitem"><span>✦</span> Scratch 3.0 進階班</div>
     <div class="mitem"><span>✦</span> Python 基礎班</div>
@@ -692,9 +682,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="about-grid">
       <div class="about-img-wrap reveal">
         <div class="about-img-tag">🦓 富志科技</div>
-        <img class="about-img lightbox-trigger"
-             src="images/drone/hero-equipment.jpg" style="object-position:center 45%;"
-             alt="足球無人機與遙控器教具" data-cap="足球無人機（球型防撞護罩）與遙控器教具">
+        <img class="about-img brand"
+             src="images/banner.jpg"
+             alt="未來斑馬程式設計學苑">
       </div>
       <div class="reveal reveal-d2">
         <span class="section-label">ABOUT US · 關於富志</span>
@@ -705,7 +695,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
             <div class="pillar-icon">🚁</div>
             <div>
               <div class="pillar-title">AI 無人機教育與賽事</div>
-              <div class="pillar-text">無人機足球校園社團、認證課程、營隊與團體體驗；協助辦理國際規格無人機足球賽，並自主開發賽事管理與模擬飛行系統。</div>
+              <div class="pillar-text">無人機足球校園社團、認證課程、營隊與團體體驗；以 AI 自主開發賽事管理與模擬飛行系統，並已用於正式比賽與日常教學。</div>
             </div>
           </div>
           <div class="pillar">
@@ -727,7 +717,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="section-head reveal">
       <span class="section-label">DRONE SOCCER · 無人機足球推廣成果</span>
       <h2 class="section-title">從校園到賽場<br>把無人機足球帶進新竹孩子的日常</h2>
-      <p class="section-sub">從校園社團、市府與大學合作課程、師資培訓到國際規則賽事，一步步建立無人機足球的學習環境。</p>
+      <p class="section-sub">從校園社團、認證課程、AI 訓練工具到國際規則賽事，一步步建立孩子學習無人機足球的完整環境。</p>
     </div>
 
     <div class="impact-stats reveal">
@@ -742,9 +732,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <div class="istat-sub">2026 RoboRAVE 新竹 Rally<br>3 對 3 分組競賽</div>
       </div>
       <div class="istat">
-        <div class="istat-num">14<small>小時</small></div>
-        <div class="istat-label">足球無人機裁判培訓</div>
-        <div class="istat-sub">學科＋術科實作</div>
+        <div class="istat-num">27<small>關</small></div>
+        <div class="istat-label">模擬飛行闖關課程</div>
+        <div class="istat-sub">5 大場景・405 顆星</div>
       </div>
       <div class="istat">
         <div class="istat-num">2<small>套</small></div>
@@ -756,28 +746,22 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="impact-grid">
       <div class="timeline reveal">
         <div class="tl-item">
-          <div class="tl-date">2026.04</div>
-          <div class="tl-title">足球無人機裁判培訓</div>
-          <div class="tl-text">4/25–26 於虎林製造中心辦理，14 小時學科＋術科，優先開放國高中教師，培養在地裁判人才。</div>
-          <span class="tl-tag">師資培育</span>
-        </div>
-        <div class="tl-item">
-          <div class="tl-date">2026.06</div>
-          <div class="tl-title">追風少年科技培力課程啟動</div>
-          <div class="tl-text">新竹市政府與陽明交通大學合作推動，以半導體與無人機為核心（6/1–8/31）。啟動記者會上，民富國小五年級學生現場展演無人機足球。</div>
-          <span class="tl-tag">市府合作</span>
+          <div class="tl-date">2026.07</div>
+          <div class="tl-title">AI 模擬飛行系統推出連線對戰</div>
+          <div class="tl-text">支援 1v1、2v2、3v3 線上對戰，學生在不同地方也能一起練習攻守與團隊配合。</div>
+          <span class="tl-tag">AI 自研系統</span>
         </div>
         <div class="tl-item">
           <div class="tl-date">2026.07</div>
-          <div class="tl-title">無人機夏令營（與陽明交大 AI 辦公室合辦）</div>
-          <div class="tl-text">7/6–7/10 於陽明交大校內，國小與國中學生五天密集營隊，帶孩子親手體驗無人機科技。</div>
-          <span class="tl-tag">大學合作</span>
+          <div class="tl-title">RoboRAVE 2026 新竹 Rally：AI 賽事管理系統正式上場</div>
+          <div class="tl-text">3 對 3 無人機足球賽採 FAI F9A-B 國際規則，分 Mini 飛球組、國小組、國高中組；賽程編排、裁判計分與現場看板全程由本團隊系統運作。</div>
+          <span class="tl-tag">國際規則賽事</span>
         </div>
         <div class="tl-item">
-          <div class="tl-date">2026.07</div>
-          <div class="tl-title">RoboRAVE 2026 新竹 Rally 無人機足球賽</div>
-          <div class="tl-text">7/26 於玄奘大學元亨堂舉行，3 對 3 分組對抗，採 FAI F9A-B 國際規則；賽程、計分與現場看板全程使用本團隊 AI 自研賽事管理系統。</div>
-          <span class="tl-tag">國際規格賽事</span>
+          <div class="tl-date">2026.08</div>
+          <div class="tl-title">模擬飛行系統新增闖關模式</div>
+          <div class="tl-text">5 大場景、每個場景 27 關，從基礎操控、航線精準、穿環技術到比賽技能，對應認證課程的基本動作。</div>
+          <span class="tl-tag">AI 自研系統</span>
         </div>
         <div class="tl-item">
           <div class="tl-date">2026.09</div>
@@ -788,29 +772,16 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       </div>
 
       <div class="reveal reveal-d2">
-        <div class="photo-wall">
-          <div class="pw-item wide">
-            <img loading="lazy" class="lightbox-trigger" src="images/drone/launch-group.jpg" alt="追風少年科技培力課程啟動記者會全體合影" data-cap="追風少年科技培力課程啟動記者會｜全體合影">
-            <div class="pw-cap">追風少年科技培力課程啟動記者會｜全體合影</div>
-          </div>
-          <div class="pw-item">
-            <img loading="lazy" class="lightbox-trigger" src="images/drone/roborave-poster.jpg" alt="2026 RoboRAVE 新竹市無人機足球競賽主視覺" data-cap="2026 RoboRAVE 新竹市無人機足球競賽">
-            <div class="pw-cap">2026 RoboRAVE 新竹市無人機足球競賽</div>
-          </div>
-          <div class="pw-item">
-            <img loading="lazy" class="lightbox-trigger" src="images/drone/chair-speech.jpg" style="object-position:center 30%;" alt="陳炳富致詞" data-cap="陳炳富 致詞">
-            <div class="pw-cap">陳炳富 致詞</div>
-          </div>
-          <div class="pw-item">
-            <img loading="lazy" class="lightbox-trigger" src="images/drone/launch-ceremony.jpg" style="object-position:center 35%;" alt="啟動儀式" data-cap="追風少年科技培力課程啟動儀式">
-            <div class="pw-cap">追風少年科技培力課程啟動儀式</div>
-          </div>
-          <div class="pw-item">
-            <img loading="lazy" class="lightbox-trigger" src="images/drone/guests.jpg" style="object-position:center 55%;" alt="與會貴賓聆聽課程介紹" data-cap="與會貴賓專注聆聽課程介紹">
-            <div class="pw-cap">與會貴賓聆聽課程介紹</div>
-          </div>
+        <div class="impact-shot">
+          <img loading="lazy" class="lightbox-trigger" src="images/drone/scoreboard-display.jpg" alt="RoboRAVE 2026 新竹 Rally 現場看板" data-cap="RoboRAVE 2026 新竹 Rally｜AI 賽事管理系統現場看板">
+          <div class="pw-cap">RoboRAVE 2026 新竹 Rally｜AI 賽事管理系統現場看板</div>
         </div>
-        <p class="photo-credit">🔍 點擊照片可放大</p>
+        <div class="hl-grid">
+          <div class="hl-card"><div class="hl-ic">🏫</div><div><b>校園社團</b><span>民富・竹蓮・香山國小<br>小三～小六每週上課</span></div></div>
+          <div class="hl-card"><div class="hl-ic">🎖️</div><div><b>認證課程</b><span>無人機足球能力認證<br>初級考照輔導</span></div></div>
+          <div class="hl-card"><div class="hl-ic">🎮</div><div><b>AI 模擬訓練</b><span>課前熟悉操控<br>課後闖關練習</span></div></div>
+        </div>
+        <p class="photo-credit">🔍 點擊畫面可放大</p>
       </div>
     </div>
   </div>
@@ -903,7 +874,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         </ul>
         <div class="sys-used">📍 實際應用：<b>AI 足球無人機社團、無人機足球認證課程</b>的課前與課後練習</div>
         <div class="sys-btns">
-          <a class="btn-blue" id="simLink" href="#" target="_blank" rel="noopener">🔗 線上體驗模擬器</a>
+          <a class="btn-blue" href="https://pse.is/8rujak" target="_blank" rel="noopener">🎯 預約課程，體驗模擬訓練</a>
         </div>
       </div>
     </div>
@@ -967,7 +938,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <ul class="dc-list">
           <li>寒暑假密集學習，結合 AI 與無人機足球</li>
           <li>分組闖關、團隊合作與友誼賽</li>
-          <li>曾與陽明交大 AI 辦公室合辦營隊</li>
+          <li>搭配 AI 模擬飛行系統闖關練習</li>
         </ul>
         <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn alt">🎯 預約營隊</a>
       </div>
@@ -986,16 +957,16 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       </div>
 
       <div class="dc-card reveal reveal-d2">
-        <div class="dc-icon">🧑‍⚖️</div>
-        <div class="dc-type">TRAINING · 師資培訓</div>
-        <div class="dc-title">足球無人機裁判與教練培訓</div>
-        <div class="dc-target">👩‍🏫 適合：學校教師、社團指導老師</div>
+        <div class="dc-icon">🎮</div>
+        <div class="dc-type">AI TRAINING · 模擬訓練</div>
+        <div class="dc-title">AI 模擬飛行訓練</div>
+        <div class="dc-target">🧑‍🚀 適合：所有無人機課程學員</div>
         <ul class="dc-list">
-          <li>裁判旗號、計分與賽場管理實務</li>
-          <li>學科規則＋術科實作，14 小時完整培訓</li>
-          <li>協助學校建立自己的無人機足球隊</li>
+          <li>上機前先在 3D 模擬器熟悉操控，減少摔機</li>
+          <li>闖關課程對應認證動作，進度一目了然</li>
+          <li>連線對戰，課後也能和同學一起練習</li>
         </ul>
-        <a href="tel:035403463" class="dc-btn alt">📞 培訓洽詢</a>
+        <a href="#ai-systems" class="dc-btn alt">看模擬飛行系統 →</a>
       </div>
 
       <div class="dc-card reveal reveal-d3">
@@ -1337,15 +1308,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 </div>
 
 <script>
-// ===== 設定：模擬飛行系統線上網址 =====
-const SIMULATOR_URL = 'https://greenmail1011.github.io/sky-striker/';
-
 (function () {
-  // 模擬器連結
-  const simLink = document.getElementById('simLink');
-  if (SIMULATOR_URL) { simLink.href = SIMULATOR_URL; }
-  else { simLink.style.display = 'none'; }
-
   // 導覽列陰影
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
