@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<title>未來斑馬程式教育學苑 | Future Zebra 新竹市</title>
+<title>富志科技｜未來斑馬 AI 創新學苑｜AI 無人機 × 程式教育｜新竹市</title>
+<meta name="description" content="富志科技（未來斑馬）深耕新竹程式教育，全力推廣無人機足球：校園社團、市府合作課程、國際規格賽事，並以 AI 自主開發賽事管理系統與模擬飛行系統。">
+<meta property="og:title" content="富志科技｜AI 無人機 × 程式教育">
+<meta property="og:description" content="無人機足球推廣成果、無人機課程、AI 自研賽事管理系統與模擬飛行系統。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://greenmail1011.github.io/futurezebra/images/drone/classroom.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -13,6 +17,8 @@
   --blue-light: #3b82f6;
   --blue-sky:   #e8f4ff;
   --blue-pale:  #f0f7ff;
+  --cyan:       #06b6d4;
+  --cyan-pale:  #ecfeff;
   --accent:     #f59e0b;
   --accent2:    #10b981;
   --white:      #ffffff;
@@ -28,13 +34,14 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html { scroll-behavior:smooth; scroll-padding-top:72px; }
 body { font-family:'Noto Sans TC',sans-serif; background:var(--white); color:var(--gray-900); overflow-x:hidden; }
+img { max-width:100%; }
 
 /* ── NAV ── */
 nav {
   position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(255,255,255,0.95);
+  background:rgba(255,255,255,0.96);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--gray-200);
   padding:0 2rem;
@@ -43,627 +50,641 @@ nav {
   transition:box-shadow 0.3s;
 }
 nav.scrolled { box-shadow:var(--shadow); }
-.nav-logo {
-  display:flex; align-items:center; gap:0.6rem;
-  text-decoration:none;
-}
-.nav-logo img { height:44px; }
+.nav-logo { display:flex; align-items:center; gap:0.6rem; text-decoration:none; }
 .nav-logo-text { display:flex; flex-direction:column; line-height:1.2; }
 .nav-logo-main { font-size:1rem; font-weight:800; color:var(--blue-dark); }
 .nav-logo-sub  { font-size:0.68rem; color:var(--blue-mid); letter-spacing:0.05em; }
 
-.nav-links { display:flex; align-items:center; gap:0.2rem; list-style:none; }
-.nav-links > li { position:relative; }
+.nav-links { display:flex; align-items:center; gap:0.1rem; list-style:none; }
 .nav-links > li > a {
-  display:block; padding:0.5rem 0.9rem;
-  font-size:0.88rem; font-weight:600;
+  display:block; padding:0.5rem 0.75rem;
+  font-size:0.86rem; font-weight:600;
   color:var(--gray-700); text-decoration:none;
   border-radius:8px;
   transition:background 0.2s, color 0.2s;
 }
 .nav-links > li > a:hover { background:var(--blue-sky); color:var(--blue-mid); }
-
+.nav-links > li > a.nav-drone { color:var(--blue-mid); }
 .nav-cta {
   background:var(--blue-mid) !important;
   color:white !important;
   padding:0.55rem 1.3rem !important;
   border-radius:50px !important;
   font-weight:700 !important;
-  font-size:0.85rem !important;
+  margin-left:0.4rem;
   box-shadow:0 2px 12px rgba(26,95,168,0.35);
-  transition:transform 0.2s, box-shadow 0.2s !important;
 }
-.nav-cta:hover { transform:translateY(-2px); box-shadow:0 4px 20px rgba(26,95,168,0.45) !important; background:var(--blue-dark) !important; }
+.nav-cta:hover { background:var(--blue-dark) !important; }
+.nav-toggle {
+  display:none; background:none; border:none; cursor:pointer;
+  width:44px; height:44px; border-radius:10px;
+  font-size:1.5rem; color:var(--blue-dark);
+}
+.nav-toggle:hover { background:var(--blue-sky); }
 
 /* ── HERO ── */
 .hero {
   min-height:100vh;
-  background: linear-gradient(135deg, #0f3460 0%, #1a5fa8 50%, #2d7dd2 100%);
+  background: linear-gradient(135deg, #0b2447 0%, #0f3460 35%, #1a5fa8 75%, #2d7dd2 100%);
   display:flex; align-items:center;
-  padding:90px 2rem 3rem;
+  padding:100px 2rem 4rem;
   position:relative; overflow:hidden;
 }
 .hero::before {
-  content:'';
-  position:absolute; inset:0;
+  content:''; position:absolute; inset:0;
   background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.hero-blob1, .hero-blob2 {
-  position:absolute; border-radius:50%;
-  filter:blur(60px); opacity:0.18; pointer-events:none;
-}
-.hero-blob1 { width:600px; height:600px; background:#60a5fa; top:-200px; right:-150px; }
+.hero-blob1, .hero-blob2 { position:absolute; border-radius:50%; filter:blur(60px); opacity:0.2; pointer-events:none; }
+.hero-blob1 { width:600px; height:600px; background:#22d3ee; top:-200px; right:-150px; }
 .hero-blob2 { width:400px; height:400px; background:#a78bfa; bottom:-100px; left:-100px; }
 
 .hero-inner {
   max-width:1200px; margin:0 auto; width:100%;
-  display:grid; grid-template-columns:1fr 1fr;
+  display:grid; grid-template-columns:1.05fr 0.95fr;
   gap:3rem; align-items:center;
   position:relative; z-index:1;
 }
-.hero-left {}
 .hero-badge {
   display:inline-flex; align-items:center; gap:0.5rem;
-  background:rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.14);
   border:1px solid rgba(255,255,255,0.25);
-  color:white; font-size:0.78rem; font-weight:600;
-  padding:0.35rem 1rem; border-radius:50px;
+  color:white; font-size:0.8rem; font-weight:600;
+  padding:0.4rem 1rem; border-radius:50px;
   margin-bottom:1.5rem;
   animation:fadeUp 0.7s 0.1s both;
 }
 .hero-title {
-  font-family:'Nunito',sans-serif;
-  font-size:clamp(2.4rem,5vw,3.8rem);
-  font-weight:900; color:white; line-height:1.15;
-  margin-bottom:1.2rem;
+  font-size:clamp(2.2rem,4.6vw,3.6rem);
+  font-weight:900; color:white; line-height:1.2;
+  margin-bottom:1.2rem; letter-spacing:0.01em;
   animation:fadeUp 0.7s 0.2s both;
 }
 .hero-title span { color:#fbbf24; }
+.hero-title em { font-style:normal; color:#67e8f9; }
 .hero-desc {
-  font-size:1.05rem; color:rgba(255,255,255,0.82);
-  line-height:1.8; margin-bottom:2.2rem;
+  font-size:1.04rem; color:rgba(255,255,255,0.85);
+  line-height:1.9; margin-bottom:2rem; max-width:560px;
   animation:fadeUp 0.7s 0.3s both;
 }
-.hero-btns {
-  display:flex; gap:1rem; flex-wrap:wrap;
-  animation:fadeUp 0.7s 0.4s both;
+.hero-btns { display:flex; gap:0.8rem; flex-wrap:wrap; animation:fadeUp 0.7s 0.4s both; }
+.btn-yellow, .btn-white, .btn-white-outline, .btn-wol {
+  display:inline-block; text-decoration:none; border-radius:50px;
+  padding:0.85rem 1.8rem; font-size:0.95rem;
+  transition:transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
-.btn-white {
-  background:white; color:var(--blue-dark);
-  padding:0.85rem 2rem; border-radius:50px;
-  font-weight:800; font-size:0.95rem;
-  text-decoration:none; display:inline-block;
-  box-shadow:0 4px 20px rgba(0,0,0,0.2);
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.btn-white:hover { transform:translateY(-3px); box-shadow:0 8px 28px rgba(0,0,0,0.25); }
-.btn-white-outline {
-  border:2px solid rgba(255,255,255,0.6);
-  color:white; padding:0.85rem 2rem; border-radius:50px;
-  font-weight:700; font-size:0.95rem;
-  text-decoration:none; display:inline-block;
-  transition:background 0.2s, border-color 0.2s, transform 0.2s;
-}
-.btn-white-outline:hover { background:rgba(255,255,255,0.15); transform:translateY(-3px); }
+.btn-yellow { background:#fbbf24; color:var(--blue-dark); font-weight:800; box-shadow:0 4px 20px rgba(251,191,36,0.4); }
+.btn-yellow:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(251,191,36,0.5); }
+.btn-white { background:white; color:var(--blue-dark); font-weight:800; box-shadow:0 4px 20px rgba(0,0,0,0.2); }
+.btn-white:hover { transform:translateY(-3px); }
+.btn-white-outline, .btn-wol { border:2px solid rgba(255,255,255,0.55); color:white; font-weight:700; }
+.btn-white-outline:hover, .btn-wol:hover { background:rgba(255,255,255,0.14); transform:translateY(-3px); }
 
 .hero-stats {
-  display:flex; gap:2rem; margin-top:2.5rem;
+  display:grid; grid-template-columns:repeat(4,auto); justify-content:start;
+  gap:1.8rem; margin-top:2.4rem;
   animation:fadeUp 0.7s 0.5s both;
 }
-.hstat { }
-.hstat-num { font-family:'Nunito',sans-serif; font-size:2rem; font-weight:900; color:#fbbf24; line-height:1; }
-.hstat-label { font-size:0.75rem; color:rgba(255,255,255,0.65); margin-top:0.2rem; }
+.hstat-num { font-family:'Nunito','Noto Sans TC',sans-serif; font-size:1.9rem; font-weight:900; color:#fbbf24; line-height:1; }
+.hstat-num small { font-size:0.95rem; margin-left:2px; }
+.hstat-label { font-size:0.76rem; color:rgba(255,255,255,0.7); margin-top:0.35rem; }
 
-/* Hero right: DM image */
-.hero-right {
-  animation:fadeUp 0.8s 0.3s both;
+.hero-right { animation:fadeUp 0.8s 0.3s both; }
+.hero-photo {
+  position:relative; border-radius:24px; overflow:visible;
 }
-.hero-img-wrap {
-  position:relative;
+.hero-photo img {
+  width:100%; aspect-ratio:4/3; object-fit:cover; display:block;
+  border-radius:24px; box-shadow:0 24px 70px rgba(0,0,0,0.4);
+  border:4px solid rgba(255,255,255,0.18);
+  background:#1e3a5f;
 }
-.hero-dm-img {
-  width:100%; max-width:420px;
-  border-radius:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.35);
-  display:block; margin:0 auto;
-}
-.hero-img-badge {
-  position:absolute; bottom:-16px; left:50%; transform:translateX(-50%);
+.hero-chip {
+  position:absolute; display:flex; align-items:center; gap:0.6rem;
   background:white; color:var(--blue-dark);
-  border-radius:50px; padding:0.6rem 1.5rem;
-  font-weight:800; font-size:0.85rem;
-  box-shadow:var(--shadow-lg);
-  white-space:nowrap;
+  border-radius:14px; padding:0.7rem 1rem;
+  box-shadow:var(--shadow-lg); text-decoration:none;
+  transition:transform 0.2s;
 }
+.hero-chip:hover { transform:translateY(-3px); }
+.hero-chip .ic { font-size:1.5rem; }
+.hero-chip b { display:block; font-size:0.88rem; }
+.hero-chip span { display:block; font-size:0.7rem; color:var(--gray-500); }
+.hero-chip.c1 { left:-24px; bottom:28px; }
+.hero-chip.c2 { right:-18px; top:24px; }
+.hero-caption { color:rgba(255,255,255,0.6); font-size:0.75rem; text-align:center; margin-top:0.9rem; }
 
 /* ── MARQUEE ── */
-.marquee-wrap {
-  background:var(--blue-dark);
-  padding:0.9rem 0; overflow:hidden;
-}
-.marquee-track {
-  display:flex; gap:3rem;
-  animation:marquee 28s linear infinite;
-  width:max-content;
-}
-.mitem {
-  display:flex; align-items:center; gap:0.6rem;
-  font-size:0.82rem; font-weight:600; color:rgba(255,255,255,0.75);
-  white-space:nowrap;
-}
+.marquee-wrap { background:var(--blue-dark); padding:0.9rem 0; overflow:hidden; }
+.marquee-track { display:flex; gap:3rem; animation:marquee 36s linear infinite; width:max-content; }
+.mitem { display:flex; align-items:center; gap:0.6rem; font-size:0.84rem; font-weight:600; color:rgba(255,255,255,0.78); white-space:nowrap; }
 .mitem span { color:#fbbf24; }
+.mitem.d span { color:#67e8f9; }
 
 /* ── SECTION COMMONS ── */
 .section { padding:5rem 2rem; }
 .section-inner { max-width:1200px; margin:0 auto; }
+.section-head { text-align:center; margin-bottom:2.8rem; }
+.section-head .section-sub { margin:0 auto; }
 .section-label {
-  display:inline-block;
-  background:var(--blue-sky);
-  color:var(--blue-mid);
-  font-size:0.75rem; font-weight:700;
-  letter-spacing:0.1em; padding:0.3rem 1rem;
-  border-radius:50px; margin-bottom:1rem;
+  display:inline-block; background:var(--blue-sky); color:var(--blue-mid);
+  font-size:0.75rem; font-weight:700; letter-spacing:0.1em;
+  padding:0.3rem 1rem; border-radius:50px; margin-bottom:1rem;
 }
 .section-title {
-  font-family:'Nunito',sans-serif;
-  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-size:clamp(1.75rem,3.4vw,2.6rem);
   font-weight:900; color:var(--blue-dark);
-  line-height:1.25; margin-bottom:1rem;
+  line-height:1.3; margin-bottom:1rem;
 }
-.section-sub {
-  font-size:1rem; color:var(--gray-500);
-  line-height:1.8; max-width:600px;
-}
+.section-sub { font-size:1rem; color:var(--gray-500); line-height:1.85; max-width:680px; }
+.dark .section-label { background:rgba(255,255,255,0.14); color:white; }
+.dark .section-title { color:white; }
+.dark .section-sub { color:rgba(255,255,255,0.72); }
 
-/* ── DM SECTION ── */
-.dm-section { background:var(--gray-50); }
-.dm-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-  gap:1.5rem; margin-top:3rem;
+/* Part divider */
+.part-divider {
+  background:linear-gradient(90deg,var(--blue-dark),var(--blue-mid));
+  color:white; text-align:center; padding:2.6rem 2rem;
 }
-.dm-card {
-  background:white;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:transform 0.3s, box-shadow 0.3s;
-  cursor:pointer;
-}
-.dm-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
-.dm-card img {
-  width:100%; display:block;
-  object-fit:contain;
-  background:#f8faff;
-}
-.dm-card-body { padding:1.2rem; }
-.dm-card-title { font-weight:700; font-size:0.95rem; color:var(--blue-dark); margin-bottom:0.3rem; }
-.dm-card-sub { font-size:0.82rem; color:var(--gray-500); }
+.part-divider .pd-kicker { font-size:0.78rem; letter-spacing:0.2em; color:#fbbf24; font-weight:700; }
+.part-divider h2 { font-size:clamp(1.5rem,3vw,2.1rem); font-weight:900; margin-top:0.4rem; }
+.part-divider p { color:rgba(255,255,255,0.75); margin-top:0.4rem; font-size:0.95rem; }
 
 /* ── ABOUT ── */
-.about-grid {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:4rem; align-items:center;
-}
-.about-img-wrap {
-  position:relative;
-}
-.about-img {
-  width:100%; border-radius:20px;
-  box-shadow:var(--shadow-lg);
-}
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.about-img-wrap { position:relative; }
+.about-img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:20px; box-shadow:var(--shadow-lg); display:block; background:var(--blue-sky); }
 .about-img-tag {
   position:absolute; top:20px; left:-16px;
   background:var(--blue-mid); color:white;
   padding:0.6rem 1.2rem; border-radius:0 50px 50px 0;
-  font-weight:700; font-size:0.85rem;
-  box-shadow:var(--shadow);
+  font-weight:700; font-size:0.85rem; box-shadow:var(--shadow);
 }
-.about-points { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
-.apoint {
+.pillars { margin-top:1.8rem; display:grid; gap:1rem; }
+.pillar {
   display:flex; gap:1rem; align-items:flex-start;
-  background:var(--blue-pale);
-  padding:1.2rem; border-radius:12px;
+  background:var(--blue-pale); padding:1.2rem 1.3rem; border-radius:14px;
   border-left:4px solid var(--blue-mid);
 }
-.apoint-icon { font-size:1.6rem; flex-shrink:0; }
-.apoint-title { font-weight:700; font-size:0.95rem; color:var(--blue-dark); margin-bottom:0.2rem; }
-.apoint-text { font-size:0.85rem; color:var(--gray-500); line-height:1.6; }
-
-/* ── COURSES ── */
-.courses-section { background:var(--blue-pale); }
-.courses-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1.5rem; margin-top:3rem;
+.pillar.drone { background:var(--cyan-pale); border-left-color:var(--cyan); }
+.pillar-icon { font-size:1.7rem; flex-shrink:0; line-height:1.2; }
+.pillar-title { font-weight:800; font-size:1rem; color:var(--blue-dark); margin-bottom:0.25rem; }
+.pillar-text { font-size:0.87rem; color:var(--gray-700); line-height:1.75; }
+.partner-note {
+  margin-top:1.2rem; font-size:0.85rem; color:var(--gray-500); line-height:1.7;
 }
-.course-card {
-  background:white; border-radius:var(--radius);
-  padding:2rem; box-shadow:var(--shadow);
-  position:relative; overflow:hidden;
+.partner-note a { color:var(--blue-mid); font-weight:700; text-decoration:none; }
+.partner-note a:hover { text-decoration:underline; }
+
+/* ── DRONE IMPACT ── */
+.impact-section { background:linear-gradient(160deg,#0b2447 0%,#0f3460 45%,#1a5fa8 100%); position:relative; overflow:hidden; }
+.impact-stats {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:3.2rem;
+}
+.istat {
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14);
+  border-radius:16px; padding:1.4rem 1.2rem; text-align:center;
+}
+.istat-num { font-family:'Nunito','Noto Sans TC',sans-serif; font-size:2.3rem; font-weight:900; color:#fbbf24; line-height:1.05; }
+.istat-num small { font-size:1rem; margin-left:3px; }
+.istat-label { color:white; font-weight:700; font-size:0.92rem; margin-top:0.45rem; }
+.istat-sub { color:rgba(255,255,255,0.6); font-size:0.76rem; margin-top:0.25rem; line-height:1.5; }
+
+.impact-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:3rem; align-items:start; }
+.timeline { position:relative; padding-left:1.6rem; }
+.timeline::before { content:''; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:rgba(255,255,255,0.2); }
+.tl-item { position:relative; padding-bottom:1.6rem; }
+.tl-item:last-child { padding-bottom:0; }
+.tl-item::before {
+  content:''; position:absolute; left:-1.6rem; top:5px;
+  width:14px; height:14px; border-radius:50%;
+  background:#fbbf24; box-shadow:0 0 0 4px rgba(251,191,36,0.2);
+}
+.tl-date { font-family:'Nunito',sans-serif; font-weight:800; color:#67e8f9; font-size:0.85rem; letter-spacing:0.05em; }
+.tl-title { color:white; font-weight:800; font-size:1.02rem; margin:0.2rem 0 0.3rem; line-height:1.5; }
+.tl-text { color:rgba(255,255,255,0.7); font-size:0.86rem; line-height:1.75; }
+.tl-tag {
+  display:inline-block; margin-top:0.45rem;
+  background:rgba(103,232,249,0.15); color:#a5f3fc;
+  font-size:0.72rem; font-weight:700; padding:0.15rem 0.6rem; border-radius:50px;
+}
+
+.photo-wall { display:grid; grid-template-columns:repeat(2,1fr); gap:0.8rem; }
+.pw-item {
+  position:relative; border-radius:14px; overflow:hidden; cursor:zoom-in;
+  background:rgba(255,255,255,0.06); aspect-ratio:4/3;
+  box-shadow:0 6px 24px rgba(0,0,0,0.25);
+}
+.pw-item.wide { grid-column:span 2; aspect-ratio:16/8; }
+.pw-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+.pw-item:hover img { transform:scale(1.05); }
+.pw-cap {
+  position:absolute; left:0; right:0; bottom:0;
+  padding:1.6rem 0.8rem 0.6rem;
+  background:linear-gradient(transparent,rgba(0,0,0,0.75));
+  color:white; font-size:0.78rem; font-weight:600; line-height:1.4;
+  pointer-events:none;
+}
+.photo-credit { color:rgba(255,255,255,0.5); font-size:0.75rem; margin-top:0.8rem; text-align:right; }
+.photo-credit a { color:#a5f3fc; }
+
+/* ── AI SYSTEMS ── */
+.systems-section { background:var(--gray-50); }
+.ai-strip {
+  display:flex; justify-content:center; flex-wrap:wrap; gap:0.6rem; margin-top:1.2rem;
+}
+.ai-pill {
+  background:white; border:1px solid var(--gray-200); border-radius:50px;
+  padding:0.4rem 1rem; font-size:0.82rem; font-weight:700; color:var(--blue-dark);
+}
+.system {
+  display:grid; grid-template-columns:1.15fr 0.85fr; gap:2.5rem; align-items:center;
+  background:white; border-radius:24px; padding:2rem;
+  box-shadow:var(--shadow); margin-bottom:2rem;
+}
+.system.reverse { grid-template-columns:0.85fr 1.15fr; }
+.system.reverse .sys-media { order:2; }
+.sys-media { display:grid; gap:0.8rem; }
+.sys-shot {
+  border-radius:14px; overflow:hidden; background:#0f172a;
+  border:1px solid var(--gray-200); cursor:zoom-in; position:relative;
+}
+.sys-shot img { width:100%; display:block; aspect-ratio:16/10; object-fit:cover; object-position:top; }
+.sys-shot-row { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; }
+.sys-shot-row.three { grid-template-columns:repeat(3,1fr); gap:0.6rem; }
+.sys-shot-row.three .shot-label { font-size:0.66rem; left:6px; bottom:6px; }
+.sys-features li b { color:var(--blue-dark); }
+.sys-shot .shot-label {
+  position:absolute; left:10px; bottom:10px;
+  background:rgba(15,23,42,0.78); color:white; font-size:0.72rem; font-weight:700;
+  padding:0.2rem 0.6rem; border-radius:6px;
+}
+.shot-fallback {
+  aspect-ratio:16/10; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.8); font-weight:700; gap:0.4rem;
+  background:linear-gradient(135deg,#0f3460,#1a5fa8);
+}
+.shot-fallback .big { font-size:2.6rem; }
+.sys-kicker {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  background:var(--cyan-pale); color:#0e7490;
+  font-size:0.74rem; font-weight:800; letter-spacing:0.08em;
+  padding:0.25rem 0.8rem; border-radius:50px;
+}
+.sys-title { font-size:1.65rem; font-weight:900; color:var(--blue-dark); margin:0.7rem 0 0.4rem; line-height:1.3; }
+.sys-desc { color:var(--gray-500); font-size:0.93rem; line-height:1.8; }
+.sys-features { list-style:none; margin:1.1rem 0 1.2rem; display:grid; gap:0.5rem; }
+.sys-features li { display:flex; gap:0.6rem; font-size:0.9rem; color:var(--gray-700); line-height:1.6; }
+.sys-features li::before { content:'✓'; color:var(--accent2); font-weight:900; flex-shrink:0; }
+.sys-used {
+  background:var(--blue-pale); border-radius:12px; padding:0.8rem 1rem;
+  font-size:0.84rem; color:var(--blue-dark); line-height:1.6; margin-bottom:1.2rem;
+}
+.sys-used b { color:var(--blue-mid); }
+.sys-btns { display:flex; gap:0.7rem; flex-wrap:wrap; }
+.btn-blue {
+  display:inline-block; background:var(--blue-mid); color:white; text-decoration:none;
+  padding:0.75rem 1.6rem; border-radius:50px; font-weight:800; font-size:0.92rem;
+  box-shadow:0 4px 16px rgba(26,95,168,0.3); transition:transform 0.2s, background 0.2s;
+}
+.btn-blue:hover { background:var(--blue-dark); transform:translateY(-2px); }
+.btn-ghost {
+  display:inline-block; border:2px solid var(--blue-mid); color:var(--blue-mid); text-decoration:none;
+  padding:0.65rem 1.4rem; border-radius:50px; font-weight:700; font-size:0.9rem;
+  transition:background 0.2s;
+}
+.btn-ghost:hover { background:var(--blue-sky); }
+
+/* ── DRONE COURSES ── */
+.dcourses-section { background:white; }
+.path {
+  display:flex; align-items:stretch; justify-content:center; flex-wrap:wrap; gap:0.5rem;
+  margin:0 auto 2.8rem; max-width:980px;
+}
+.path-step {
+  flex:1 1 140px; background:var(--blue-pale); border-radius:14px; padding:1rem 0.8rem;
+  text-align:center; position:relative;
+}
+.path-step .ps-n { font-family:'Nunito',sans-serif; font-weight:900; color:var(--cyan); font-size:0.78rem; letter-spacing:0.1em; }
+.path-step .ps-t { font-weight:800; color:var(--blue-dark); font-size:0.98rem; margin-top:0.2rem; }
+.path-step .ps-d { font-size:0.76rem; color:var(--gray-500); margin-top:0.2rem; line-height:1.5; }
+.path-arrow { display:flex; align-items:center; color:var(--blue-light); font-weight:900; font-size:1.2rem; }
+
+.dc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.dc-card {
+  background:white; border-radius:var(--radius); box-shadow:var(--shadow);
+  border-top:4px solid var(--cyan); padding:1.7rem;
+  display:flex; flex-direction:column;
   transition:transform 0.3s, box-shadow 0.3s;
+  position:relative; overflow:hidden;
+}
+.dc-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.dc-card.featured { border-top-color:var(--accent); }
+.dc-card.featured::after {
+  content:'認證課程'; position:absolute; top:14px; right:-26px;
+  background:var(--accent); color:white; font-size:0.7rem; font-weight:700;
+  padding:0.25rem 2.2rem; transform:rotate(45deg);
+}
+.dc-icon { font-size:2rem; }
+.dc-type { font-size:0.72rem; font-weight:800; letter-spacing:0.1em; color:#0e7490; margin-top:0.6rem; }
+.dc-title { font-size:1.22rem; font-weight:900; color:var(--blue-dark); margin:0.25rem 0 0.4rem; line-height:1.4; }
+.dc-target { font-size:0.82rem; color:var(--gray-500); margin-bottom:0.9rem; }
+.dc-list { list-style:none; margin-bottom:1.2rem; flex:1; }
+.dc-list li {
+  font-size:0.86rem; color:var(--gray-700); padding:0.38rem 0;
+  border-bottom:1px solid var(--gray-100); display:flex; gap:0.5rem; line-height:1.6;
+}
+.dc-list li::before { content:'✓'; color:var(--accent2); font-weight:700; flex-shrink:0; }
+.dc-note { font-size:0.75rem; color:var(--gray-500); line-height:1.6; margin:-0.4rem 0 1rem; }
+.dc-btn {
+  display:block; text-align:center; background:var(--blue-mid); color:white;
+  padding:0.7rem; border-radius:50px; font-weight:700; font-size:0.88rem; text-decoration:none;
+  transition:background 0.2s;
+}
+.dc-btn:hover { background:var(--blue-dark); }
+.dc-btn.alt { background:white; color:var(--blue-mid); border:2px solid var(--blue-mid); }
+.dc-btn.alt:hover { background:var(--blue-sky); }
+
+/* ── DM SECTION ── */
+.dm-section { background:var(--gray-50); }
+.dm-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.5rem; }
+.dm-card { background:white; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform 0.3s, box-shadow 0.3s; }
+.dm-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.dm-card img { width:100%; display:block; object-fit:contain; background:#f8faff; }
+.dm-card-body { padding:1.2rem; }
+.dm-card-title { font-weight:700; font-size:0.95rem; color:var(--blue-dark); margin-bottom:0.3rem; }
+.dm-card-sub { font-size:0.82rem; color:var(--gray-500); }
+
+/* ── PROGRAMMING COURSES ── */
+.courses-section { background:var(--blue-pale); }
+.courses-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
+.course-card {
+  background:white; border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow);
+  position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s;
   border-top:4px solid var(--blue-light);
 }
 .course-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
 .course-card.featured { border-top-color:var(--accent); }
 .course-card.featured::after {
-  content:'熱門推薦';
-  position:absolute; top:14px; right:-22px;
-  background:var(--accent); color:white;
-  font-size:0.7rem; font-weight:700;
-  padding:0.25rem 2rem;
-  transform:rotate(45deg);
+  content:'熱門推薦'; position:absolute; top:14px; right:-22px;
+  background:var(--accent); color:white; font-size:0.7rem; font-weight:700;
+  padding:0.25rem 2rem; transform:rotate(45deg);
 }
-.c-level {
-  font-size:0.72rem; font-weight:700; letter-spacing:0.12em;
-  color:var(--blue-mid); background:var(--blue-sky);
-  display:inline-block; padding:0.2rem 0.7rem; border-radius:50px;
-  margin-bottom:1rem;
-}
-.c-title { font-family:'Nunito',sans-serif; font-size:1.3rem; font-weight:900; color:var(--blue-dark); margin-bottom:0.4rem; }
+.c-level { font-size:0.72rem; font-weight:700; letter-spacing:0.12em; color:var(--blue-mid); background:var(--blue-sky); display:inline-block; padding:0.2rem 0.7rem; border-radius:50px; margin-bottom:1rem; }
+.c-title { font-size:1.25rem; font-weight:900; color:var(--blue-dark); margin-bottom:0.4rem; }
 .c-target { font-size:0.82rem; color:var(--gray-500); margin-bottom:1.2rem; }
 .c-features { list-style:none; margin-bottom:1.5rem; }
-.c-features li {
-  font-size:0.85rem; color:var(--gray-700);
-  padding:0.35rem 0;
-  border-bottom:1px solid var(--gray-100);
-  display:flex; align-items:center; gap:0.5rem;
-}
+.c-features li { font-size:0.85rem; color:var(--gray-700); padding:0.35rem 0; border-bottom:1px solid var(--gray-100); display:flex; align-items:center; gap:0.5rem; }
 .c-features li::before { content:'✓'; color:var(--accent2); font-weight:700; }
-.c-price { font-family:'Nunito',sans-serif; font-size:1.6rem; font-weight:900; color:var(--blue-mid); }
-.c-price-note { font-size:0.75rem; color:var(--gray-500); margin-top:0.2rem; }
-.c-btn {
-  display:block; text-align:center; margin-top:1.5rem;
-  background:var(--blue-mid); color:white;
-  padding:0.7rem; border-radius:50px;
-  font-weight:700; font-size:0.88rem; text-decoration:none;
-  transition:background 0.2s, transform 0.2s;
-}
-.c-btn:hover { background:var(--blue-dark); transform:translateY(-2px); }
+.c-btn { display:block; text-align:center; margin-top:1.5rem; background:var(--blue-mid); color:white; padding:0.7rem; border-radius:50px; font-weight:700; font-size:0.88rem; text-decoration:none; transition:background 0.2s; }
+.c-btn:hover { background:var(--blue-dark); }
 
-/* ── COMPARISON TABLE ── */
-.compare-section { background:white; }
-.compare-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); margin-top:2rem; }
+/* ── COMPARISON ── */
+.compare-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); cursor:zoom-in; }
 
 /* ── ACHIEVEMENTS ── */
 .achievements-section { background:linear-gradient(135deg,#0f3460,#1a5fa8); }
-.achievements-section .section-label { background:rgba(255,255,255,0.15); color:white; }
-.achievements-section .section-title { color:white; }
-.achievements-section .section-sub { color:rgba(255,255,255,0.7); }
-
-.apcs-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); margin-top:2rem; }
-
-.award-photos {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:1rem; margin-top:2rem;
-}
-.award-photo {
-  border-radius:12px; overflow:hidden;
-  box-shadow:0 4px 16px rgba(0,0,0,0.25);
-  transition:transform 0.3s;
-}
+.apcs-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); cursor:zoom-in; }
+.award-banners { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem; }
+.award-banner-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); cursor:zoom-in; }
+.award-photos { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; margin-top:2rem; }
+.award-photo { border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.25); transition:transform 0.3s; }
 .award-photo:hover { transform:scale(1.04); }
-.award-photo img { width:100%; display:block; object-fit:cover; height:220px; }
+.award-photo img { width:100%; display:block; object-fit:cover; height:220px; cursor:zoom-in; }
 
-/* Award banners */
-.award-banners {
-  display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem;
-}
-.award-banner-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); }
-
-/* ── LEARNING MAP ── */
+/* ── LEARNING MAP / GALLERY ── */
 .map-section { background:var(--gray-50); }
-.map-img {
-  width:100%; border-radius:var(--radius);
-  box-shadow:var(--shadow-lg); margin-top:2rem;
-  cursor:zoom-in;
-  transition:transform 0.3s;
-}
-.map-img:hover { transform:scale(1.01); }
-
-/* ── PHOTOS GALLERY ── */
-.gallery-section { background:white; }
-.gallery-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1rem; margin-top:2rem;
-}
-.gallery-img {
-  width:100%; aspect-ratio:1;
-  object-fit:cover;
-  border-radius:12px;
-  box-shadow:var(--shadow);
-  transition:transform 0.3s;
-}
+.map-img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-lg); cursor:zoom-in; }
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.gallery-img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px; box-shadow:var(--shadow); cursor:zoom-in; transition:transform 0.3s; }
 .gallery-img:hover { transform:scale(1.04); }
 
 /* ── CAMPS ── */
 .camps-section { background:var(--blue-pale); }
-.camps-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2rem; }
-.camp-card {
-  background:white; border-radius:var(--radius);
-  overflow:hidden; box-shadow:var(--shadow);
-  transition:transform 0.3s, box-shadow 0.3s;
-}
+.camps-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.camp-card { background:white; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform 0.3s, box-shadow 0.3s; }
 .camp-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
-.camp-header {
-  padding:2rem;
-  display:flex; align-items:center; gap:1rem;
-}
+.camp-header { padding:2rem; display:flex; align-items:center; gap:1rem; }
 .camp-header.summer { background:linear-gradient(135deg,#f59e0b,#fbbf24); }
 .camp-header.winter { background:linear-gradient(135deg,#3b82f6,#60a5fa); }
 .camp-icon { font-size:3rem; }
-.camp-header-text {}
-.camp-season { font-family:'Nunito',sans-serif; font-size:1.6rem; font-weight:900; color:white; }
-.camp-season-en { font-size:0.8rem; color:rgba(255,255,255,0.8); font-weight:600; }
+.camp-season { font-size:1.6rem; font-weight:900; color:white; }
+.camp-season-en { font-size:0.8rem; color:rgba(255,255,255,0.85); font-weight:600; }
 .camp-body { padding:1.5rem 2rem 2rem; }
 .camp-body p { font-size:0.9rem; color:var(--gray-500); line-height:1.8; }
+.camp-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.9rem; }
+.camp-tags span { background:var(--blue-sky); color:var(--blue-mid); font-size:0.75rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:50px; }
 
 /* ── FAQ ── */
 .faq-section { background:var(--gray-50); }
-.faq-list { margin-top:2.5rem; display:flex; flex-direction:column; gap:0.8rem; }
-.faq-item {
-  background:white; border-radius:12px;
-  border:1px solid var(--gray-200);
-  overflow:hidden; transition:box-shadow 0.2s;
-}
+.faq-list { display:flex; flex-direction:column; gap:0.8rem; }
+.faq-group { font-weight:800; color:var(--blue-mid); font-size:0.85rem; letter-spacing:0.08em; margin:1.2rem 0 0.2rem; }
+.faq-group:first-child { margin-top:0; }
+.faq-item { background:white; border-radius:12px; border:1px solid var(--gray-200); overflow:hidden; transition:box-shadow 0.2s; }
 .faq-item:hover { box-shadow:var(--shadow); }
 .faq-item.open { border-color:var(--blue-light); box-shadow:0 0 0 3px rgba(59,130,246,0.12); }
 .faq-q {
-  width:100%; background:none; border:none;
-  color:var(--gray-900); text-align:left;
-  padding:1.3rem 1.5rem;
-  font-size:0.95rem; font-weight:700;
-  cursor:pointer;
+  width:100%; background:none; border:none; color:var(--gray-900); text-align:left;
+  padding:1.2rem 1.5rem; font-size:0.95rem; font-weight:700; cursor:pointer;
   display:flex; justify-content:space-between; align-items:center; gap:1rem;
   font-family:'Noto Sans TC',sans-serif;
 }
 .faq-q:hover { color:var(--blue-mid); }
 .faq-icon {
-  width:28px; height:28px; flex-shrink:0;
-  background:var(--blue-sky); color:var(--blue-mid);
+  width:28px; height:28px; flex-shrink:0; background:var(--blue-sky); color:var(--blue-mid);
   border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; font-weight:700;
-  transition:transform 0.3s, background 0.2s;
+  font-size:1.1rem; font-weight:700; transition:transform 0.3s, background 0.2s;
 }
 .faq-item.open .faq-icon { transform:rotate(45deg); background:var(--blue-mid); color:white; }
-.faq-a {
-  max-height:0; overflow:hidden; padding:0 1.5rem;
-  font-size:0.9rem; color:var(--gray-500); line-height:1.8;
-  transition:max-height 0.4s ease, padding 0.3s;
-}
-.faq-item.open .faq-a { max-height:400px; padding:0 1.5rem 1.3rem; }
+.faq-a { max-height:0; overflow:hidden; padding:0 1.5rem; font-size:0.9rem; color:var(--gray-500); line-height:1.85; transition:max-height 0.4s ease, padding 0.3s; }
+.faq-item.open .faq-a { max-height:500px; padding:0 1.5rem 1.3rem; }
 
 /* ── CTA ── */
-.cta-section {
-  background:linear-gradient(135deg,#0f3460,#1a5fa8);
-  padding:6rem 2rem; text-align:center;
-  position:relative; overflow:hidden;
-}
+.cta-section { background:linear-gradient(135deg,#0f3460,#1a5fa8); padding:6rem 2rem; text-align:center; position:relative; overflow:hidden; }
 .cta-blob { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.15; pointer-events:none; }
-.cta-blob1 { width:500px;height:500px;background:#60a5fa;top:-200px;right:-100px; }
+.cta-blob1 { width:500px;height:500px;background:#22d3ee;top:-200px;right:-100px; }
 .cta-blob2 { width:400px;height:400px;background:#a78bfa;bottom:-200px;left:-100px; }
-.cta-title {
-  font-family:'Nunito',sans-serif;
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:900; color:white; margin-bottom:1rem;
-  position:relative; z-index:1;
-}
-.cta-desc { font-size:1.05rem; color:rgba(255,255,255,0.75); margin-bottom:2.5rem; position:relative; z-index:1; }
+.cta-title { font-size:clamp(1.9rem,4vw,3rem); font-weight:900; color:white; margin-bottom:1rem; position:relative; z-index:1; line-height:1.35; }
+.cta-desc { font-size:1.02rem; color:rgba(255,255,255,0.78); margin-bottom:2.5rem; position:relative; z-index:1; line-height:1.8; }
 .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
-.btn-yellow {
-  background:#fbbf24; color:var(--blue-dark);
-  padding:0.9rem 2.2rem; border-radius:50px;
-  font-weight:800; font-size:0.95rem; text-decoration:none;
-  box-shadow:0 4px 20px rgba(251,191,36,0.4);
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.btn-yellow:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(251,191,36,0.5); }
-.btn-wol {
-  border:2px solid rgba(255,255,255,0.5); color:white;
-  padding:0.9rem 2.2rem; border-radius:50px;
-  font-weight:700; font-size:0.95rem; text-decoration:none;
-  transition:background 0.2s, transform 0.2s;
-}
-.btn-wol:hover { background:rgba(255,255,255,0.12); transform:translateY(-3px); }
 
 /* ── FOOTER ── */
-footer {
-  background:var(--blue-dark); color:white;
-  padding:4rem 2rem 2rem;
-}
+footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .footer-inner { max-width:1200px; margin:0 auto; }
-.footer-top {
-  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:3rem; margin-bottom:3rem;
-}
-.footer-brand {}
-.footer-logo-row {
-  display:flex; align-items:center; gap:0.6rem;
-  margin-bottom:1rem;
-}
-.footer-logo-row img { height:40px; filter:brightness(10); }
-.footer-brand-name { font-size:0.95rem; font-weight:800; color:white; }
-.footer-tagline { font-size:0.85rem; color:rgba(255,255,255,0.55); line-height:1.8; margin-bottom:1rem; }
-.footer-contact { font-size:0.82rem; color:rgba(255,255,255,0.55); line-height:2.1; }
+.footer-top { display:grid; grid-template-columns:1.8fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.footer-logo-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem; }
+.footer-brand-name { font-size:0.98rem; font-weight:800; color:white; }
+.footer-tagline { font-size:0.85rem; color:rgba(255,255,255,0.58); line-height:1.8; margin-bottom:1rem; }
+.footer-contact { font-size:0.82rem; color:rgba(255,255,255,0.58); line-height:2.1; }
 .footer-contact a { color:#60a5fa; text-decoration:none; }
-.footer-col-title { font-size:0.78rem; font-weight:700; letter-spacing:0.12em; color:rgba(255,255,255,0.4); margin-bottom:1rem; text-transform:uppercase; }
+.footer-col-title { font-size:0.78rem; font-weight:700; letter-spacing:0.12em; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
 .footer-links { list-style:none; }
 .footer-links li + li { margin-top:0.5rem; }
-.footer-links a { font-size:0.85rem; color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s; }
+.footer-links a { font-size:0.85rem; color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
 .footer-links a:hover { color:#60a5fa; }
-.footer-bottom {
-  border-top:1px solid rgba(255,255,255,0.08);
-  padding-top:1.5rem;
-  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.38); }
+
+/* ── LIGHTBOX ── */
+#lightbox {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999;
+  align-items:center; justify-content:center; flex-direction:column; padding:1.5rem;
 }
-.footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.35); }
+#lightbox img { max-width:92vw; max-height:84vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6); }
+#lightbox-cap { color:rgba(255,255,255,0.85); margin-top:0.9rem; font-size:0.9rem; text-align:center; }
+#lightbox button { position:absolute; top:1rem; right:1.5rem; background:none; border:none; color:white; font-size:2.4rem; cursor:pointer; line-height:1; }
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(28px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes marquee {
-  from { transform:translateX(0); }
-  to   { transform:translateX(-50%); }
-}
+@keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+@keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
 .reveal { opacity:0; transform:translateY(32px); transition:opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 .reveal-d1 { transition-delay:0.1s; }
 .reveal-d2 { transition-delay:0.2s; }
 .reveal-d3 { transition-delay:0.3s; }
-.reveal-d4 { transition-delay:0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity:1; transform:none; transition:none; }
+  .marquee-track { animation:none; }
+  * { animation-duration:0.01ms !important; }
+}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .nav-links { display:none; }
-  nav { padding:0 1.2rem; }
-  .hero-inner { grid-template-columns:1fr; }
-  .hero-right { display:none; }
-  .section { padding:3.5rem 1.2rem; }
-  .about-grid { grid-template-columns:1fr; }
+@media(max-width:1080px){
+  .nav-links > li > a { padding:0.5rem 0.55rem; font-size:0.82rem; }
+}
+@media(max-width:960px){
+  nav { padding:0 1rem; }
+  .nav-toggle { display:block; }
+  .nav-links {
+    display:none; position:absolute; top:68px; left:0; right:0;
+    flex-direction:column; align-items:stretch; gap:0;
+    background:white; border-bottom:1px solid var(--gray-200);
+    box-shadow:var(--shadow-lg); padding:0.6rem 1rem 1rem;
+  }
+  .nav-links.open { display:flex; }
+  .nav-links > li > a { padding:0.85rem 0.8rem; font-size:0.95rem; }
+  .nav-cta { text-align:center; margin:0.5rem 0 0; }
+  .hero { padding:96px 1.2rem 3rem; min-height:auto; }
+  .hero-inner { grid-template-columns:1fr; gap:2.4rem; }
+  .hero-stats { grid-template-columns:repeat(2,auto); gap:1.2rem 2rem; }
+  .hero-chip.c1 { left:8px; bottom:-18px; }
+  .hero-chip.c2 { right:8px; top:-18px; }
+  .section { padding:3.5rem 1rem; }
+  .about-grid { grid-template-columns:1fr; gap:2rem; }
+  .about-img-tag { left:0; }
+  .impact-stats { grid-template-columns:repeat(2,1fr); }
+  .impact-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .system, .system.reverse { grid-template-columns:1fr; padding:1.2rem; gap:1.5rem; }
+  .system.reverse .sys-media { order:0; }
+  .dc-grid { grid-template-columns:1fr; }
+  .path-arrow { display:none; }
+  .path-step { flex:1 1 45%; }
   .camps-grid { grid-template-columns:1fr; }
   .award-banners { grid-template-columns:1fr; }
   .footer-top { grid-template-columns:1fr 1fr; gap:2rem; }
   .gallery-grid { grid-template-columns:repeat(2,1fr); }
 }
-
-/* ── DIVIDER ── */
-.wave-divider { display:block; width:100%; line-height:0; }
+@media(max-width:560px){
+  .nav-logo-main { font-size:0.9rem; }
+  .hero-title { font-size:2rem; }
+  .hero-btns a { flex:1 1 100%; text-align:center; }
+  .istat-num { font-size:1.9rem; }
+  .sys-shot-row { grid-template-columns:1fr 1fr; }
+  .sys-shot-row.three { grid-template-columns:1fr 1fr 1fr; }
+  .sys-shot-row.three .shot-label { display:none; }
+  .photo-wall { grid-template-columns:1fr 1fr; }
+  .pw-item.wide { aspect-ratio:4/3; }
+  .footer-top { grid-template-columns:1fr; }
+  .cta-btns a { flex:1 1 100%; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">
+  <a href="#top" class="nav-logo">
     <div class="nav-logo-text">
-      <span class="nav-logo-main">🦓 未來斑馬程式教育學苑</span>
-      <span class="nav-logo-sub">Future Zebra · 新竹市</span>
+      <span class="nav-logo-main">🦓 富志科技｜未來斑馬 AI 創新學苑</span>
+      <span class="nav-logo-sub">AI 無人機 × 程式教育 · 新竹市</span>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">關於我們</a></li>
-    <li><a href="#courses">課程</a></li>
+  <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">關於富志</a></li>
+    <li><a href="#drone" class="nav-drone">推廣成果</a></li>
+    <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
+    <li><a href="#drone-courses" class="nav-drone">無人機課程</a></li>
+    <li><a href="#courses">程式課程</a></li>
     <li><a href="#achievements">榮耀</a></li>
-    <li><a href="#camps">營隊</a></li>
     <li><a href="#faq">常見問題</a></li>
     <li><a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="nav-cta">預約課程</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">🏆 新竹市最專業程式教育學苑</div>
+      <div class="hero-badge">🚁 新竹 AI 無人機 × 程式教育專業團隊</div>
       <h1 class="hero-title">
-        讓孩子用<span>程式</span><br>
-        創造屬於自己的<br>
-        <span>未來世界</span>
+        從<span>程式設計</span><br>
+        飛向 <em>AI 無人機</em><br>
+        的未來世界
       </h1>
       <p class="hero-desc">
-        從 Scratch 到 Python、C/C++、APCS，<br>
-        專業師資 × 3:1 黃金教學比例 × 機器人實作，<br>
-        培養運算思維，迎接 AI 時代。
+        富志科技（未來斑馬）深耕新竹程式教育，並全力推動<strong>無人機足球</strong>：
+        校園社團、市府合作課程、國際規格賽事，
+        以及運用 AI 自主開發的<strong>賽事管理系統</strong>與<strong>模擬飛行系統</strong>。
       </p>
       <div class="hero-btns">
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-white">🎯 預約課程</a>
-        <a href="#courses" class="btn-white-outline">了解所有課程</a>
+        <a href="#drone" class="btn-yellow">🚁 看無人機推廣成果</a>
+        <a href="#ai-systems" class="btn-white-outline">AI 自研系統</a>
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-white-outline">🎯 預約課程</a>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><div class="hstat-num">3:1</div><div class="hstat-label">黃金教學比例</div></div>
-        <div class="hstat"><div class="hstat-num">24堂</div><div class="hstat-label">完整課程/期</div></div>
-        <div class="hstat"><div class="hstat-num">APCS</div><div class="hstat-label">認證培訓</div></div>
+        <div><div class="hstat-num">3<small>所</small></div><div class="hstat-label">國小無人機社團</div></div>
+        <div><div class="hstat-num">F9A</div><div class="hstat-label">國際規格賽事</div></div>
+        <div><div class="hstat-num">2<small>套</small></div><div class="hstat-label">AI 自研系統</div></div>
+        <div><div class="hstat-num">APCS</div><div class="hstat-label">程式認證培訓</div></div>
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-img-wrap">
-        <img referrerpolicy="no-referrer" class="hero-dm-img"
-          src="images/edm-main.png"
-          alt="開班 DM"
-          onerror="this.src='images/banner.jpg">
-        <div class="hero-img-badge">📋 最新開班資訊</div>
+      <div class="hero-photo">
+        <img src="images/drone/classroom.jpg"
+             alt="國小學生在無人機足球課堂上操控無人機" class="lightbox-trigger" data-cap="國小無人機足球課程現場">
+        <a class="hero-chip c2" href="#ai-systems">
+          <span class="ic">🏆</span>
+          <span><b>AI 賽事管理系統</b><span>賽程・計分・現場看板</span></span>
+        </a>
+        <a class="hero-chip c1" href="#ai-systems">
+          <span class="ic">🎮</span>
+          <span><b>AI 模擬飛行系統</b><span>3D 闖關・連線對戰</span></span>
+        </a>
       </div>
+      <p class="hero-caption">國小無人機足球課程現場</p>
     </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee-track">
+  <div class="marquee-track" id="marquee">
+    <div class="mitem d"><span>✦</span> AI 足球無人機校園社團</div>
+    <div class="mitem d"><span>✦</span> 無人機足球能力認證班</div>
+    <div class="mitem d"><span>✦</span> AI 賽事管理系統</div>
+    <div class="mitem d"><span>✦</span> AI 模擬飛行系統</div>
+    <div class="mitem d"><span>✦</span> RoboRAVE 新竹無人機足球賽</div>
+    <div class="mitem d"><span>✦</span> 追風少年科技培力課程</div>
     <div class="mitem"><span>✦</span> Scratch Jr. 初階班</div>
     <div class="mitem"><span>✦</span> Scratch 3.0 進階班</div>
     <div class="mitem"><span>✦</span> Python 基礎班</div>
-    <div class="mitem"><span>✦</span> C/C++ 語法班</div>
-    <div class="mitem"><span>✦</span> C/C++ 實戰演練班</div>
+    <div class="mitem"><span>✦</span> C/C++ 語法・實戰班</div>
     <div class="mitem"><span>✦</span> APCS 程式認證專班</div>
-    <div class="mitem"><span>✦</span> 創意機器人</div>
     <div class="mitem"><span>✦</span> 夏令營 / 冬令營</div>
-    <div class="mitem"><span>✦</span> 2023 亞洲盃得獎</div>
-    <div class="mitem"><span>✦</span> Scratch Jr. 初階班</div>
-    <div class="mitem"><span>✦</span> Scratch 3.0 進階班</div>
-    <div class="mitem"><span>✦</span> Python 基礎班</div>
-    <div class="mitem"><span>✦</span> C/C++ 語法班</div>
-    <div class="mitem"><span>✦</span> C/C++ 實戰演練班</div>
-    <div class="mitem"><span>✦</span> APCS 程式認證專班</div>
-    <div class="mitem"><span>✦</span> 創意機器人</div>
-    <div class="mitem"><span>✦</span> 夏令營 / 冬令營</div>
-    <div class="mitem"><span>✦</span> 2023 亞洲盃得獎</div>
   </div>
 </div>
-
-<!-- DM SECTION -->
-<section class="section dm-section" id="dm">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="section-label">LATEST INFO · 最新資訊</span>
-      <h2 class="section-title">課程招生中</h2>
-      <p class="section-sub">點擊圖片可放大查看詳細課程資訊，預約課程！</p>
-    </div>
-    <div class="dm-grid">
-      <div class="dm-card reveal reveal-d1">
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener">
-          <img referrerpolicy="no-referrer" src="images/dm1.png" alt="課程 DM 1" loading="lazy">
-        </a>
-        <div class="dm-card-body">
-          <div class="dm-card-title">程式機器人課程</div>
-          <div class="dm-card-sub">點擊報名 →</div>
-        </div>
-      </div>
-      <div class="dm-card reveal reveal-d2">
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener">
-          <img referrerpolicy="no-referrer" src="images/dm2.png" alt="課程 DM 2" loading="lazy">
-        </a>
-        <div class="dm-card-body">
-          <div class="dm-card-title">進階程式課程</div>
-          <div class="dm-card-sub">點擊報名 →</div>
-        </div>
-      </div>
-      <div class="dm-card reveal reveal-d3">
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener">
-          <img referrerpolicy="no-referrer" src="images/dm3.png" alt="課程 DM 3" loading="lazy">
-        </a>
-        <div class="dm-card-body">
-          <div class="dm-card-title">高階程式課程</div>
-          <div class="dm-card-sub">點擊報名 →</div>
-        </div>
-      </div>
-      <div class="dm-card reveal reveal-d4">
-        <a href="images/edm-main.png" target="_blank">
-          <img referrerpolicy="no-referrer" src="images/edm-main.png" alt="最新開班 DM" loading="lazy" style="max-height:440px;object-fit:contain;">
-        </a>
-        <div class="dm-card-body">
-          <div class="dm-card-title">最新開班 EDM</div>
-          <div class="dm-card-sub">點擊放大查看 →</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
@@ -671,35 +692,27 @@ footer {
     <div class="about-grid">
       <div class="about-img-wrap reveal">
         <div class="about-img-tag">🦓 富志科技</div>
-        <img class="about-img"
-          src="images/banner.jpg"
-          alt="未來斑馬 Banner"
-        >
+        <img class="about-img lightbox-trigger"
+             src="images/drone/hero-equipment.jpg" style="object-position:center 45%;"
+             alt="足球無人機與遙控器教具" data-cap="足球無人機（球型防撞護罩）與遙控器教具">
       </div>
       <div class="reveal reveal-d2">
         <span class="section-label">ABOUT US · 關於富志</span>
-        <h2 class="section-title">富而好禮<br>志在天下</h2>
-        <p class="section-sub">讓您的孩子成為世界一流的軟體人才。我們本著多年程式設計的專業與經驗，為孩子提供快樂、有效的學習環境。</p>
-        <div class="about-points">
-          <div class="apoint">
-            <div class="apoint-icon">🧠</div>
+        <h2 class="section-title">富而好禮，志在天下<br>程式 × AI × 無人機</h2>
+        <p class="section-sub">富志科技從程式教育出發，多年來培育許多 APCS 與競賽學員。如今我們把程式、AI 與無人機結合，讓孩子在操控、協作與競技中學習科技，並用 AI 打造自己的教學與賽事工具。</p>
+        <div class="pillars">
+          <div class="pillar drone">
+            <div class="pillar-icon">🚁</div>
             <div>
-              <div class="apoint-title">3:1 黃金教學比例（業界首創）</div>
-              <div class="apoint-text">每 3 堂程式課搭配 1 堂機器人課，讓孩子知其然更知其所以然，真正融會貫通。</div>
+              <div class="pillar-title">AI 無人機教育與賽事</div>
+              <div class="pillar-text">無人機足球校園社團、認證課程、營隊與團體體驗；協助辦理國際規格無人機足球賽，並自主開發賽事管理與模擬飛行系統。</div>
             </div>
           </div>
-          <div class="apoint">
-            <div class="apoint-icon">🤖</div>
+          <div class="pillar">
+            <div class="pillar-icon">💻</div>
             <div>
-              <div class="apoint-title">STEM 跨域整合教學</div>
-              <div class="apoint-text">結合科學、技術、工程、數學，強調動手實做，培養現代教育重要的解決問題能力。</div>
-            </div>
-          </div>
-          <div class="apoint">
-            <div class="apoint-icon">📊</div>
-            <div>
-              <div class="apoint-title">課後成長記錄回報家長</div>
-              <div class="apoint-text">每堂課後記錄孩子的學習狀況，透明回報，讓家長安心掌握學習進度。</div>
+              <div class="pillar-title">程式教育</div>
+              <div class="pillar-text">Scratch Jr.、Scratch 3.0、Python、C/C++ 到 APCS 認證的完整學習路線，小班教學、課後回報學習狀況。</div>
             </div>
           </div>
         </div>
@@ -708,13 +721,342 @@ footer {
   </div>
 </section>
 
-<!-- COURSES -->
+<!-- DRONE IMPACT -->
+<section class="section impact-section dark" id="drone">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">DRONE SOCCER · 無人機足球推廣成果</span>
+      <h2 class="section-title">從校園到賽場<br>把無人機足球帶進新竹孩子的日常</h2>
+      <p class="section-sub">從校園社團、市府與大學合作課程、師資培訓到國際規則賽事，一步步建立無人機足球的學習環境。</p>
+    </div>
+
+    <div class="impact-stats reveal">
+      <div class="istat">
+        <div class="istat-num">3<small>所</small></div>
+        <div class="istat-label">國小開設無人機社團</div>
+        <div class="istat-sub">民富・竹蓮・香山國小</div>
+      </div>
+      <div class="istat">
+        <div class="istat-num">F9A</div>
+        <div class="istat-label">國際規則無人機足球賽</div>
+        <div class="istat-sub">2026 RoboRAVE 新竹 Rally<br>3 對 3 分組競賽</div>
+      </div>
+      <div class="istat">
+        <div class="istat-num">14<small>小時</small></div>
+        <div class="istat-label">足球無人機裁判培訓</div>
+        <div class="istat-sub">學科＋術科實作</div>
+      </div>
+      <div class="istat">
+        <div class="istat-num">2<small>套</small></div>
+        <div class="istat-label">AI 自研系統</div>
+        <div class="istat-sub">賽事管理・模擬飛行</div>
+      </div>
+    </div>
+
+    <div class="impact-grid">
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-date">2026.04</div>
+          <div class="tl-title">足球無人機裁判培訓</div>
+          <div class="tl-text">4/25–26 於虎林製造中心辦理，14 小時學科＋術科，優先開放國高中教師，培養在地裁判人才。</div>
+          <span class="tl-tag">師資培育</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026.06</div>
+          <div class="tl-title">追風少年科技培力課程啟動</div>
+          <div class="tl-text">新竹市政府與陽明交通大學合作推動，以半導體與無人機為核心（6/1–8/31）。啟動記者會上，民富國小五年級學生現場展演無人機足球。</div>
+          <span class="tl-tag">市府合作</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026.07</div>
+          <div class="tl-title">無人機夏令營（與陽明交大 AI 辦公室合辦）</div>
+          <div class="tl-text">7/6–7/10 於陽明交大校內，國小與國中學生五天密集營隊，帶孩子親手體驗無人機科技。</div>
+          <span class="tl-tag">大學合作</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026.07</div>
+          <div class="tl-title">RoboRAVE 2026 新竹 Rally 無人機足球賽</div>
+          <div class="tl-text">7/26 於玄奘大學元亨堂舉行，3 對 3 分組對抗，採 FAI F9A-B 國際規則；賽程、計分與現場看板全程使用本團隊 AI 自研賽事管理系統。</div>
+          <span class="tl-tag">國際規格賽事</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2026.09</div>
+          <div class="tl-title">三校 AI 足球無人機課後社團開課</div>
+          <div class="tl-text">民富國小、竹蓮國小、香山國小，由未來斑馬師資帶領小三至小六學生，整學期每週上課。</div>
+          <span class="tl-tag">校園扎根</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2">
+        <div class="photo-wall">
+          <div class="pw-item wide">
+            <img loading="lazy" class="lightbox-trigger" src="images/drone/launch-group.jpg" alt="追風少年科技培力課程啟動記者會全體合影" data-cap="追風少年科技培力課程啟動記者會｜全體合影">
+            <div class="pw-cap">追風少年科技培力課程啟動記者會｜全體合影</div>
+          </div>
+          <div class="pw-item">
+            <img loading="lazy" class="lightbox-trigger" src="images/drone/roborave-poster.jpg" alt="2026 RoboRAVE 新竹市無人機足球競賽主視覺" data-cap="2026 RoboRAVE 新竹市無人機足球競賽">
+            <div class="pw-cap">2026 RoboRAVE 新竹市無人機足球競賽</div>
+          </div>
+          <div class="pw-item">
+            <img loading="lazy" class="lightbox-trigger" src="images/drone/chair-speech.jpg" style="object-position:center 30%;" alt="陳炳富致詞" data-cap="陳炳富 致詞">
+            <div class="pw-cap">陳炳富 致詞</div>
+          </div>
+          <div class="pw-item">
+            <img loading="lazy" class="lightbox-trigger" src="images/drone/launch-ceremony.jpg" style="object-position:center 35%;" alt="啟動儀式" data-cap="追風少年科技培力課程啟動儀式">
+            <div class="pw-cap">追風少年科技培力課程啟動儀式</div>
+          </div>
+          <div class="pw-item">
+            <img loading="lazy" class="lightbox-trigger" src="images/drone/guests.jpg" style="object-position:center 55%;" alt="與會貴賓聆聽課程介紹" data-cap="與會貴賓專注聆聽課程介紹">
+            <div class="pw-cap">與會貴賓聆聽課程介紹</div>
+          </div>
+        </div>
+        <p class="photo-credit">🔍 點擊照片可放大</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SYSTEMS -->
+<section class="section systems-section" id="ai-systems">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">AI-BUILT SYSTEMS · AI 自研系統</span>
+      <h2 class="section-title">用 AI 打造的無人機<br>賽事與訓練系統</h2>
+      <p class="section-sub">由富志團隊運用 AI 協作開發，從教學與賽事現場的真實需求出發，已實際投入比賽與課程使用。</p>
+      <div class="ai-strip">
+        <span class="ai-pill">🤖 AI 協作開發</span>
+        <span class="ai-pill">⚡ 快速依現場需求改版</span>
+        <span class="ai-pill">☁️ 雲端即時同步</span>
+        <span class="ai-pill">📱 手機・平板・電腦皆可用</span>
+      </div>
+    </div>
+
+    <!-- System 1: Competition management -->
+    <div class="system reveal">
+      <div class="sys-media">
+        <div class="sys-shot">
+          <span class="shot-label">現場看板</span>
+          <img class="lightbox-trigger" src="images/drone/scoreboard-display.jpg" alt="賽事管理系統：現場看板畫面" data-cap="AI 賽事管理系統｜現場看板（2026 RoboRAVE 新竹 Rally 實際賽況）">
+        </div>
+        <div class="sys-shot-row three">
+          <div class="sys-shot">
+            <span class="shot-label">裁判計分板</span>
+            <img class="lightbox-trigger" src="images/drone/scoreboard-score.jpg" alt="賽事管理系統：裁判計分板畫面" data-cap="AI 賽事管理系統｜裁判計分板">
+          </div>
+          <div class="sys-shot">
+            <span class="shot-label">賽程管理</span>
+            <img class="lightbox-trigger" src="images/drone/scoreboard-schedule.jpg" alt="賽事管理系統：賽程管理畫面" data-cap="AI 賽事管理系統｜賽程管理（活動流程時間軸・分組）">
+          </div>
+          <div class="sys-shot">
+            <span class="shot-label">比賽結果</span>
+            <img class="lightbox-trigger" src="images/drone/scoreboard-matches.jpg" alt="賽事管理系統：循環賽賽程與比分畫面" data-cap="AI 賽事管理系統｜循環賽賽程與比分（選手姓名已隱藏）">
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="sys-kicker">🏆 SYSTEM 01</span>
+        <h3 class="sys-title">無人機足球賽事管理系統</h3>
+        <p class="sys-desc">從分組、賽程、裁判計分到現場大螢幕，一套系統完成整場無人機足球賽的賽務。裁判計分後，比分自動回填、積分榜即時更新，選手與觀眾同步看到最新戰況。</p>
+        <ul class="sys-features">
+          <li><span><b>賽程管理：</b>自動產生循環賽，可設定輪數、三戰兩勝、冠亞軍決賽，並依時間軸排定整天流程</span></li>
+          <li><span><b>裁判計分板：</b>依 F9A 裁判旗號設計（得分、進攻違規、防守違規），按鍵即可計分，並有密碼保護</span></li>
+          <li><span><b>現場看板：</b>大螢幕顯示各組目前比賽、積分榜與活動進度，跑馬燈播報公告</span></li>
+          <li><span><b>多裝置即時同步：</b>掃 QR Code 加入同一場次，計分、賽程、看板雲端連動</span></li>
+          <li><span><b>斷網不怕：</b>離線快取與紀錄暫存，恢復連線後自動補傳</span></li>
+        </ul>
+        <div class="sys-used">📍 實際應用：<b>2026 RoboRAVE 新竹 Rally 無人機足球賽</b>（Mini 飛球組、國小組、國高中組）</div>
+        <div class="sys-btns">
+          <a class="btn-blue" href="https://drone-scoreboard-5231d.web.app/%E7%8F%BE%E5%A0%B4%E7%9C%8B%E6%9D%BF.html" target="_blank" rel="noopener">🔗 查看線上現場看板</a>
+          <a class="btn-ghost" href="tel:035403463">📞 賽事系統合作洽詢</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- System 2: Flight simulator -->
+    <div class="system reverse reveal">
+      <div class="sys-media">
+        <div class="sys-shot">
+          <span class="shot-label">3D 模擬飛行</span>
+          <img class="lightbox-trigger" src="images/drone/simulator-fly.jpg" alt="模擬飛行系統：3D 飛行畫面" data-cap="AI 模擬飛行系統｜3D 模擬飛行">
+        </div>
+        <div class="sys-shot-row">
+          <div class="sys-shot">
+            <span class="shot-label">闖關模式</span>
+            <img class="lightbox-trigger" src="images/drone/simulator-levels.jpg" alt="模擬飛行系統：闖關模式畫面" data-cap="AI 模擬飛行系統｜闖關模式">
+          </div>
+          <div class="sys-shot">
+            <span class="shot-label">主選單</span>
+            <img class="lightbox-trigger" src="images/drone/simulator-menu.jpg" alt="模擬飛行系統：主選單畫面" data-cap="AI 模擬飛行系統｜主選單">
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="sys-kicker">🎮 SYSTEM 02</span>
+        <h3 class="sys-title">足球無人機模擬飛行系統</h3>
+        <p class="sys-desc">打開瀏覽器就能練飛，不用安裝。依 6×3×3 公尺無人機足球場地與 3 對 3 比賽規則打造的 3D 物理模擬器，讓孩子上機前先熟悉操控，回家也能持續練習、闖關、和同學連線對戰。</p>
+        <ul class="sys-features">
+          <li><span><b>真實物理模擬：</b>推力、慣性、碰撞翻滾，完整呈現得分權、進攻／防守違規等比賽規則</span></li>
+          <li><span><b>闖關模式：</b>基礎操控、航線精準、穿環技術、比賽技能、場景挑戰五大章，5 個場景共 405 顆星</span></li>
+          <li><span><b>多種練習：</b>玩家 vs AI、穿越圓環練習、AI vs AI 示範賽</span></li>
+          <li><span><b>連線對戰：</b>支援 1v1、2v2、3v3，同學在不同地方也能一起比賽</span></li>
+          <li><span><b>鍵盤、遊戲搖桿皆可操作</b>，關卡動作對應認證課程，課堂與自主練習無縫銜接</span></li>
+        </ul>
+        <div class="sys-used">📍 實際應用：<b>AI 足球無人機社團、無人機足球認證課程</b>的課前與課後練習</div>
+        <div class="sys-btns">
+          <a class="btn-blue" id="simLink" href="#" target="_blank" rel="noopener">🔗 線上體驗模擬器</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRONE COURSES -->
+<section class="section dcourses-section" id="drone-courses">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">DRONE COURSES · 無人機課程</span>
+      <h2 class="section-title">從第一次起飛<br>到考取無人機足球認證</h2>
+      <p class="section-sub">使用球型防撞護罩的足球無人機，室內也能安全飛行。課程從基礎操控、團隊合作到規則與戰術，搭配模擬器練習，循序漸進。</p>
+    </div>
+
+    <div class="path reveal">
+      <div class="path-step"><div class="ps-n">STEP 1</div><div class="ps-t">體驗飛行</div><div class="ps-d">營隊・團體體驗</div></div>
+      <div class="path-arrow">→</div>
+      <div class="path-step"><div class="ps-n">STEP 2</div><div class="ps-t">社團扎根</div><div class="ps-d">學期制每週練習</div></div>
+      <div class="path-arrow">→</div>
+      <div class="path-step"><div class="ps-n">STEP 3</div><div class="ps-t">考取認證</div><div class="ps-d">無人機足球能力認證</div></div>
+      <div class="path-arrow">→</div>
+      <div class="path-step"><div class="ps-n">STEP 4</div><div class="ps-t">進軍賽場</div><div class="ps-d">3 對 3 團體競賽</div></div>
+    </div>
+
+    <div class="dc-grid">
+      <div class="dc-card reveal reveal-d1">
+        <div class="dc-icon">🏫</div>
+        <div class="dc-type">SCHOOL CLUB · 校園社團</div>
+        <div class="dc-title">AI 足球無人機課後社團</div>
+        <div class="dc-target">👧 適合：國小三年級 ～ 六年級</div>
+        <ul class="dc-list">
+          <li>學期制，每週一次，每學期約 13–15 堂</li>
+          <li>飛行安全、基礎操控到分組對抗</li>
+          <li>搭配模擬飛行系統，課後持續練習</li>
+          <li>現正開課：民富、竹蓮、香山國小</li>
+        </ul>
+        <a href="tel:035403463" class="dc-btn alt">🏫 學校開課洽詢</a>
+      </div>
+
+      <div class="dc-card featured reveal reveal-d2">
+        <div class="dc-icon">🎖️</div>
+        <div class="dc-type">CERTIFICATION · 認證課程</div>
+        <div class="dc-title">無人機足球能力認證班（初級）</div>
+        <div class="dc-target">🧒 適合：國小 ～ 國中學生，零基礎可報名</div>
+        <ul class="dc-list">
+          <li>8 堂課，每堂 2 小時，每班 10 人以內</li>
+          <li>對應 KODO ROBOT 無人機足球能力認證初級</li>
+          <li>學科＋6 項術科：懸停、8 字、W 字型、進球回中線等</li>
+          <li>通過後可延伸 Lv2 ～ Lv5 進階挑戰</li>
+        </ul>
+        <p class="dc-note">※ 本認證為民間能力認證，非民航局無人機操作證。</p>
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn">🎯 預約課程</a>
+      </div>
+
+      <div class="dc-card reveal reveal-d3">
+        <div class="dc-icon">⛺</div>
+        <div class="dc-type">CAMP · 營隊</div>
+        <div class="dc-title">無人機夏令營／冬令營</div>
+        <div class="dc-target">🧑‍🚀 適合：國小 ～ 國中學生</div>
+        <ul class="dc-list">
+          <li>寒暑假密集學習，結合 AI 與無人機足球</li>
+          <li>分組闖關、團隊合作與友誼賽</li>
+          <li>曾與陽明交大 AI 辦公室合辦營隊</li>
+        </ul>
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn alt">🎯 預約營隊</a>
+      </div>
+
+      <div class="dc-card reveal reveal-d1">
+        <div class="dc-icon">🤝</div>
+        <div class="dc-type">GROUP · 團體包班</div>
+        <div class="dc-title">社區・樂齡・機關團體體驗</div>
+        <div class="dc-target">👨‍👩‍👧 適合：社區活動、樂齡課程、企業與機關</div>
+        <ul class="dc-list">
+          <li>2 小時無人機足球科技體驗，不需飛行經驗</li>
+          <li>第一次飛行 → 趣味闖關 → 射門挑戰</li>
+          <li>可到府辦理，依人數配置講師與助教</li>
+        </ul>
+        <a href="tel:035403463" class="dc-btn alt">📞 來電洽詢</a>
+      </div>
+
+      <div class="dc-card reveal reveal-d2">
+        <div class="dc-icon">🧑‍⚖️</div>
+        <div class="dc-type">TRAINING · 師資培訓</div>
+        <div class="dc-title">足球無人機裁判與教練培訓</div>
+        <div class="dc-target">👩‍🏫 適合：學校教師、社團指導老師</div>
+        <ul class="dc-list">
+          <li>裁判旗號、計分與賽場管理實務</li>
+          <li>學科規則＋術科實作，14 小時完整培訓</li>
+          <li>協助學校建立自己的無人機足球隊</li>
+        </ul>
+        <a href="tel:035403463" class="dc-btn alt">📞 培訓洽詢</a>
+      </div>
+
+      <div class="dc-card reveal reveal-d3">
+        <div class="dc-icon">🏆</div>
+        <div class="dc-type">COMPETITION · 賽事</div>
+        <div class="dc-title">無人機足球賽事規劃與賽務</div>
+        <div class="dc-target">🏟️ 適合：學校、機關、活動主辦單位</div>
+        <ul class="dc-list">
+          <li>依 FAI F9A-B 國際規則規劃賽制</li>
+          <li>AI 自研賽事管理系統：賽程、計分、現場看板</li>
+          <li>實績：2026 RoboRAVE 新竹 Rally 無人機足球賽</li>
+        </ul>
+        <a href="#ai-systems" class="dc-btn alt">看賽事管理系統 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART DIVIDER: PROGRAMMING -->
+<div class="part-divider">
+  <div class="pd-kicker">PROGRAMMING · 程式教育</div>
+  <h2>未來斑馬程式課程：從 Scratch 到 APCS</h2>
+  <p>培養運算思維，打好 AI 時代的程式基礎</p>
+</div>
+
+<!-- DM SECTION -->
+<section class="section dm-section" id="dm">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">LATEST INFO · 最新資訊</span>
+      <h2 class="section-title">程式課程招生中</h2>
+      <p class="section-sub">點擊圖片可預約課程，或放大查看最新開班資訊。</p>
+    </div>
+    <div class="dm-grid">
+      <div class="dm-card reveal reveal-d1">
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener"><img src="images/dm1.png" alt="課程 DM 1" loading="lazy"></a>
+        <div class="dm-card-body"><div class="dm-card-title">程式機器人課程</div><div class="dm-card-sub">點擊報名 →</div></div>
+      </div>
+      <div class="dm-card reveal reveal-d2">
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener"><img src="images/dm2.png" alt="課程 DM 2" loading="lazy"></a>
+        <div class="dm-card-body"><div class="dm-card-title">進階程式課程</div><div class="dm-card-sub">點擊報名 →</div></div>
+      </div>
+      <div class="dm-card reveal reveal-d3">
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener"><img src="images/dm3.png" alt="課程 DM 3" loading="lazy"></a>
+        <div class="dm-card-body"><div class="dm-card-title">高階程式課程</div><div class="dm-card-sub">點擊報名 →</div></div>
+      </div>
+      <div class="dm-card reveal">
+        <img class="lightbox-trigger" src="images/edm-main.png" alt="最新開班 EDM" loading="lazy" style="max-height:440px;cursor:zoom-in;">
+        <div class="dm-card-body"><div class="dm-card-title">最新開班 EDM</div><div class="dm-card-sub">點擊放大查看 →</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMING COURSES -->
 <section class="section courses-section" id="courses">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;margin-bottom:1rem;">
-      <span class="section-label">COURSES · 斑馬課程</span>
-      <h2 class="section-title">找到最適合您孩子的課程</h2>
-      <p class="section-sub" style="margin:0 auto;">從幼兒園到高中，完整的程式學習路線，每期 24 堂課，每週 2 小時。</p>
+    <div class="section-head reveal">
+      <span class="section-label">COURSES · 斑馬程式課程</span>
+      <h2 class="section-title">找到最適合孩子的程式課程</h2>
+      <p class="section-sub">從幼兒園到高中，完整的程式學習路線，每期 24 堂課，每週 2 小時。</p>
     </div>
     <div class="courses-grid">
       <div class="course-card reveal reveal-d1">
@@ -729,7 +1071,6 @@ footer {
         </ul>
         <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="c-btn">預約課程 →</a>
       </div>
-
       <div class="course-card featured reveal reveal-d2">
         <div class="c-level">LEVEL 02 · 進階班</div>
         <div class="c-title">Scratch 3.0 程式課程</div>
@@ -745,7 +1086,6 @@ footer {
         </ul>
         <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="c-btn">預約課程 →</a>
       </div>
-
       <div class="course-card reveal reveal-d3">
         <div class="c-level">LEVEL 03 · 高階</div>
         <div class="c-title">Python 基礎班</div>
@@ -758,10 +1098,9 @@ footer {
         </ul>
         <a href="tel:035403463" class="c-btn">📞 來電洽詢</a>
       </div>
-
-      <div class="course-card reveal reveal-d4">
+      <div class="course-card reveal">
         <div class="c-level">LEVEL 04 · 競賽培訓</div>
-        <div class="c-title">C/C++ & APCS 認證</div>
+        <div class="c-title">C/C++ &amp; APCS 認證</div>
         <div class="c-target">🏆 適合：志在競賽認證學員</div>
         <ul class="c-features">
           <li>C/C++ 語法完整班</li>
@@ -776,88 +1115,67 @@ footer {
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="section compare-section">
+<section class="section">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-head reveal">
       <span class="section-label">COMPARISON · 課程比較</span>
       <h2 class="section-title">為什麼選擇未來斑馬？</h2>
     </div>
-    <img class="compare-img reveal"
-      src="images/compare.png"
-      alt="課程分析比較表"
-    >
+    <img class="compare-img reveal lightbox-trigger" src="images/compare.png" alt="課程分析比較表" data-cap="課程分析比較表">
   </div>
 </section>
 
 <!-- ACHIEVEMENTS -->
-<section class="section achievements-section" id="achievements">
+<section class="section achievements-section dark" id="achievements">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center; margin-bottom:2rem;">
+    <div class="section-head reveal">
       <span class="section-label">HONOR · 千里斑馬榮耀</span>
       <h2 class="section-title">競賽殊榮，實力見真章</h2>
-      <p class="section-sub" style="margin:0 auto; color:rgba(255,255,255,0.7);">我們的學員屢獲國內外大賽佳績，APCS 成績斐然。</p>
+      <p class="section-sub">我們的學員屢獲國內外大賽佳績，APCS 成績斐然。</p>
     </div>
-
-    <!-- APCS 成績榜 -->
-    <!-- APCS 成績榜（最優先顯示） -->
-    <div class="reveal" style="margin-bottom:2rem;">
+    <div class="reveal">
       <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:0.8rem; text-align:center;">🔍 點擊圖片可放大觀看</p>
-      <img class="apcs-img lightbox-trigger" src="images/apcs.png" alt="APCS 成績榜" style="cursor:zoom-in;">
+      <img class="apcs-img lightbox-trigger" src="images/apcs.png" alt="APCS 成績榜" data-cap="APCS 成績榜">
     </div>
-
-    <!-- 2023 亞洲盃 + 競賽 banners -->
-    <div class="award-banners reveal" style="margin-top:2rem;">
-      <img class="award-banner-img lightbox-trigger" src="images/award1.png" alt="競賽獲獎殊榮" style="cursor:zoom-in;">
-      <img class="award-banner-img lightbox-trigger" src="images/award2.png" alt="2023 亞洲盃賀圖" style="cursor:zoom-in;">
+    <div class="award-banners reveal">
+      <img class="award-banner-img lightbox-trigger" src="images/award1.png" alt="競賽獲獎殊榮" data-cap="競賽獲獎殊榮">
+      <img class="award-banner-img lightbox-trigger" src="images/award2.png" alt="2023 亞洲盃賀圖" data-cap="2023 亞洲盃賀圖">
     </div>
-
-    <!-- 得獎照片 -->
-    <div class="award-photos reveal" style="margin-top:2rem;">
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo1.jpg" alt="競賽得獎照片 1" class="lightbox-trigger" style="cursor:zoom-in;"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo2.jpg" alt="競賽得獎照片 2" class="lightbox-trigger" style="cursor:zoom-in;"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo3.jpg" alt="競賽得獎照片 3" class="lightbox-trigger" style="cursor:zoom-in;"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo4.jpg" alt="競賽得獎照片 4" class="lightbox-trigger" style="cursor:zoom-in;"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo5.jpg" alt="競賽得獎照片 5" class="lightbox-trigger" style="cursor:zoom-in;"></div>
-      <div class="award-photo"><img referrerpolicy="no-referrer" src="images/photo6.jpg" alt="競賽得獎照片 6" class="lightbox-trigger" style="cursor:zoom-in;"></div>
+    <div class="award-photos reveal">
+      <div class="award-photo"><img src="images/photo1.jpg" alt="競賽得獎照片 1" class="lightbox-trigger"></div>
+      <div class="award-photo"><img src="images/photo2.jpg" alt="競賽得獎照片 2" class="lightbox-trigger"></div>
+      <div class="award-photo"><img src="images/photo3.jpg" alt="競賽得獎照片 3" class="lightbox-trigger"></div>
+      <div class="award-photo"><img src="images/photo4.jpg" alt="競賽得獎照片 4" class="lightbox-trigger"></div>
+      <div class="award-photo"><img src="images/photo5.jpg" alt="競賽得獎照片 5" class="lightbox-trigger"></div>
+      <div class="award-photo"><img src="images/photo6.jpg" alt="競賽得獎照片 6" class="lightbox-trigger"></div>
     </div>
   </div>
 </section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; padding:1.5rem;" onclick="closeLightbox()">
-  <button onclick="closeLightbox()" style="position:absolute; top:1rem; right:1.5rem; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer; line-height:1;">✕</button>
-  <img id="lightbox-img" src="" alt="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; box-shadow:0 8px 40px rgba(0,0,0,0.6);">
-</div>
 
 <!-- LEARNING MAP -->
 <section class="section map-section">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-head reveal">
       <span class="section-label">LEARNING MAP · 學習地圖</span>
       <h2 class="section-title">程式教育學習地圖</h2>
-      <p class="section-sub" style="margin:0 auto;">完整的學習路線規劃，從初階到競賽，每一步都有明確方向。</p>
+      <p class="section-sub">完整的學習路線規劃，從初階到競賽，每一步都有明確方向。</p>
     </div>
-    <a href="https://drive.google.com/file/d/11vOCr0lbJ03mIMbAXyjZGqo1cNMaxS4V/view?usp=share_link" target="_blank">
-      <img class="map-img reveal"
-        src="images/learning-map.png"
-        alt="程式教育學習地圖"
-      >
-    </a>
-    <p style="text-align:center; margin-top:0.8rem; font-size:0.85rem; color:var(--gray-500);">點擊圖片可放大查看</p>
+    <img class="map-img reveal lightbox-trigger" src="images/learning-map.png" alt="程式教育學習地圖" data-cap="程式教育學習地圖">
+    <p style="text-align:center; margin-top:0.8rem; font-size:0.85rem; color:var(--gray-500);">點擊圖片可放大查看｜<a href="https://drive.google.com/file/d/11vOCr0lbJ03mIMbAXyjZGqo1cNMaxS4V/view?usp=share_link" target="_blank" rel="noopener" style="color:var(--blue-mid);">下載高解析度版本</a></p>
   </div>
 </section>
 
 <!-- GALLERY -->
-<section class="section gallery-section">
+<section class="section">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-head reveal">
       <span class="section-label">CLASS PHOTOS · 課程剪影</span>
       <h2 class="section-title">上課精彩瞬間</h2>
     </div>
     <div class="gallery-grid">
-      <img referrerpolicy="no-referrer" class="gallery-img reveal" src="images/class1.jpg" alt="課程剪影 1">
-      <img referrerpolicy="no-referrer" class="gallery-img reveal reveal-d2" src="images/class2.jpg" alt="課程剪影 2">
-      <img referrerpolicy="no-referrer" class="gallery-img reveal reveal-d3" src="images/class3.jpg" alt="課程剪影 3">
+      <img class="gallery-img reveal lightbox-trigger" src="images/class1.jpg" alt="課程剪影 1">
+      <img class="gallery-img reveal reveal-d2 lightbox-trigger" src="images/class2.jpg" alt="課程剪影 2">
+      <img class="gallery-img reveal reveal-d3 lightbox-trigger" src="images/class3.jpg" alt="課程剪影 3">
     </div>
   </div>
 </section>
@@ -865,34 +1183,30 @@ footer {
 <!-- CAMPS -->
 <section class="section camps-section" id="camps">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;">
+    <div class="section-head reveal">
       <span class="section-label">CAMPS · 營隊首選</span>
-      <h2 class="section-title">暑假冬假密集學習</h2>
-      <p class="section-sub" style="margin:0 auto;">沉浸式程式與機器人體驗，結交同好，留下難忘回憶。</p>
+      <h2 class="section-title">暑假寒假密集學習</h2>
+      <p class="section-sub">程式 × AI × 無人機的沉浸式體驗，結交同好，留下難忘回憶。</p>
     </div>
-    <div class="camps-grid" style="margin-top:2rem;">
+    <div class="camps-grid">
       <div class="camp-card reveal reveal-d1">
         <div class="camp-header summer">
           <div class="camp-icon">☀️</div>
-          <div class="camp-header-text">
-            <div class="camp-season">夏令營</div>
-            <div class="camp-season-en">SUMMER CAMP</div>
-          </div>
+          <div><div class="camp-season">夏令營</div><div class="camp-season-en">SUMMER CAMP</div></div>
         </div>
         <div class="camp-body">
-          <p>利用暑假長假進行密集程式與機器人學習。沉浸式學習環境，讓孩子在短時間內大幅提升程式能力，結交志同道合的朋友。</p>
+          <p>利用暑假長假密集學習程式與無人機。沉浸式學習環境，讓孩子在短時間內大幅提升能力，結交志同道合的朋友。</p>
+          <div class="camp-tags"><span>程式設計</span><span>AI 應用</span><span>無人機足球</span></div>
         </div>
       </div>
       <div class="camp-card reveal reveal-d2">
         <div class="camp-header winter">
           <div class="camp-icon">❄️</div>
-          <div class="camp-header-text">
-            <div class="camp-season">冬令營</div>
-            <div class="camp-season-en">WINTER CAMP</div>
-          </div>
+          <div><div class="camp-season">冬令營</div><div class="camp-season-en">WINTER CAMP</div></div>
         </div>
         <div class="camp-body">
-          <p>寒假密集課程，結合趣味競賽與實作挑戰，在玩中學、學中玩。適合想在新學期前強化程式能力的學生。</p>
+          <p>寒假密集課程，結合趣味競賽與實作挑戰，在玩中學、學中玩。適合想在新學期前強化能力的學生。</p>
+          <div class="camp-tags"><span>程式設計</span><span>無人機闖關</span><span>團隊競賽</span></div>
         </div>
       </div>
     </div>
@@ -901,46 +1215,46 @@ footer {
 
 <!-- FAQ -->
 <section class="section faq-section" id="faq">
-  <div class="section-inner">
-    <div class="reveal">
+  <div class="section-inner" style="max-width:900px;">
+    <div class="section-head reveal">
       <span class="section-label">FAQ · 常見問題</span>
-      <h2 class="section-title">您最想知道的<br>都在這裡</h2>
+      <h2 class="section-title">您最想知道的，都在這裡</h2>
     </div>
     <div class="faq-list">
+      <div class="faq-group">🚁 無人機課程</div>
       <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          未來斑馬的課程有什麼特色？
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">未來斑馬首創業界 3:1 黃金教學比例，每 3 堂程式課搭配 1 堂機器人課。每週上課 2 小時，一期課程約半年 24 堂課（18 堂程式 + 6 堂機器人）。有別於一般只讓孩子按步驟操作的方式，讓孩子真正融會貫通，回家會主動研究並改裝機器人。</div>
+        <button class="faq-q" onclick="toggleFaq(this)">無人機課程適合幾歲的孩子？安全嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">校園社團以國小三～六年級為主，認證班與營隊開放國小到國中學生報名，零基礎也可以。足球無人機外圍有球型防撞護罩，課程從飛行安全與基礎操控開始，由老師全程帶領。</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          初階班的課程與學費是多少？
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">初階班（大班～3年級）使用頂級 ASUS 平板電腦，搭配 MIT Scratch Jr. 與 Scratch 3.0 課程，結合創意積木機器人實作。每期 24 堂課（約 6 個月），每週上課 2 小時。若學員沒有設備，初期可免費提供平板使用。詳細費用請來電洽詢。</div>
+        <button class="faq-q" onclick="toggleFaq(this)">「無人機足球能力認證」是什麼？<span class="faq-icon">+</span></button>
+        <div class="faq-a">由 KODO ROBOT 推動的民間無人機足球能力認證，分為 Lv1～Lv5。初級需通過學科測驗與 6 項術科（懸停、8 字、W 字型、進球回中線等）。此認證為民間能力認證，並非民航局的無人機操作證。</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          進階班的課程與學費是多少？
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">進階班（4年級～9年級）使用頂級 ASUS 小筆電，搭配 Scratch 3.0 程式語言，結合創意機器人實作課程。每期 24 堂課（約 6 個月），每週上課 2 小時。詳細費用請來電洽詢。</div>
+        <button class="faq-q" onclick="toggleFaq(this)">沒有上課的時候，可以在家練習嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">可以。我們自主開發的「足球無人機模擬飛行系統」用瀏覽器就能開啟，有闖關模式與連線對戰，孩子在家也能練習操控，上課時更快上手。</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          上課需要自備電腦或平板嗎？
-          <span class="faq-icon">+</span>
-        </button>
+        <button class="faq-q" onclick="toggleFaq(this)">學校或單位想開無人機社團、辦體驗活動或比賽，可以合作嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">歡迎！我們提供校園社團、團體體驗、師資培訓與賽事規劃（含 AI 賽事管理系統）。請來電 03-540-3463 洽詢。</div>
+      </div>
+
+      <div class="faq-group">💻 程式課程</div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">初階班的課程內容是什麼？<span class="faq-icon">+</span></button>
+        <div class="faq-a">初階班（大班～3年級）使用平板電腦，搭配 MIT Scratch Jr. 與 Scratch 3.0 課程，結合創意積木實作。每期 24 堂課（約 6 個月），每週上課 2 小時。詳細費用請來電洽詢。</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">進階班的課程內容是什麼？<span class="faq-icon">+</span></button>
+        <div class="faq-a">進階班（4年級～9年級）以 Scratch 3.0 程式語言為主，結合 AI 擴充功能，小班教學師生比 1:5。每期 24 堂課（約 6 個月），每週上課 2 小時。詳細費用請來電洽詢。</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">上課需要自備電腦或平板嗎？<span class="faq-icon">+</span></button>
         <div class="faq-a">學員請盡量自備平板或筆電，方便回家複習。若暫時沒有設備，本公司初期可免費提供平板或筆電教學用，用畢歸還，若損壞需照價賠償。</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          外縣市的學生可以來上課嗎？
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">完全可以！我們有許多來自外縣市的學員每週遠道而來。正因為未來斑馬專業師資教學效果斐然，課後也會將孩子的成長歷程記錄回報家長，讓您完全掌握學習進度。</div>
+        <button class="faq-q" onclick="toggleFaq(this)">外縣市的學生可以來上課嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">完全可以！我們有許多來自外縣市的學員每週遠道而來。課後也會將孩子的學習狀況記錄回報家長，讓您完全掌握學習進度。</div>
       </div>
     </div>
   </div>
@@ -950,12 +1264,12 @@ footer {
 <section class="cta-section">
   <div class="cta-blob cta-blob1"></div>
   <div class="cta-blob cta-blob2"></div>
-  <h2 class="cta-title reveal">現在就讓孩子<br>踏出改變未來的第一步</h2>
-  <p class="cta-desc reveal">體驗課程免費報名，讓專業老師帶領您的孩子進入程式設計的世界</p>
+  <h2 class="cta-title reveal">讓孩子用程式與 AI 無人機<br>飛向未來</h2>
+  <p class="cta-desc reveal">無人機課程、程式課程、學校社團與賽事合作，歡迎預約或來電洽詢</p>
   <div class="cta-btns reveal">
     <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-yellow">🎯 預約課程</a>
     <a href="tel:035403463" class="btn-wol">📞 03-540-3463</a>
-    <a href="https://www.facebook.com/groups/fzt168" class="btn-wol" target="_blank">FB 粉絲專頁</a>
+    <a href="https://www.facebook.com/groups/fzt168" class="btn-wol" target="_blank" rel="noopener">FB 粉絲專頁</a>
   </div>
 </section>
 
@@ -963,108 +1277,135 @@ footer {
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
+      <div>
         <div class="footer-logo-row">
           <span style="font-size:1.8rem;">🦓</span>
-          <span class="footer-brand-name">未來斑馬程式教育學苑</span>
+          <span class="footer-brand-name">富志科技｜未來斑馬 AI 創新學苑</span>
         </div>
-        <p class="footer-tagline">富志科技 Future Zebra<br>讓您的孩子成為世界一流的軟體人才<br>富而好禮，志在天下</p>
+        <p class="footer-tagline">AI 無人機 × 程式教育<br>富而好禮，志在天下</p>
         <div class="footer-contact">
           📍 新竹市經國路三段 78 巷 23-6 號<br>
           📞 <a href="tel:035403463">03-540-3463</a><br>
           ✉ <a href="mailto:greenmail1011@gmail.com">greenmail1011@gmail.com</a><br>
-          💬 <a href="https://www.facebook.com/groups/fzt168" target="_blank">Facebook 粉絲專頁</a>
+          💬 <a href="https://www.facebook.com/groups/fzt168" target="_blank" rel="noopener">Facebook 粉絲專頁</a>
         </div>
       </div>
       <div>
-        <div class="footer-col-title">課程系列</div>
+        <div class="footer-col-title">AI 無人機</div>
         <ul class="footer-links">
-          <li><a href="https://www.futurezebra.com/blank-1">初階班</a></li>
-          <li><a href="https://www.futurezebra.com/course">進階班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel1">Python 班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel2">C/C++ 語法班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel3">C/C++ 實戰班</a></li>
-          <li><a href="https://www.futurezebra.com/apcs">APCS 專班</a></li>
+          <li><a href="#drone">無人機足球推廣成果</a></li>
+          <li><a href="#ai-systems">AI 賽事管理系統</a></li>
+          <li><a href="#ai-systems">AI 模擬飛行系統</a></li>
+          <li><a href="#drone-courses">無人機課程</a></li>
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">關於富志</div>
+        <div class="footer-col-title">程式課程</div>
         <ul class="footer-links">
-          <li><a href="https://www.futurezebra.com/aboutfzt">公司介紹</a></li>
-          <li><a href="https://www.futurezebra.com/teachingphilosophy">教學理念</a></li>
-          <li><a href="https://www.futurezebra.com/teachers">師資陣容</a></li>
-          <li><a href="https://www.futurezebra.com/programdesign">程式設計</a></li>
-          <li><a href="https://www.futurezebra.com/creativerobots">創意機器人</a></li>
+          <li><a href="https://www.futurezebra.com/blank-1" target="_blank" rel="noopener">初階班</a></li>
+          <li><a href="https://www.futurezebra.com/course" target="_blank" rel="noopener">進階班</a></li>
+          <li><a href="https://www.futurezebra.com/highlevel1" target="_blank" rel="noopener">Python 班</a></li>
+          <li><a href="https://www.futurezebra.com/highlevel2" target="_blank" rel="noopener">C/C++ 語法班</a></li>
+          <li><a href="https://www.futurezebra.com/highlevel3" target="_blank" rel="noopener">C/C++ 實戰班</a></li>
+          <li><a href="https://www.futurezebra.com/apcs" target="_blank" rel="noopener">APCS 專班</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">更多資訊</div>
         <ul class="footer-links">
-          <li><a href="https://www.futurezebra.com/summer">夏令營</a></li>
-          <li><a href="https://www.futurezebra.com/winter">冬令營</a></li>
-          <li><a href="https://www.futurezebra.com/honor">參賽殊榮</a></li>
-          <li><a href="https://www.futurezebra.com/classphoto">課程剪影</a></li>
-          <li><a href="https://www.futurezebra.com/faq">常見問題</a></li>
-          <li><a href="https://www.futurezebra.com/parking">停車資訊</a></li>
+          <li><a href="https://www.futurezebra.com/aboutfzt" target="_blank" rel="noopener">公司介紹</a></li>
+          <li><a href="https://www.futurezebra.com/teachers" target="_blank" rel="noopener">師資陣容</a></li>
+          <li><a href="#camps">夏令營・冬令營</a></li>
+          <li><a href="#achievements">參賽殊榮</a></li>
+          <li><a href="#faq">常見問題</a></li>
+          <li><a href="https://www.futurezebra.com/parking" target="_blank" rel="noopener">停車資訊</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2024 富志科技 Future Zebra · ALL RIGHTS RESERVED</div>
+      <div class="footer-copy">© 2026 富志科技 Future Zebra · ALL RIGHTS RESERVED</div>
       <div class="footer-copy">新竹市經國路三段 78 巷 23-6 號 · 03-540-3463</div>
     </div>
   </div>
 </footer>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="圖片放大檢視">
+  <button type="button" aria-label="關閉">✕</button>
+  <img id="lightbox-img" alt="">
+  <div id="lightbox-cap"></div>
+</div>
+
 <script>
-// Load Wix images via fetch with no-referrer to bypass hotlink protection
-async function loadWixImages() {
-  const imgs = document.querySelectorAll('img[referrerpolicy="no-referrer"]');
-  for (const img of imgs) {
-    const src = img.getAttribute('src');
-    if (!src || !src.includes('wixstatic')) continue;
-    try {
-      const resp = await fetch(src, { referrerPolicy: 'no-referrer' });
-      if (resp.ok) {
-        const blob = await resp.blob();
-        img.src = URL.createObjectURL(blob);
-      }
-    } catch(e) {}
-  }
-}
-// Try loading images after page load
-window.addEventListener('load', loadWixImages);
+// ===== 設定：模擬飛行系統線上網址 =====
+const SIMULATOR_URL = 'https://greenmail1011.github.io/sky-striker/';
 
-// Navbar scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+(function () {
+  // 模擬器連結
+  const simLink = document.getElementById('simLink');
+  if (SIMULATOR_URL) { simLink.href = SIMULATOR_URL; }
+  else { simLink.style.display = 'none'; }
 
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  // 導覽列陰影
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+  // 手機選單
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? '✕' : '☰';
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = '☰';
+  }));
 
-// Lightbox
-document.querySelectorAll('.lightbox-trigger').forEach(img => {
-  img.addEventListener('click', function(e) {
-    e.stopPropagation();
-    const lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = this.src;
-    document.getElementById('lightbox-img').alt = this.alt;
-    lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+  // 跑馬燈：複製一份內容讓它無縫循環
+  const mq = document.getElementById('marquee');
+  mq.innerHTML += mq.innerHTML;
+
+  // 捲動淡入
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // 截圖載入失敗時顯示替代畫面
+  document.querySelectorAll('.sys-shot img').forEach(img => {
+    img.addEventListener('error', () => {
+      const label = img.getAttribute('alt').split('：').pop().replace('畫面', '');
+      const fb = document.createElement('div');
+      fb.className = 'shot-fallback';
+      fb.innerHTML = '<span class="big">' + (img.src.includes('simulator') ? '🎮' : '🏆') + '</span><span>' + label + '</span>';
+      img.replaceWith(fb);
+    });
   });
-});
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // 燈箱
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCap = document.getElementById('lightbox-cap');
+  document.querySelectorAll('.lightbox-trigger').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', e => {
+      e.preventDefault(); e.stopPropagation();
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt;
+      lbCap.textContent = img.dataset.cap || img.alt || '';
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; }
+  lb.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+})();
 
 // FAQ
 function toggleFaq(btn) {
