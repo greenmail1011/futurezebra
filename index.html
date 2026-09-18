@@ -369,6 +369,28 @@ nav.scrolled { box-shadow:var(--shadow); }
 .more-title { text-align:center; font-size:1.35rem; font-weight:900; color:var(--blue-dark); margin:3rem 0 1.4rem; }
 .path-step.hot { background:linear-gradient(135deg,#fff7e6,#ffedd0); box-shadow:0 0 0 2px #fbbf24 inset; }
 
+/* Nav dropdown */
+.has-drop { position:relative; }
+.has-drop > a .caret { font-size:0.7rem; opacity:0.65; }
+.drop {
+  display:none; position:absolute; top:100%; left:0; min-width:180px;
+  background:white; border-radius:12px; box-shadow:var(--shadow-lg);
+  padding:0.4rem; list-style:none; z-index:120; border:1px solid var(--gray-100);
+}
+.has-drop:hover > .drop, .has-drop:focus-within > .drop { display:block; }
+.drop a {
+  display:block; padding:0.6rem 0.8rem; border-radius:8px;
+  font-size:0.85rem; font-weight:600; color:var(--gray-700);
+  text-decoration:none; white-space:nowrap; transition:background 0.2s, color 0.2s;
+}
+.drop a.nav-drone { color:var(--blue-mid); }
+.drop a:hover { background:var(--blue-sky); color:var(--blue-mid); }
+@media(max-width:960px){
+  .has-drop > a .caret { display:none; }
+  .drop { display:block; position:static; box-shadow:none; border:none; padding:0 0 0.3rem 0.9rem; min-width:0; }
+  .drop a { padding:0.7rem 0.8rem; font-size:0.9rem; color:var(--gray-500); }
+}
+
 /* Teachers */
 .nav-ext { color:var(--gray-500) !important; font-weight:600; }
 .nav-ext:hover { background:var(--gray-100) !important; color:var(--blue-mid) !important; }
@@ -692,15 +714,20 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">☰</button>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#about">關於富志</a></li>
-    <li><a href="#drone" class="nav-drone">推廣成果</a></li>
-    <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
+    <li class="has-drop">
+      <a href="#about">關於富志 <span class="caret">▾</span></a>
+      <ul class="drop">
+        <li><a href="#about">公司簡介</a></li>
+        <li><a href="#teachers">師資陣容</a></li>
+        <li><a href="#drone" class="nav-drone">推廣成果</a></li>
+        <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
+      </ul>
+    </li>
     <li><a href="#drone-courses" class="nav-drone">無人機課程</a></li>
     <li><a href="#courses">程式課程</a></li>
-    <li><a href="#teachers">師資陣容</a></li>
     <li><a href="#achievements">榮耀</a></li>
     <li><a href="#faq">常見問題</a></li>
-    <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener" class="nav-ext">程式教育官網 ↗</a></li>
+    <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener" class="nav-ext">富志二站 ↗</a></li>
     <li><a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="nav-cta">預約課程</a></li>
   </ul>
 </nav>
@@ -1343,7 +1370,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         </div>
       </div>
     </div>
-    <p class="tc-note">完整師資介紹請見 <a href="https://www.fuzhitech.com/teachers" target="_blank" rel="noopener">程式教育官網 · 師資陣容 ↗</a></p>
+    <p class="tc-note">完整師資介紹請見 <a href="https://www.fuzhitech.com/teachers" target="_blank" rel="noopener">富志二站 · 師資陣容 ↗</a></p>
   </div>
 </section>
 
@@ -1545,7 +1572,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><a href="#achievements">參賽殊榮</a></li>
           <li><a href="#faq">常見問題</a></li>
           <li><a href="https://www.fuzhitech.com/parking" target="_blank" rel="noopener">停車資訊</a></li>
-          <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener">程式教育官網（富志科技二站）↗</a></li>
+          <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener">富志二站（程式教育）↗</a></li>
         </ul>
       </div>
     </div>
