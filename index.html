@@ -369,6 +369,30 @@ nav.scrolled { box-shadow:var(--shadow); }
 .more-title { text-align:center; font-size:1.35rem; font-weight:900; color:var(--blue-dark); margin:3rem 0 1.4rem; }
 .path-step.hot { background:linear-gradient(135deg,#fff7e6,#ffedd0); box-shadow:0 0 0 2px #fbbf24 inset; }
 
+/* Teachers */
+.nav-ext { color:var(--gray-500) !important; font-weight:600; }
+.nav-ext:hover { background:var(--gray-100) !important; color:var(--blue-mid) !important; }
+.teachers-section { background:linear-gradient(180deg,#f7fbff,#ffffff); }
+.tc-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.4rem; }
+.tc-card { background:white; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;
+  display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; }
+.tc-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.tc-photo { width:100%; aspect-ratio:600/620; object-fit:cover; display:block; background:var(--gray-100); }
+.tc-body { padding:1.1rem 1.2rem 1.4rem; display:flex; flex-direction:column; flex:1; }
+.tc-name { font-size:1.05rem; font-weight:900; color:var(--blue-dark); }
+.tc-role { font-size:0.78rem; font-weight:700; color:var(--blue-mid); margin-top:0.15rem; }
+.tc-school { font-size:0.85rem; font-weight:700; color:var(--gray-700); margin-top:0.6rem; line-height:1.6; }
+.tc-list { list-style:none; margin-top:0.5rem; font-size:0.79rem; color:var(--gray-500); line-height:1.75; }
+.tc-list li { padding-left:0.8rem; position:relative; }
+.tc-list li::before { content:'・'; position:absolute; left:-0.1rem; color:var(--cyan); }
+.tc-skill { margin-top:auto; padding-top:0.7rem; font-size:0.75rem; color:var(--gray-500); line-height:1.7; }
+.tc-skill b { color:var(--gray-700); }
+.tc-note { text-align:center; margin-top:1.6rem; font-size:0.85rem; color:var(--gray-500); }
+.tc-note a { color:var(--blue-mid); font-weight:700; }
+@media (max-width:1100px) { .tc-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:820px)  { .tc-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; } }
+@media (max-width:420px)  { .tc-grid { grid-template-columns:1fr; } .tc-photo { aspect-ratio:16/11; object-position:center 22%; } }
+
 /* Featured courses */
 .cf { display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:2.4rem; align-items:start;
   background:white; border-radius:24px; box-shadow:var(--shadow); padding:2rem; margin-bottom:2rem; border-top:5px solid var(--accent); }
@@ -673,8 +697,10 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
     <li><a href="#drone-courses" class="nav-drone">無人機課程</a></li>
     <li><a href="#courses">程式課程</a></li>
+    <li><a href="#teachers">師資陣容</a></li>
     <li><a href="#achievements">榮耀</a></li>
     <li><a href="#faq">常見問題</a></li>
+    <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener" class="nav-ext">程式教育官網 ↗</a></li>
     <li><a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="nav-cta">預約課程</a></li>
   </ul>
 </nav>
@@ -1230,6 +1256,97 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   </div>
 </section>
 
+<!-- TEACHERS -->
+<section class="section teachers-section" id="teachers">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">TEACHERS · 師資陣容</span>
+      <h2 class="section-title">師資陣容堅強，教學經驗豐富</h2>
+      <p class="section-sub">師資均為相關科系畢業，橫跨 AI 無人機與程式教育，多位具備競賽教練與檢定考官資歷。</p>
+    </div>
+    <div class="tc-grid">
+      <div class="tc-card reveal reveal-d1">
+        <img class="tc-photo" src="images/teachers/tomy.jpg"
+             alt="Tomy 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Tomy</div>
+          <div class="tc-role">富志科技創辦人</div>
+          <div class="tc-school">國立陽明交通大學<br>資訊工程研究所</div>
+          <ul class="tc-list"><li>國立聯合大學 助理教授</li><li>資深軟體工程師</li><li>兒童程式與機器人教育推動者</li></ul>
+          <div class="tc-skill"><b>專長</b>｜C/C++、Python、Arduino、APCS、Java、Scratch、PHP、MySQL</div>
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d2">
+        <img class="tc-photo" src="images/teachers/awkai.jpg"
+             alt="Aw Kai 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Aw Kai</div>
+          <div class="tc-role">電機工程師</div>
+          <div class="tc-school">國立陽明交通大學<br>電機工程學系</div>
+          <ul class="tc-list"><li>未來斑馬 電機工程師</li><li>無人機足球飛行能力初級檢定 考官</li><li>香山國小 AI 無人機足球社團 老師</li></ul>
+          
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d3">
+        <img class="tc-photo" src="images/teachers/harry.jpg"
+             alt="Harry 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Harry</div>
+          <div class="tc-role">專業講師</div>
+          <div class="tc-school">中華大學<br>資訊管理學系</div>
+          <ul class="tc-list"><li>亞洲盃創意機器人大賽 教練</li><li>無人機足球飛行能力初級檢定 考官</li><li>東泰高中 AI 無人機足球社團 老師</li><li>康乃爾小學、竹光國中、成德高中 機器人社團 老師</li></ul>
+          
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d4">
+        <img class="tc-photo" src="images/teachers/haha.jpg"
+             alt="Haha 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Haha</div>
+          <div class="tc-role">程式講師</div>
+          <div class="tc-school">國立聯合大學<br>資訊管理學系</div>
+          <ul class="tc-list"><li>教育部偏鄉課輔績優師資</li></ul>
+          <div class="tc-skill"><b>專長</b>｜Java、JavaScript、Node.js、PHP、Android、Scratch</div>
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d1">
+        <img class="tc-photo" src="images/teachers/eddy.jpg"
+             alt="Eddy 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Eddy</div>
+          <div class="tc-role">程式講師</div>
+          <div class="tc-school">國立清華大學<br>數學系</div>
+          
+          <div class="tc-skill"><b>專長</b>｜Scratch、mBot 講師、JavaScript、PHP、MySQL</div>
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d2">
+        <img class="tc-photo" src="images/teachers/max.jpg"
+             alt="Max 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Max</div>
+          <div class="tc-role">系統開發講師</div>
+          <div class="tc-school">國立陽明交通大學<br>工業工程與管理研究所</div>
+          <ul class="tc-list"><li>資訊管理研究所 碩士輔所</li><li>工業工程與管理學系 畢業</li></ul>
+          <div class="tc-skill"><b>專長</b>｜AI 人工智慧、系統開發、大數據分析、網路系統資訊安全</div>
+        </div>
+      </div>
+      <div class="tc-card reveal reveal-d3">
+        <img class="tc-photo" src="images/teachers/mark.jpg"
+             alt="Mark 老師" loading="lazy">
+        <div class="tc-body">
+          <div class="tc-name">Mark</div>
+          <div class="tc-role">機器人講師</div>
+          <div class="tc-school">中原大學<br>電子工程學系</div>
+          <ul class="tc-list"><li>電子產品導向規劃師</li></ul>
+          <div class="tc-skill"><b>專長</b>｜mBot 機器人、ScratchJr、Scratch</div>
+        </div>
+      </div>
+    </div>
+    <p class="tc-note">完整師資介紹請見 <a href="https://www.fuzhitech.com/teachers" target="_blank" rel="noopener">程式教育官網 · 師資陣容 ↗</a></p>
+  </div>
+</section>
+
 <!-- ACHIEVEMENTS -->
 <section class="section achievements-section dark" id="achievements">
   <div class="section-inner">
@@ -1411,23 +1528,24 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div>
         <div class="footer-col-title">程式課程</div>
         <ul class="footer-links">
-          <li><a href="https://www.futurezebra.com/blank-1" target="_blank" rel="noopener">初階班</a></li>
-          <li><a href="https://www.futurezebra.com/course" target="_blank" rel="noopener">進階班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel1" target="_blank" rel="noopener">Python 班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel2" target="_blank" rel="noopener">C/C++ 語法班</a></li>
-          <li><a href="https://www.futurezebra.com/highlevel3" target="_blank" rel="noopener">C/C++ 實戰班</a></li>
-          <li><a href="https://www.futurezebra.com/apcs" target="_blank" rel="noopener">APCS 專班</a></li>
+          <li><a href="https://www.fuzhitech.com/blank-1" target="_blank" rel="noopener">初階班</a></li>
+          <li><a href="https://www.fuzhitech.com/course" target="_blank" rel="noopener">進階班</a></li>
+          <li><a href="https://www.fuzhitech.com/highlevel1" target="_blank" rel="noopener">Python 班</a></li>
+          <li><a href="https://www.fuzhitech.com/highlevel2" target="_blank" rel="noopener">C/C++ 語法班</a></li>
+          <li><a href="https://www.fuzhitech.com/highlevel3" target="_blank" rel="noopener">C/C++ 實戰班</a></li>
+          <li><a href="https://www.fuzhitech.com/apcs" target="_blank" rel="noopener">APCS 專班</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">更多資訊</div>
         <ul class="footer-links">
-          <li><a href="https://www.futurezebra.com/aboutfzt" target="_blank" rel="noopener">公司介紹</a></li>
-          <li><a href="https://www.futurezebra.com/teachers" target="_blank" rel="noopener">師資陣容</a></li>
+          <li><a href="https://www.fuzhitech.com/aboutfzt" target="_blank" rel="noopener">公司介紹</a></li>
+          <li><a href="#teachers">師資陣容</a></li>
           <li><a href="#camps">夏令營・冬令營</a></li>
           <li><a href="#achievements">參賽殊榮</a></li>
           <li><a href="#faq">常見問題</a></li>
-          <li><a href="https://www.futurezebra.com/parking" target="_blank" rel="noopener">停車資訊</a></li>
+          <li><a href="https://www.fuzhitech.com/parking" target="_blank" rel="noopener">停車資訊</a></li>
+          <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener">程式教育官網（富志科技二站）↗</a></li>
         </ul>
       </div>
     </div>
