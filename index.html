@@ -166,7 +166,6 @@ nav.scrolled { box-shadow:var(--shadow); }
   transition:transform 0.2s;
 }
 .hero-chip:hover { transform:translateY(-3px); }
-.hero-chip .ic { font-size:1.5rem; }
 .hero-chip b { display:block; font-size:0.88rem; }
 .hero-chip span { display:block; font-size:0.7rem; color:var(--gray-500); }
 .hero-chip.c1 { left:-24px; bottom:28px; }
@@ -177,8 +176,8 @@ nav.scrolled { box-shadow:var(--shadow); }
 .marquee-wrap { background:var(--blue-dark); padding:0.9rem 0; overflow:hidden; }
 .marquee-track { display:flex; gap:3rem; animation:marquee 36s linear infinite; width:max-content; }
 .mitem { display:flex; align-items:center; gap:0.6rem; font-size:0.84rem; font-weight:600; color:rgba(255,255,255,0.78); white-space:nowrap; }
-.mitem span { color:#fbbf24; }
-.mitem.d span { color:#67e8f9; }
+.mitem .mdot { width:5px; height:5px; border-radius:50%; background:#fbbf24; flex-shrink:0; }
+.mitem.d .mdot { background:#67e8f9; }
 
 /* ── SECTION COMMONS ── */
 .section { padding:5rem 2rem; }
@@ -229,7 +228,6 @@ nav.scrolled { box-shadow:var(--shadow); }
 .pillar.drone { background:var(--cyan-pale); border-left-color:var(--cyan); }
 .pillar.industry { background:#fff7ed; border-left-color:var(--accent); }
 .pillar.industry { background:#fff7ed; border-left-color:var(--accent); }
-.pillar-icon { font-size:1.7rem; flex-shrink:0; line-height:1.2; }
 .pillar-title { font-weight:800; font-size:1rem; color:var(--blue-dark); margin-bottom:0.25rem; }
 .pillar-text { font-size:0.87rem; color:var(--gray-700); line-height:1.75; }
 
@@ -278,7 +276,7 @@ nav.scrolled { box-shadow:var(--shadow); }
 .impact-shot img { width:100%; display:block; aspect-ratio:16/10; object-fit:cover; }
 .hl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; margin-top:0.9rem; }
 .hl-card { display:flex; gap:0.6rem; align-items:flex-start; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:0.9rem; }
-.hl-ic { font-size:1.5rem; line-height:1; }
+.hl-card > div { min-width:0; }
 .hl-card b { display:block; color:white; font-size:0.92rem; margin-bottom:0.2rem; }
 .hl-card span { display:block; color:rgba(255,255,255,0.65); font-size:0.76rem; line-height:1.55; }
 
@@ -369,6 +367,29 @@ nav.scrolled { box-shadow:var(--shadow); }
 .more-title { text-align:center; font-size:1.35rem; font-weight:900; color:var(--blue-dark); margin:3rem 0 1.4rem; }
 .path-step.hot { background:linear-gradient(135deg,#fff7e6,#ffedd0); box-shadow:0 0 0 2px #fbbf24 inset; }
 
+/* News */
+.news-section { background:var(--gray-50); }
+.news-grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:1.6rem; align-items:start; }
+.news-card { display:flex; flex-direction:column; background:white; border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow); text-decoration:none; color:inherit;
+  transition:transform 0.3s, box-shadow 0.3s; }
+.news-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.news-thumb { aspect-ratio:16/10; overflow:hidden; background:var(--gray-100); }
+.news-thumb img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s; }
+.news-card:hover .news-thumb img { transform:scale(1.04); }
+.news-body { padding:1.3rem 1.4rem 1.5rem; display:flex; flex-direction:column; flex:1; }
+.news-meta { display:flex; align-items:center; gap:0.7rem; font-size:0.78rem; color:var(--gray-500); }
+.news-tag { background:var(--blue-sky); color:var(--blue-mid); font-weight:700; padding:0.15rem 0.6rem; border-radius:50px; }
+.news-title { font-size:1.08rem; font-weight:800; color:var(--blue-dark); line-height:1.55; margin:0.6rem 0 0.5rem; }
+.news-excerpt { font-size:0.86rem; color:var(--gray-700); line-height:1.8; flex:1; }
+.news-more { margin-top:1rem; font-size:0.85rem; font-weight:700; color:var(--blue-mid); }
+.news-side { background:white; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.8rem 1.6rem; }
+.news-side h3 { font-size:1.02rem; color:var(--blue-dark); margin-bottom:0.6rem; }
+.news-side p { font-size:0.86rem; color:var(--gray-700); line-height:1.9; margin-bottom:1.1rem; }
+.news-side a { display:inline-block; font-size:0.88rem; font-weight:700; color:var(--blue-mid); text-decoration:none; }
+.news-side a + a { margin-left:1rem; }
+@media(max-width:960px){ .news-grid { grid-template-columns:1fr; } }
+
 /* Nav dropdown */
 .has-drop { position:relative; }
 .has-drop > a .caret { font-size:0.7rem; opacity:0.65; }
@@ -437,7 +458,6 @@ nav.scrolled { box-shadow:var(--shadow); }
 .cf-info b { flex-shrink:0; color:var(--blue-dark); min-width:4.5em; }
 .cf-values { display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; margin-bottom:1.3rem; }
 .cf-values div { border:1px solid var(--gray-200); border-radius:14px; padding:0.8rem; text-align:center; }
-.cf-values .v-ic { font-size:1.5rem; display:block; }
 .cf-values b { display:block; color:var(--blue-dark); font-size:0.95rem; margin-top:0.2rem; }
 .cf-values small { display:block; color:var(--gray-500); font-size:0.76rem; line-height:1.5; margin-top:0.2rem; }
 .cf-h { font-weight:900; color:var(--blue-dark); font-size:1.02rem; margin:0.4rem 0 0.7rem; padding-left:0.6rem; border-left:4px solid var(--accent); }
@@ -461,7 +481,6 @@ nav.scrolled { box-shadow:var(--shadow); }
 .cf-syllabus small { display:block; color:var(--gray-500); font-size:0.77rem; line-height:1.55; margin-top:0.15rem; }
 .cf-abilities { display:grid; grid-template-columns:repeat(5,1fr); gap:0.55rem; margin-bottom:1.3rem; }
 .cf-abilities div { text-align:center; border:1px solid #dcefe2; border-radius:12px; padding:0.7rem 0.4rem; }
-.cf-abilities span { font-size:1.4rem; display:block; }
 .cf-abilities b { display:block; color:#15803d; font-size:0.86rem; margin-top:0.15rem; }
 .cf-abilities small { display:block; color:var(--gray-500); font-size:0.72rem; line-height:1.5; margin-top:0.15rem; }
 .cf-btns { display:flex; flex-wrap:wrap; gap:0.7rem; }
@@ -479,7 +498,6 @@ nav.scrolled { box-shadow:var(--shadow); }
   background:var(--accent); color:white; font-size:0.7rem; font-weight:700;
   padding:0.25rem 2.2rem; transform:rotate(45deg);
 }
-.dc-icon { font-size:2rem; }
 .dc-type { font-size:0.72rem; font-weight:800; letter-spacing:0.1em; color:#0e7490; margin-top:0.6rem; }
 .dc-title { font-size:1.22rem; font-weight:900; color:var(--blue-dark); margin:0.25rem 0 0.4rem; line-height:1.4; }
 .dc-target { font-size:0.82rem; color:var(--gray-500); margin-bottom:0.9rem; }
@@ -558,10 +576,9 @@ nav.scrolled { box-shadow:var(--shadow); }
 .camps-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
 .camp-card { background:white; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform 0.3s, box-shadow 0.3s; }
 .camp-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); }
-.camp-header { padding:2rem; display:flex; align-items:center; gap:1rem; }
+.camp-header { padding:1.7rem 2rem; display:flex; align-items:center; gap:1rem; }
 .camp-header.summer { background:linear-gradient(135deg,#f59e0b,#fbbf24); }
 .camp-header.winter { background:linear-gradient(135deg,#3b82f6,#60a5fa); }
-.camp-icon { font-size:3rem; }
 .camp-season { font-size:1.6rem; font-weight:900; color:white; }
 .camp-season-en { font-size:0.8rem; color:rgba(255,255,255,0.85); font-weight:600; }
 .camp-body { padding:1.5rem 2rem 2rem; }
@@ -610,6 +627,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .footer-brand-name { font-size:0.98rem; font-weight:800; color:white; }
 .footer-tagline { font-size:0.85rem; color:rgba(255,255,255,0.58); line-height:1.8; margin-bottom:1rem; }
 .footer-contact { font-size:0.82rem; color:rgba(255,255,255,0.58); line-height:2.1; }
+.fc-k { display:inline-block; min-width:2.6em; color:rgba(255,255,255,0.45); font-size:0.78rem; margin-right:0.45rem; }
 .footer-contact a { color:#60a5fa; text-decoration:none; }
 .footer-col-title { font-size:0.78rem; font-weight:700; letter-spacing:0.12em; color:rgba(255,255,255,0.45); margin-bottom:1rem; }
 .footer-links { list-style:none; }
@@ -708,7 +726,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 <nav id="navbar">
   <a href="#top" class="nav-logo">
     <div class="nav-logo-text">
-      <span class="nav-logo-main">🦓 富志科技｜未來斑馬 AI 創新學苑</span>
+      <span class="nav-logo-main">富志科技｜未來斑馬 AI 創新學苑</span>
       <span class="nav-logo-sub">AI 無人機 × 程式教育 · 新竹市</span>
     </div>
   </a>
@@ -723,6 +741,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
       </ul>
     </li>
+    <li><a href="#news">最新活動</a></li>
     <li><a href="#drone-courses" class="nav-drone">無人機課程</a></li>
     <li><a href="#courses">程式課程</a></li>
     <li><a href="#achievements">榮耀</a></li>
@@ -738,7 +757,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">🚁 新竹 AI 無人機 × 程式教育專業團隊</div>
+      <div class="hero-badge">新竹 AI 無人機 × 程式教育專業團隊</div>
       <h1 class="hero-title">
         從<span>程式設計</span><br>
         飛向 <em>AI 無人機</em><br>
@@ -750,9 +769,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         以及運用 AI 自主開發的<strong>賽事管理系統</strong>與<strong>模擬飛行系統</strong>。
       </p>
       <div class="hero-btns">
-        <a href="#drone" class="btn-yellow">🚁 看無人機推廣成果</a>
+        <a href="#drone" class="btn-yellow">看無人機推廣成果</a>
         <a href="#ai-systems" class="btn-white-outline">AI 自研系統</a>
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-white-outline">🎯 預約課程</a>
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-white-outline">預約課程</a>
       </div>
       <div class="hero-stats">
         <div><div class="hstat-num">4<small>校</small></div><div class="hstat-label">校園無人機社團</div></div>
@@ -766,11 +785,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <img src="images/drone/simulator-fly.jpg"
              alt="AI 模擬飛行系統 3D 無人機足球畫面" class="lightbox-trigger" data-cap="AI 模擬飛行系統｜3D 無人機足球練習畫面">
         <a class="hero-chip c2" href="#ai-systems">
-          <span class="ic">🏆</span>
           <span><b>AI 賽事管理系統</b><span>賽程・計分・現場看板</span></span>
         </a>
         <a class="hero-chip c1" href="#drone-courses">
-          <span class="ic">🏫</span>
           <span><b>校園無人機社團</b><span>三所國小＋香山高中</span></span>
         </a>
       </div>
@@ -782,18 +799,18 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track" id="marquee">
-    <div class="mitem d"><span>✦</span> AI 足球無人機校園社團</div>
-    <div class="mitem d"><span>✦</span> 無人機足球 8 堂速成認證班</div>
-    <div class="mitem d"><span>✦</span> 無人機足球競賽班</div>
-    <div class="mitem d"><span>✦</span> AI 賽事管理系統</div>
-    <div class="mitem d"><span>✦</span> AI 模擬飛行系統</div>
-    <div class="mitem d"><span>✦</span> RoboRAVE 新竹無人機足球賽</div>
-    <div class="mitem"><span>✦</span> Scratch Jr. 初階班</div>
-    <div class="mitem"><span>✦</span> Scratch 3.0 進階班</div>
-    <div class="mitem"><span>✦</span> Python 基礎班</div>
-    <div class="mitem"><span>✦</span> C/C++ 語法・實戰班</div>
-    <div class="mitem"><span>✦</span> APCS 程式認證專班</div>
-    <div class="mitem"><span>✦</span> 夏令營 / 冬令營</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>AI 足球無人機校園社團</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>無人機足球 8 堂速成認證班</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>無人機足球競賽班</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>AI 賽事管理系統</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>AI 模擬飛行系統</div>
+    <div class="mitem d"><span class="mdot" aria-hidden="true"></span>RoboRAVE 新竹無人機足球賽</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>Scratch Jr. 初階班</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>Scratch 3.0 進階班</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>Python 基礎班</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>C/C++ 語法・實戰班</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>APCS 程式認證專班</div>
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>夏令營 / 冬令營</div>
   </div>
 </div>
 
@@ -802,7 +819,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-img-wrap reveal">
-        <div class="about-img-tag">🦓 富志科技</div>
+        <div class="about-img-tag">富志科技</div>
         <img class="about-img brand"
              src="images/banner-ai.jpg"
              alt="未來斑馬AI創新學苑">
@@ -813,27 +830,54 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <p class="section-sub">富志科技從程式教育出發，多年來培育許多 APCS 與競賽學員。如今我們把程式、AI 與無人機結合，讓孩子在操控、協作與競技中學習科技，並用 AI 打造自己的教學與賽事工具。</p>
         <div class="pillars">
           <div class="pillar drone">
-            <div class="pillar-icon">🚁</div>
             <div>
               <div class="pillar-title">AI 無人機教育與賽事</div>
               <div class="pillar-text">無人機足球校園社團、認證課程、營隊與團體體驗；以 AI 自主開發賽事管理與模擬飛行系統，並已用於正式比賽與日常教學。</div>
             </div>
           </div>
           <div class="pillar industry">
-            <div class="pillar-icon">🤝</div>
             <div>
               <div class="pillar-title">產業應用｜無人機與 AI 人才培育</div>
               <div class="pillar-text">結合 AI 與無人機技術支援產業智慧化應用，並透過在職進修、短期訓練與專題講座，為產業培育無人機與 AI 人才，加強國防韌性。</div>
             </div>
           </div>
           <div class="pillar">
-            <div class="pillar-icon">💻</div>
             <div>
               <div class="pillar-title">程式教育</div>
               <div class="pillar-text">Scratch Jr.、Scratch 3.0、Python、C/C++ 到 APCS 認證的完整學習路線，小班教學、課後回報學習狀況。</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section news-section" id="news">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">NEWS · 最新活動</span>
+      <h2 class="section-title">活動紀錄與合作實績</h2>
+      <p class="section-sub">富志科技受邀支援的活動、賽事與課程現場紀錄。</p>
+    </div>
+    <div class="news-grid">
+      <a class="news-card reveal" href="news/mid-autumn-2026.html">
+        <div class="news-thumb">
+          <img src="images/news/mid-autumn-2026/p1.jpg" alt="中秋節及市政宣導活動無人機示範" loading="lazy">
+        </div>
+        <div class="news-body">
+          <div class="news-meta"><time datetime="2026-09">2026.09</time><span class="news-tag">活動支援</span></div>
+          <h3 class="news-title">115 年慶祝中秋節及市政宣導活動｜無人機示範與體驗</h3>
+          <p class="news-excerpt">受邀到中秋節市政宣導活動現場，帶來懸浮飛球與足球無人機的飛行示範，並讓長輩與家庭親手操控體驗，也把無人機融入摸彩橋段。</p>
+          <span class="news-more">閱讀報導 →</span>
+        </div>
+      </a>
+      <div class="news-side reveal reveal-d2">
+        <h3>想在活動中安排無人機體驗？</h3>
+        <p>社區活動、樂齡課程、機關團體與校慶園遊會都可以安排。依場地與人數規劃示範、體驗或闖關競賽，可到府辦理。</p>
+        <a href="tel:035403463">來電洽詢 03-540-3463</a>
+        <a href="#drone-courses">看課程 →</a>
       </div>
     </div>
   </div>
@@ -905,11 +949,11 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <div class="pw-cap">RoboRAVE 2026 新竹 Rally｜AI 賽事管理系統裁判計分板</div>
         </div>
         <div class="hl-grid">
-          <div class="hl-card"><div class="hl-ic">🏫</div><div><b>校園社團</b><span>三所國小＋香山高中<br>整學期每週上課</span></div></div>
-          <div class="hl-card"><div class="hl-ic">🎖️</div><div><b>認證＋競賽班</b><span>8 堂速成・就地考照<br>8 次競賽選手培訓</span></div></div>
-          <div class="hl-card"><div class="hl-ic">🎮</div><div><b>AI 模擬訓練</b><span>課前熟悉操控<br>課後闖關練習</span></div></div>
+          <div class="hl-card"><div><b>校園社團</b><span>三所國小＋香山高中<br>整學期每週上課</span></div></div>
+          <div class="hl-card"><div><b>認證＋競賽班</b><span>8 堂速成・就地考照<br>8 次競賽選手培訓</span></div></div>
+          <div class="hl-card"><div><b>AI 模擬訓練</b><span>課前熟悉操控<br>課後闖關練習</span></div></div>
         </div>
-        <p class="photo-credit">🔍 點擊畫面可放大</p>
+        <p class="photo-credit">點擊畫面可放大</p>
       </div>
     </div>
   </div>
@@ -923,10 +967,10 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <h2 class="section-title">用 AI 打造的無人機<br>賽事與訓練系統</h2>
       <p class="section-sub">由富志團隊運用 AI 協作開發，從教學與賽事現場的真實需求出發，已實際投入比賽與課程使用。</p>
       <div class="ai-strip">
-        <span class="ai-pill">🤖 AI 協作開發</span>
-        <span class="ai-pill">⚡ 快速依現場需求改版</span>
-        <span class="ai-pill">☁️ 雲端即時同步</span>
-        <span class="ai-pill">📱 手機・平板・電腦皆可用</span>
+        <span class="ai-pill">AI 協作開發</span>
+        <span class="ai-pill">快速依現場需求改版</span>
+        <span class="ai-pill">雲端即時同步</span>
+        <span class="ai-pill">手機・平板・電腦皆可用</span>
       </div>
     </div>
 
@@ -953,7 +997,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         </div>
       </div>
       <div>
-        <span class="sys-kicker">🏆 SYSTEM 01</span>
+        <span class="sys-kicker">SYSTEM 01</span>
         <h3 class="sys-title">無人機足球賽事管理系統</h3>
         <p class="sys-desc">從分組、賽程、裁判計分到現場大螢幕，一套系統完成整場無人機足球賽的賽務。裁判計分後，比分自動回填、積分榜即時更新，選手與觀眾同步看到最新戰況。</p>
         <ul class="sys-features">
@@ -963,10 +1007,10 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><span><b>多裝置即時同步：</b>掃 QR Code 加入同一場次，計分、賽程、看板雲端連動</span></li>
           <li><span><b>斷網不怕：</b>離線快取與紀錄暫存，恢復連線後自動補傳</span></li>
         </ul>
-        <div class="sys-used">📍 實際應用：<b>2026 RoboRAVE 新竹 Rally 無人機足球賽</b>（Mini 飛球組、國小組、國高中組）</div>
+        <div class="sys-used">實際應用：<b>2026 RoboRAVE 新竹 Rally 無人機足球賽</b>（Mini 飛球組、國小組、國高中組）</div>
         <div class="sys-btns">
-          <a class="btn-blue" href="https://drone-scoreboard-5231d.web.app/%E7%8F%BE%E5%A0%B4%E7%9C%8B%E6%9D%BF.html" target="_blank" rel="noopener">🔗 查看線上現場看板</a>
-          <a class="btn-ghost" href="tel:035403463">📞 賽事系統合作洽詢</a>
+          <a class="btn-blue" href="https://drone-scoreboard-5231d.web.app/%E7%8F%BE%E5%A0%B4%E7%9C%8B%E6%9D%BF.html" target="_blank" rel="noopener">查看線上現場看板</a>
+          <a class="btn-ghost" href="tel:035403463">賽事系統合作洽詢</a>
         </div>
       </div>
     </div>
@@ -990,7 +1034,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         </div>
       </div>
       <div>
-        <span class="sys-kicker">🎮 SYSTEM 02</span>
+        <span class="sys-kicker">SYSTEM 02</span>
         <h3 class="sys-title">足球無人機模擬飛行系統</h3>
         <p class="sys-desc">打開瀏覽器就能練飛，不用安裝。依 6×3×3 公尺無人機足球場地與 3 對 3 比賽規則打造的 3D 物理模擬器，讓孩子上機前先熟悉操控，回家也能持續練習、闖關、和同學連線對戰。</p>
         <ul class="sys-features">
@@ -1000,9 +1044,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><span><b>連線對戰：</b>支援 1v1、2v2、3v3，同學在不同地方也能一起比賽</span></li>
           <li><span><b>鍵盤、遊戲搖桿皆可操作</b>，關卡動作對應認證課程，課堂與自主練習無縫銜接</span></li>
         </ul>
-        <div class="sys-used">📍 實際應用：<b>AI 足球無人機社團、認證課程與競賽班</b>的課前與課後練習</div>
+        <div class="sys-used">實際應用：<b>AI 足球無人機社團、認證課程與競賽班</b>的課前與課後練習</div>
         <div class="sys-btns">
-          <a class="btn-blue" href="https://pse.is/8rujak" target="_blank" rel="noopener">🎯 預約課程，體驗模擬訓練</a>
+          <a class="btn-blue" href="https://pse.is/8rujak" target="_blank" rel="noopener">預約課程，體驗模擬訓練</a>
         </div>
       </div>
     </div>
@@ -1032,10 +1076,10 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <article class="cf reveal" id="course-cert">
       <div class="cf-dm">
         <img class="lightbox-trigger" src="images/drone/dm-certification.jpg" alt="無人機足球 8 堂速成培訓課程 DM" data-cap="無人機足球 8 堂速成培訓課程（初級認證）">
-        <div class="cf-dm-links">🔍 點擊放大　｜　<a href="images/drone/dm-certification.jpg" target="_blank" rel="noopener">開啟原圖</a></div>
+        <div class="cf-dm-links">點擊放大　｜　<a href="images/drone/dm-certification.jpg" target="_blank" rel="noopener">開啟原圖</a></div>
       </div>
       <div class="cf-body">
-        <span class="cf-kicker cert">🎖️ 初階｜認證課程</span>
+        <span class="cf-kicker cert">初階｜認證課程</span>
         <h3 class="cf-title">無人機足球 8 堂速成培訓課程</h3>
         <p class="cf-sub">無人機足球能力認證・初級（Beginner）｜於課程練習教室上課，就地考取認證</p>
         <div class="cf-chips"><span>8 堂完整培訓</span><span>每堂 2 小時</span><span>小班教學</span><span>依程度調整進度</span><span>就地考取認證</span></div>
@@ -1045,9 +1089,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><b>課程包含</b>8 堂課＋無人機 1 套＋能力檢定認證 1 次</li>
         </ul>
         <div class="cf-values">
-          <div><span class="v-ic">🛡️</span><b>官方認證</b><small>KODO ROBOT 官方核發證書</small></div>
-          <div><span class="v-ic">📖</span><b>學習歷程</b><small>成果可上傳教育部學習歷程</small></div>
-          <div><span class="v-ic">⭐</span><b>多元表現</b><small>學習成果可作為核心指標</small></div>
+          <div><b>官方認證</b><small>KODO ROBOT 官方核發證書</small></div>
+          <div><b>學習歷程</b><small>成果可上傳教育部學習歷程</small></div>
+          <div><b>多元表現</b><small>學習成果可作為核心指標</small></div>
         </div>
         <div class="cf-h">8 堂課程三階段</div>
         <div class="cf-stages">
@@ -1058,8 +1102,8 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <div class="cf-flow"><span>課程練習</span><i>→</i><span>模擬測驗</span><i>→</i><span>現場檢定</span><i>→</i><span>取得證書</span><i>→</i><span>上傳學習歷程</span></div>
         <p class="cf-note">※ 課程將依學員情況調整進度（因材施教・循序學習）。本認證為 KODO ROBOT 核發之民間無人機足球能力認證，非民航局無人機操作證。</p>
         <div class="cf-btns">
-          <a class="btn-blue" href="https://forms.gle/A5CzH2Xyc51b33GM9" target="_blank" rel="noopener">📝 立即報名</a>
-          <a class="btn-ghost" href="tel:035403463">📞 03-540-3463</a>
+          <a class="btn-blue" href="https://forms.gle/A5CzH2Xyc51b33GM9" target="_blank" rel="noopener">立即報名</a>
+          <a class="btn-ghost" href="tel:035403463">03-540-3463</a>
         </div>
       </div>
     </article>
@@ -1068,10 +1112,10 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <article class="cf comp reverse reveal" id="course-comp">
       <div class="cf-dm">
         <img class="lightbox-trigger" src="images/drone/dm-competition.jpg" alt="無人機足球競賽班（一）DM" data-cap="無人機足球競賽班（一）｜選手培訓">
-        <div class="cf-dm-links">🔍 點擊放大　｜　<a href="images/drone/dm-competition.jpg" target="_blank" rel="noopener">開啟原圖</a></div>
+        <div class="cf-dm-links">點擊放大　｜　<a href="images/drone/dm-competition.jpg" target="_blank" rel="noopener">開啟原圖</a></div>
       </div>
       <div class="cf-body">
-        <span class="cf-kicker comp">🏆 選手培訓｜競賽班</span>
+        <span class="cf-kicker comp">選手培訓｜競賽班</span>
         <h3 class="cf-title">無人機足球競賽班（一）</h3>
         <p class="cf-sub">從操控到實戰，8 次課程打造你的競賽實力！循序漸進，由基礎到實戰，培養未來競賽選手。</p>
         <div class="cf-chips"><span>8 次課程</span><span>攻防戰術</span><span>團隊配合</span><span>3 對 3 實戰</span><span>正式賽制模擬</span></div>
@@ -1088,15 +1132,15 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         </ol>
         <div class="cf-h">8 次完成後，學生具備的競賽能力</div>
         <div class="cf-abilities">
-          <div><span>🎮</span><b>個人操控</b><small>高速移動、急停、轉向、穿門</small></div>
-          <div><span>⚽</span><b>進攻能力</b><small>進球角度、連續進攻、變向突破</small></div>
-          <div><span>🛡️</span><b>防守能力</b><small>站位判斷、路線攔截、攻防判斷</small></div>
-          <div><span>👥</span><b>團隊能力</b><small>角色分工、溝通配合、3 對 3 戰術</small></div>
-          <div><span>🏆</span><b>競賽能力</b><small>正式賽制、比分判斷、臨場應變</small></div>
+          <div><b>個人操控</b><small>高速移動、急停、轉向、穿門</small></div>
+          <div><b>進攻能力</b><small>進球角度、連續進攻、變向突破</small></div>
+          <div><b>防守能力</b><small>站位判斷、路線攔截、攻防判斷</small></div>
+          <div><b>團隊能力</b><small>角色分工、溝通配合、3 對 3 戰術</small></div>
+          <div><b>競賽能力</b><small>正式賽制、比分判斷、臨場應變</small></div>
         </div>
         <div class="cf-btns">
-          <a class="btn-blue" href="tel:035403463">📞 來電報名 03-540-3463</a>
-          <a class="btn-ghost" href="https://pse.is/8rujak" target="_blank" rel="noopener">🎯 預約諮詢</a>
+          <a class="btn-blue" href="tel:035403463">來電報名 03-540-3463</a>
+          <a class="btn-ghost" href="https://pse.is/8rujak" target="_blank" rel="noopener">預約諮詢</a>
         </div>
       </div>
     </article>
@@ -1104,50 +1148,46 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <h3 class="more-title reveal">更多無人機課程與合作</h3>
     <div class="dc-grid">
       <div class="dc-card reveal reveal-d1">
-        <div class="dc-icon">🏫</div>
         <div class="dc-type">SCHOOL CLUB · 校園社團</div>
         <div class="dc-title">AI 足球無人機課後社團</div>
-        <div class="dc-target">👧 適合：國小三～六年級、高中</div>
+        <div class="dc-target">適合：國小三～六年級、高中</div>
         <ul class="dc-list">
           <li>學期制，每週一次，每學期約 13–15 堂</li>
           <li>飛行安全、基礎操控到分組對抗</li>
           <li>搭配模擬飛行系統，課後持續練習</li>
           <li>現正開課：民富、竹蓮、香山國小，香山高中</li>
         </ul>
-        <a href="tel:035403463" class="dc-btn alt">🏫 學校開課洽詢</a>
+        <a href="tel:035403463" class="dc-btn alt">學校開課洽詢</a>
       </div>
 
       <div class="dc-card reveal reveal-d3">
-        <div class="dc-icon">⛺</div>
         <div class="dc-type">CAMP · 營隊</div>
         <div class="dc-title">無人機夏令營／冬令營</div>
-        <div class="dc-target">🧑‍🚀 適合：國小 ～ 國中學生</div>
+        <div class="dc-target">適合：國小 ～ 國中學生</div>
         <ul class="dc-list">
           <li>寒暑假密集學習，結合 AI 與無人機足球</li>
           <li>分組闖關、團隊合作與友誼賽</li>
           <li>搭配 AI 模擬飛行系統闖關練習</li>
         </ul>
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn alt">🎯 預約營隊</a>
+        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn alt">預約營隊</a>
       </div>
 
       <div class="dc-card reveal reveal-d1">
-        <div class="dc-icon">🤝</div>
         <div class="dc-type">GROUP · 團體包班</div>
         <div class="dc-title">社區・樂齡・機關團體體驗</div>
-        <div class="dc-target">👨‍👩‍👧 適合：社區活動、樂齡課程、企業與機關</div>
+        <div class="dc-target">適合：社區活動、樂齡課程、企業與機關</div>
         <ul class="dc-list">
           <li>2 小時無人機足球科技體驗，不需飛行經驗</li>
           <li>第一次飛行 → 趣味闖關 → 射門挑戰</li>
           <li>可到府辦理，依人數配置講師與助教</li>
         </ul>
-        <a href="tel:035403463" class="dc-btn alt">📞 來電洽詢</a>
+        <a href="tel:035403463" class="dc-btn alt">來電洽詢</a>
       </div>
 
       <div class="dc-card reveal reveal-d2">
-        <div class="dc-icon">🎮</div>
         <div class="dc-type">AI TRAINING · 模擬訓練</div>
         <div class="dc-title">AI 模擬飛行訓練</div>
-        <div class="dc-target">🧑‍🚀 適合：所有無人機課程學員</div>
+        <div class="dc-target">適合：所有無人機課程學員</div>
         <ul class="dc-list">
           <li>上機前先在 3D 模擬器熟悉操控，減少摔機</li>
           <li>闖關課程對應認證動作，進度一目了然</li>
@@ -1157,10 +1197,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       </div>
 
       <div class="dc-card reveal reveal-d3">
-        <div class="dc-icon">🏆</div>
         <div class="dc-type">COMPETITION · 賽事</div>
         <div class="dc-title">無人機足球賽事規劃與賽務</div>
-        <div class="dc-target">🏟️ 適合：學校、機關、活動主辦單位</div>
+        <div class="dc-target">適合：學校、機關、活動主辦單位</div>
         <ul class="dc-list">
           <li>依 FAI F9A-B 國際規則規劃賽制</li>
           <li>AI 自研賽事管理系統：賽程、計分、現場看板</li>
@@ -1220,7 +1259,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="course-card reveal reveal-d1">
         <div class="c-level">LEVEL 01 · 初階班</div>
         <div class="c-title">Scratch Jr. 程式課程</div>
-        <div class="c-target">👧 適合：大班 ～ 3 年級</div>
+        <div class="c-target">適合：大班 ～ 3 年級</div>
         <ul class="c-features">
           <li>MIT Scratch Jr. 程式語言</li>
           <li>創意積木機器人實作</li>
@@ -1232,7 +1271,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="course-card featured reveal reveal-d2">
         <div class="c-level">LEVEL 02 · 進階班</div>
         <div class="c-title">Scratch 3.0 程式課程</div>
-        <div class="c-target">🧒 適合：4 年級 ～ 9 年級</div>
+        <div class="c-target">適合：4 年級 ～ 9 年級</div>
         <ul class="c-features">
           <li>MIT Scratch 3.0 程式語言</li>
           <li>拖拉積木寫程式，零基礎輕鬆上手</li>
@@ -1247,26 +1286,26 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="course-card reveal reveal-d3">
         <div class="c-level">LEVEL 03 · 高階</div>
         <div class="c-title">Python 基礎班</div>
-        <div class="c-target">🧑‍💻 適合：有 Scratch 基礎學員</div>
+        <div class="c-target">適合：有 Scratch 基礎學員</div>
         <ul class="c-features">
           <li>Python 完整語法教學</li>
           <li>資料結構與演算法入門</li>
           <li>實作專案練習</li>
           <li>接軌 AI 與數據科學領域</li>
         </ul>
-        <a href="tel:035403463" class="c-btn">📞 來電洽詢</a>
+        <a href="tel:035403463" class="c-btn">來電洽詢</a>
       </div>
       <div class="course-card reveal">
         <div class="c-level">LEVEL 04 · 競賽培訓</div>
         <div class="c-title">C/C++ &amp; APCS 認證</div>
-        <div class="c-target">🏆 適合：志在競賽認證學員</div>
+        <div class="c-target">適合：志在競賽認證學員</div>
         <ul class="c-features">
           <li>C/C++ 語法完整班</li>
           <li>C/C++ 實戰演練班</li>
           <li>APCS 程式認證培訓專班</li>
           <li>歷屆試題完整解析</li>
         </ul>
-        <a href="tel:035403463" class="c-btn">📞 來電洽詢</a>
+        <a href="tel:035403463" class="c-btn">來電洽詢</a>
       </div>
     </div>
   </div>
@@ -1383,7 +1422,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <p class="section-sub">我們的學員屢獲國內外大賽佳績，APCS 成績斐然。</p>
     </div>
     <div class="reveal">
-      <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:0.8rem; text-align:center;">🔍 點擊圖片可放大觀看</p>
+      <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:0.8rem; text-align:center;">點擊圖片可放大觀看</p>
       <img class="apcs-img lightbox-trigger" src="images/apcs.png" alt="APCS 成績榜" data-cap="APCS 成績榜">
     </div>
     <div class="award-banners reveal">
@@ -1440,7 +1479,6 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="camps-grid">
       <div class="camp-card reveal reveal-d1">
         <div class="camp-header summer">
-          <div class="camp-icon">☀️</div>
           <div><div class="camp-season">夏令營</div><div class="camp-season-en">SUMMER CAMP</div></div>
         </div>
         <div class="camp-body">
@@ -1450,7 +1488,6 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       </div>
       <div class="camp-card reveal reveal-d2">
         <div class="camp-header winter">
-          <div class="camp-icon">❄️</div>
           <div><div class="camp-season">冬令營</div><div class="camp-season-en">WINTER CAMP</div></div>
         </div>
         <div class="camp-body">
@@ -1470,7 +1507,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <h2 class="section-title">您最想知道的，都在這裡</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-group">🚁 無人機課程</div>
+      <div class="faq-group">無人機課程</div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">無人機課程適合幾歲的孩子？安全嗎？<span class="faq-icon">+</span></button>
         <div class="faq-a">校園社團涵蓋國小（三～六年級）與高中；8 堂速成認證課程招收國小三年級到國中、對無人機有興趣的學生，零基礎也可以。足球無人機外圍有球型防撞護罩，課程從飛行安全與基礎操控開始，由老師全程帶領。</div>
@@ -1492,7 +1529,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <div class="faq-a">歡迎！我們提供校園社團、團體體驗、師資培訓與賽事規劃（含 AI 賽事管理系統）。請來電 03-540-3463 洽詢。</div>
       </div>
 
-      <div class="faq-group">💻 程式課程</div>
+      <div class="faq-group">程式課程</div>
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">初階班的課程內容是什麼？<span class="faq-icon">+</span></button>
         <div class="faq-a">初階班（大班～3年級）使用平板電腦，搭配 MIT Scratch Jr. 與 Scratch 3.0 課程，結合創意積木實作。每期 24 堂課（約 6 個月），每週上課 2 小時。詳細費用請來電洽詢。</div>
@@ -1520,8 +1557,8 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   <h2 class="cta-title reveal">讓孩子用程式與 AI 無人機<br>飛向未來</h2>
   <p class="cta-desc reveal">無人機課程、程式課程、學校社團與賽事合作，歡迎預約或來電洽詢</p>
   <div class="cta-btns reveal">
-    <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-yellow">🎯 預約課程</a>
-    <a href="tel:035403463" class="btn-wol">📞 03-540-3463</a>
+    <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-yellow">預約課程</a>
+    <a href="tel:035403463" class="btn-wol">03-540-3463</a>
     <a href="https://www.facebook.com/groups/fzt168" class="btn-wol" target="_blank" rel="noopener">FB 粉絲專頁</a>
   </div>
 </section>
@@ -1532,15 +1569,14 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="footer-top">
       <div>
         <div class="footer-logo-row">
-          <span style="font-size:1.8rem;">🦓</span>
           <span class="footer-brand-name">富志科技｜未來斑馬 AI 創新學苑</span>
         </div>
         <p class="footer-tagline">AI 無人機 × 程式教育<br>富而好禮，志在天下</p>
         <div class="footer-contact">
-          📍 新竹市經國路三段 78 巷 23-6 號<br>
-          📞 <a href="tel:035403463">03-540-3463</a><br>
-          ✉ <a href="mailto:greenmail1011@gmail.com">greenmail1011@gmail.com</a><br>
-          💬 <a href="https://www.facebook.com/groups/fzt168" target="_blank" rel="noopener">Facebook 粉絲專頁</a>
+          <span class="fc-k">地址</span>新竹市經國路三段 78 巷 23-6 號<br>
+          <span class="fc-k">電話</span><a href="tel:035403463">03-540-3463</a><br>
+          <span class="fc-k">信箱</span><a href="mailto:greenmail1011@gmail.com">greenmail1011@gmail.com</a><br>
+          <span class="fc-k">社群</span><a href="https://www.facebook.com/groups/fzt168" target="_blank" rel="noopener">Facebook 粉絲專頁</a>
         </div>
       </div>
       <div>
@@ -1628,7 +1664,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       const label = img.getAttribute('alt').split('：').pop().replace('畫面', '');
       const fb = document.createElement('div');
       fb.className = 'shot-fallback';
-      fb.innerHTML = '<span class="big">' + (img.src.includes('simulator') ? '🎮' : '🏆') + '</span><span>' + label + '</span>';
+      fb.innerHTML = '<span class="big">' + (img.src.includes('simulator') ? '模擬飛行' : '賽事系統') + '</span><span>' + label + '</span>';
       img.replaceWith(fb);
     });
   });
