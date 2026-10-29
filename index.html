@@ -28,6 +28,19 @@
 "address":{"@type":"PostalAddress","streetAddress":"經國路三段 78 巷 23-6 號","addressLocality":"新竹市","addressCountry":"TW"},
 "sameAs":["https://www.fuzhitech.com","https://www.facebook.com/groups/fzt168"]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationEvent",
+"name":"2027 AI創客無人機冬令營",
+"description":"寒假五日營隊：親手組裝遙控、以 AI 為 Python 助手寫程式自動飛行，最後兩天國際規格無人機足球競技場實戰，每位學員贈送 STEAM 飛行套件。",
+"startDate":"2027-01-25T09:00:00+08:00","endDate":"2027-01-29T16:00:00+08:00",
+"eventStatus":"https://schema.org/EventScheduled",
+"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+"location":{"@type":"Place","name":"國立陽明交通大學光復校區 工程三館","address":{"@type":"PostalAddress","addressLocality":"新竹市","addressCountry":"TW"}},
+"image":"https://www.futurezebra.com/images/camp/winter-2027-dm.jpg",
+"url":"https://www.futurezebra.com/#winter-camp",
+"organizer":[{"@type":"Organization","name":"國立陽明交通大學人工智慧專責辦公室"},{"@type":"Organization","name":"新竹市無人機創新科技協會"}],
+"offers":{"@type":"AggregateOffer","priceCurrency":"TWD","lowPrice":"8800","highPrice":"9800","url":"https://docs.google.com/forms/d/1Pl-W0dfejheaaLPiwcE7hB2VjO5CaDCwFGPHgg-Usoc/viewform","availability":"https://schema.org/InStock"}}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -190,6 +203,11 @@ nav.scrolled { box-shadow:var(--shadow); }
 .hero-chip.c1 { left:-24px; bottom:28px; }
 .hero-chip.c2 { right:-18px; top:24px; }
 .hero-caption { color:rgba(255,255,255,0.6); font-size:0.75rem; text-align:center; margin-top:0.9rem; }
+.hero-dm { max-width:430px; margin:0 auto; }
+.hero-dm img { display:block; width:100%; height:auto; border-radius:18px; box-shadow:0 24px 70px rgba(0,0,0,0.45); border:3px solid rgba(255,255,255,0.18); background:#0b1424; }
+.hero-company { margin-top:1.8rem; font-size:0.82rem; color:rgba(255,255,255,0.62); line-height:1.7; animation:fadeUp 0.7s 0.6s both; }
+.hero-company a { color:#67e8f9; font-weight:700; text-decoration:none; white-space:nowrap; }
+@media(max-width:960px){ .hero-dm { max-width:320px; } }
 
 /* ── MARQUEE ── */
 .marquee-wrap { background:var(--blue-dark); padding:0.9rem 0; overflow:hidden; }
@@ -656,6 +674,77 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
 .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.38); }
 
+/* ── WINTER CAMP 2027 ── */
+.nav-links > li > a.nav-camp { color:#b45309; font-weight:700; }
+.camp-section { background:linear-gradient(180deg,#ffffff 0%,var(--blue-pale) 100%); }
+.camp-banner { margin:0 0 2rem; border-radius:20px; overflow:hidden; background:#0b1424; box-shadow:var(--shadow-lg); }
+.camp-banner img { display:block; width:100%; height:auto; aspect-ratio:972/282; object-fit:cover; }
+.cf.camp-cf { border-top-color:var(--cyan); }
+.cf-kicker.camp { background:#e0f2fe; color:#0369a1; }
+.cf-h-note { font-size:0.76rem; font-weight:700; color:var(--gray-500); margin-left:0.4rem; }
+.camp-gift { display:grid; grid-template-columns:104px minmax(0,1fr); gap:1rem; align-items:center;
+  background:#fff7e6; border:1px solid #fde3b0; border-radius:14px; padding:0.9rem 1rem; margin-bottom:1.3rem; }
+.camp-gift img { width:104px; height:104px; object-fit:contain; background:white; border-radius:12px; display:block; }
+.camp-gift-tag { display:inline-block; background:#fbbf24; color:var(--blue-dark); font-size:0.72rem; font-weight:900; letter-spacing:0.12em; padding:0.1rem 0.6rem; border-radius:4px; }
+.camp-gift b { display:block; color:var(--blue-dark); font-size:1.02rem; margin:0.35rem 0 0.3rem; }
+.camp-gift ul { margin:0 0 0 1.1rem; font-size:0.83rem; color:var(--gray-700); line-height:1.7; }
+.camp-days { list-style:none; display:grid; gap:0.6rem; margin-bottom:1.3rem; }
+.camp-days li { display:grid; grid-template-columns:3.6rem minmax(0,1fr); gap:0.9rem; align-items:start;
+  background:var(--blue-pale); border-radius:12px; padding:0.85rem 1rem; }
+.camp-days li.arena { background:#fff7e6; box-shadow:0 0 0 2px #fbbf24 inset; }
+.cd-date { font-family:'Nunito','Noto Sans TC',sans-serif; font-weight:900; color:var(--blue-mid); font-size:1.15rem; line-height:1.15; }
+.cd-date small { display:block; font-family:'Noto Sans TC',sans-serif; font-size:0.72rem; font-weight:700; color:var(--gray-500); }
+.camp-days li.arena .cd-date { color:#b45309; }
+.camp-days b { display:block; color:var(--blue-dark); font-size:0.95rem; line-height:1.5; }
+.camp-days p { font-size:0.83rem; color:var(--gray-700); line-height:1.7; margin-top:0.2rem; }
+.camp-eb { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;
+  background:#b45309; color:white; font-weight:700; font-size:0.92rem; border-radius:12px; padding:0.75rem 1rem; margin-bottom:0.8rem; }
+.camp-eb[hidden] { display:none; }
+.camp-eb b { color:#fde68a; font-family:'Nunito',sans-serif; font-size:1.2rem; margin:0 0.15rem; }
+.camp-eb a { background:white; color:#b45309; text-decoration:none; font-weight:800; font-size:0.85rem; padding:0.45rem 1rem; border-radius:50px; }
+.camp-price { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.7rem; margin-bottom:0.8rem; }
+.tier { border:1px solid var(--gray-200); border-radius:14px; padding:0.9rem 0.6rem; text-align:center; background:white; }
+.t-name { display:block; font-weight:800; color:var(--blue-dark); font-size:0.9rem; }
+.t-name em { display:none; font-style:normal; font-size:0.68rem; font-weight:800; padding:0.05rem 0.5rem; border-radius:50px; margin-left:0.35rem; vertical-align:1px; }
+.t-amt { display:block; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.65rem; color:var(--blue-dark); line-height:1.25; margin-top:0.2rem; }
+.tier small { display:block; font-size:0.74rem; color:var(--gray-500); line-height:1.5; margin-top:0.15rem; }
+.tier.now { border:2px solid #b45309; background:#fffbeb; }
+.tier.now .t-amt { color:#b45309; }
+.tier.now .t-now { display:inline-block; background:#b45309; color:white; }
+.tier.done { opacity:0.55; }
+.tier.done .t-amt { text-decoration:line-through; }
+.tier.done .t-done { display:inline-block; background:var(--gray-200); color:var(--gray-500); }
+.camp-discount { border:1.5px dashed #f59e0b; border-radius:12px; padding:0.8rem 1rem; font-size:0.86rem; color:var(--gray-700); line-height:1.7; margin-bottom:1.3rem; }
+.camp-discount b { color:var(--blue-dark); }
+.camp-discount ul { margin:0.3rem 0 0 1.2rem; }
+.camp-perks { flex:none; margin-bottom:1.3rem; }
+.camp-org { font-size:0.82rem; color:var(--gray-700); background:var(--gray-50); border-radius:10px; padding:0.6rem 0.9rem; margin-bottom:1.2rem; line-height:1.7; }
+.camp-recap-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:0.6rem; margin:1rem 0 1rem; }
+.camp-recap-head h3 { font-size:1.25rem; font-weight:900; color:var(--blue-dark); }
+.camp-recap-head a { font-size:0.88rem; font-weight:700; color:var(--blue-mid); text-decoration:none; }
+.camp-recap { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0.8rem; }
+.camp-recap figure { position:relative; margin:0; border-radius:12px; overflow:hidden; background:var(--gray-100); box-shadow:var(--shadow); }
+.camp-recap img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; transition:transform 0.4s; }
+.camp-recap figure:hover img { transform:scale(1.05); }
+.camp-recap figcaption { position:absolute; left:8px; bottom:8px; background:rgba(15,52,96,0.85); color:white; font-size:0.72rem; font-weight:700; padding:0.15rem 0.6rem; border-radius:50px; pointer-events:none; }
+.camp-privacy { font-size:0.78rem; color:var(--gray-500); margin-top:0.8rem; }
+.camp-card-link { display:inline-block; margin-top:1rem; font-size:0.88rem; font-weight:800; color:var(--blue-mid); text-decoration:none; }
+@media(max-width:960px){
+  .camp-recap { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:560px){
+  .camp-banner img { aspect-ratio:2.2/1; }
+  .camp-price { grid-template-columns:1fr; }
+  .tier { display:grid; grid-template-columns:auto 1fr; grid-template-areas:"n a" "s s"; align-items:center; text-align:left; padding:0.7rem 0.9rem; column-gap:0.8rem; }
+  .t-name { grid-area:n; } .t-amt { grid-area:a; text-align:right; margin:0; font-size:1.4rem; } .tier small { grid-area:s; }
+  .camp-days li { grid-template-columns:1fr; gap:0.2rem; }
+  .cd-date small { display:inline; margin-left:0.4rem; }
+  .camp-recap { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .camp-recap figure:first-child { grid-column:1 / -1; }
+  .camp-gift { grid-template-columns:76px minmax(0,1fr); }
+  .camp-gift img { width:76px; height:76px; }
+}
+
 /* ── LIGHTBOX ── */
 #lightbox {
   display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999;
@@ -761,6 +850,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
         <li><a href="#ai-systems" class="nav-drone">AI 自研系統</a></li>
       </ul>
     </li>
+    <li><a href="#winter-camp" class="nav-camp">2027 冬令營</a></li>
     <li><a href="#drone-courses" class="nav-drone">無人機課程</a></li>
     <li><a href="#courses">程式課程</a></li>
     <li><a href="#achievements">榮耀</a></li>
@@ -770,47 +860,39 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO：2027 冬令營主打（營隊結束後改回公司介紹版，見 git 歷史 2026-09-19 版本） -->
 <section class="hero" id="top">
   <div class="hero-blob1"></div>
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">新竹 AI 無人機 × 程式教育專業團隊</div>
+      <div class="hero-badge">2027 寒假限定・五日營隊・招生中</div>
       <h1 class="hero-title">
-        從<span>程式設計</span><br>
-        飛向 <em>AI 無人機</em><br>
-        的未來世界
+        2027 <span>AI創客</span><br>
+        <em>無人機</em>冬令營
       </h1>
       <p class="hero-desc">
-        富志科技（未來斑馬）深耕新竹程式教育，並全力推動<strong>無人機足球</strong>：
-        校園社團、認證課程、國際規則賽事，
-        以及運用 AI 自主開發的<strong>賽事管理系統</strong>與<strong>模擬飛行系統</strong>。
+        親手組裝遙控 × AI 寫程式自動飛行。1/25（一）～ 1/29（五）在陽明交大光復校區，最後兩天進入<strong>國際規格無人機足球競技場</strong>實戰，每位學員贈送 <strong>STEAM 飛行套件</strong>。
       </p>
       <div class="hero-btns">
-        <a href="#drone" class="btn-yellow">看無人機推廣成果</a>
-        <a href="#ai-systems" class="btn-white-outline">AI 自研系統</a>
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="btn-white-outline">預約課程</a>
+        <a href="https://docs.google.com/forms/d/1Pl-W0dfejheaaLPiwcE7hB2VjO5CaDCwFGPHgg-Usoc/viewform" target="_blank" rel="noopener" class="btn-yellow">立即報名</a>
+        <a href="#winter-camp" class="btn-white-outline">看營隊內容</a>
+        <a href="#camp-price" class="btn-white-outline">費用與早鳥優惠</a>
       </div>
       <div class="hero-stats">
-        <div><div class="hstat-num">4<small>校</small></div><div class="hstat-label">校園無人機社團</div></div>
-        <div><div class="hstat-num">F9A</div><div class="hstat-label">國際規格賽事</div></div>
-        <div><div class="hstat-num">2<small>套</small></div><div class="hstat-label">AI 自研系統</div></div>
-        <div><div class="hstat-num">APCS</div><div class="hstat-label">程式認證培訓</div></div>
+        <div><div class="hstat-num">1/25<small>–29</small></div><div class="hstat-label">寒假五日營隊</div></div>
+        <div><div class="hstat-num">30<small>小時</small></div><div class="hstat-label">每日 09:00–16:00</div></div>
+        <div><div class="hstat-num">30<small>名</small></div><div class="hstat-label">國小 3 年級以上・限量</div></div>
+        <div><div class="hstat-num" id="hero-price">$8,800</div><div class="hstat-label" id="hero-price-label">超早鳥・11/30 前</div></div>
       </div>
+      <p class="hero-company">富志科技｜未來斑馬 AI 創新學苑・新竹 AI 無人機 × 程式教育　<a href="#about">認識我們 →</a></p>
     </div>
     <div class="hero-right">
-      <div class="hero-photo">
-        <img src="images/drone/simulator-fly.jpg"
-             alt="AI 模擬飛行系統 3D 無人機足球畫面" class="lightbox-trigger" data-cap="AI 模擬飛行系統｜3D 無人機足球練習畫面">
-        <a class="hero-chip c2" href="#ai-systems">
-          <span><b>AI 賽事管理系統</b><span>賽程・計分・現場看板</span></span>
-        </a>
-        <a class="hero-chip c1" href="#drone-courses">
-          <span><b>校園無人機社團</b><span>三所國小＋香山高中</span></span>
-        </a>
+      <div class="hero-dm">
+        <img src="images/camp/winter-2027-dm.jpg" width="1200" height="1800" fetchpriority="high"
+             alt="2027 AI創客無人機冬令營 DM" class="lightbox-trigger" data-cap="2027 AI創客無人機冬令營 DM">
       </div>
-      <p class="hero-caption">AI 模擬飛行系統｜3D 無人機足球練習畫面</p>
+      <p class="hero-caption">點擊 DM 放大查看</p>
     </div>
   </div>
 </section>
@@ -818,6 +900,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track" id="marquee">
+    <div class="mitem"><span class="mdot" aria-hidden="true"></span>2027 AI創客無人機冬令營 1/25–1/29 招生中</div>
     <div class="mitem d"><span class="mdot" aria-hidden="true"></span>AI 足球無人機校園社團</div>
     <div class="mitem d"><span class="mdot" aria-hidden="true"></span>無人機足球 8 堂速成認證班</div>
     <div class="mitem d"><span class="mdot" aria-hidden="true"></span>無人機足球競賽班</div>
@@ -832,6 +915,118 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <div class="mitem"><span class="mdot" aria-hidden="true"></span>夏令營 / 冬令營</div>
   </div>
 </div>
+
+<!-- WINTER CAMP 2027 -->
+<section class="section camp-section" id="winter-camp">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">WINTER CAMP 2027 · 冬令營招生中</span>
+      <h2 class="section-title">2027 AI創客無人機冬令營</h2>
+      <p class="section-sub">親手組裝遙控 × AI 寫程式自動飛行。寒假限定五日營隊，最後兩天進入國際規格無人機足球競技場實戰，每位學員贈送 STEAM 飛行套件。</p>
+    </div>
+
+    <figure class="camp-banner reveal">
+      <img src="images/camp/winter-2027-battle.jpg" alt="紅藍兩台球型足球無人機正面對撞、迸出電光" width="972" height="282">
+    </figure>
+
+    <article class="cf camp-cf reveal" id="camp-2027">
+      <div class="cf-dm">
+        <img class="lightbox-trigger" src="images/camp/winter-2027-dm.jpg" alt="2027 AI創客無人機冬令營 DM" data-cap="2027 AI創客無人機冬令營 DM" loading="lazy" width="1200" height="1800">
+        <div class="cf-dm-links">點擊放大　｜　<a href="images/camp/winter-2027-dm.jpg" target="_blank" rel="noopener">開啟原圖</a></div>
+      </div>
+      <div class="cf-body">
+        <span class="cf-kicker camp">寒假限定・五日營隊</span>
+        <h3 class="cf-title">2027/1/25（一）～ 1/29（五）</h3>
+        <p class="cf-sub">從認識無人機、親手組裝、AI 輔助寫 Python，到無人機足球競技場實戰，五天完整走過一次無人機創客流程。</p>
+        <div class="cf-chips"><span>國小 3 年級以上・無經驗可</span><span>五天共 30 小時</span><span>限量 30 名</span><span>贈 STEAM 飛行套件</span><span>國際規格競技場實戰</span></div>
+        <ul class="cf-info">
+          <li><b>日期</b>2027/1/25（一）～ 1/29（五）</li>
+          <li><b>時間</b>每日 09:00–16:00，16:00–16:30 家長接送</li>
+          <li><b>地點</b>陽明交大光復校區 工程三館</li>
+          <li><b>對象</b>國小 3 年級以上（無經驗可）</li>
+          <li><b>名額</b>限量 30 名，依繳費順序確認</li>
+          <li><b>午餐</b>可自備，或由老師代訂（每日 $150，五天共 $750）</li>
+        </ul>
+
+        <div class="cf-h">三大亮點</div>
+        <div class="cf-values">
+          <div><b>STEAM 組裝</b><small>親手組裝飛行套件，認識機架結構、馬達與電路</small></div>
+          <div><b>AI 應用</b><small>AI 是你的 Python 程式助手，寫程式完成飛行任務</small></div>
+          <div><b>遙控＋程式</b><small>模擬系統練操控，再實機遙控與程式自動飛行</small></div>
+        </div>
+
+        <div class="camp-gift">
+          <img src="images/camp/winter-2027-kit.jpg" alt="STEAM飛行套件：白色球型保護框無人機，尺寸 125 × 125 mm" loading="lazy" width="465" height="464">
+          <div>
+            <span class="camp-gift-tag">營隊好禮</span>
+            <b>每位學員贈送 STEAM 飛行套件</b>
+            <ul>
+              <li>球型保護框設計，適合室內安全飛行</li>
+              <li>尺寸約 125 × 125 mm，輕巧好上手</li>
+              <li>營隊中親手組裝，結營帶回家繼續練習</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cf-h">五天學習歷程</div>
+        <ol class="camp-days">
+          <li><span class="cd-date">1/25<small>週一</small></span><div><b>認識無人機・模擬飛行初體驗</b><p>上午：無人機構造、飛行原理與安全操作觀念<br>下午：用無人機足球模擬培訓系統練習起降、定點與方向移動</p></div></li>
+          <li><span class="cd-date">1/26<small>週二</small></span><div><b>STEAM 組裝・實機遙控飛行</b><p>上午：親手組裝飛行套件，機架結構、馬達動力與電路連接<br>下午：試飛調校，練習定高懸停與障礙飛行</p></div></li>
+          <li><span class="cd-date">1/27<small>週三</small></span><div><b>AI × Python・程式飛行任務</b><p>上午：以 AI 為程式助手，學會讀懂、修改飛行程式<br>下午：寫程式讓無人機自動降落停機坪、穿越圈圈、繞柱飛行</p></div></li>
+          <li class="arena"><span class="cd-date">1/28<small>週四</small></span><div><b>國際規格｜無人機足球競技場實戰（一）</b><p>上午：國際足球無人機練習賽，賽制規則、角色分工、分隊熱身<br>下午：競技場實戰初賽，分組積分、攻守戰術</p></div></li>
+          <li class="arena"><span class="cd-date">1/29<small>週五</small></span><div><b>國際規格｜無人機足球競技場實戰（二）・結營</b><p>上午：團體障礙接力賽，考驗操控精準度與團隊默契<br>下午：競技場實戰決賽、成果計分，頒發結營證書</p></div></li>
+        </ol>
+
+        <div class="cf-h" id="camp-price">營隊費用 <small class="cf-h-note">含 STEAM 飛行套件</small></div>
+        <div class="camp-eb" id="camp-eb" hidden><span id="camp-eb-text"></span><a href="https://docs.google.com/forms/d/1Pl-W0dfejheaaLPiwcE7hB2VjO5CaDCwFGPHgg-Usoc/viewform" target="_blank" rel="noopener">把握優惠報名</a></div>
+        <div class="camp-price">
+          <div class="tier" id="tier-super"><span class="t-name">超早鳥<em class="t-now">目前優惠</em><em class="t-done">已截止</em></span><span class="t-amt">$8,800</span><small>11/30 前報名繳費，折 1,000 元</small></div>
+          <div class="tier" id="tier-early"><span class="t-name">早鳥<em class="t-now">目前優惠</em><em class="t-done">已截止</em></span><span class="t-amt">$9,300</span><small>12/31 前報名繳費，折 500 元</small></div>
+          <div class="tier" id="tier-regular"><span class="t-name">原價<em class="t-now">目前價格</em></span><span class="t-amt">$9,800</span><small>2027/1/1 起報名</small></div>
+        </div>
+        <div class="camp-discount">
+          <b>身份優惠｜每位折 $1,000</b>（擇一，優惠不可重複）
+          <ul>
+            <li>團報 2 人（含）以上</li>
+            <li>陽明交大教職員子女（報名後於 LINE 群組提供教職員證）</li>
+            <li>未來斑馬AI創新學苑學員</li>
+          </ul>
+        </div>
+
+        <div class="cf-h">營隊加值｜證書・檢定・參賽</div>
+        <ul class="dc-list camp-perks">
+          <li>由「新竹市無人機創新科技協會」頒發結營證書</li>
+          <li>結營後可報名無人機足球能力認證（初級），通過可取得證書</li>
+          <li>表現優秀的學員，可獲專業教練指導參賽機會，累積學習歷程</li>
+        </ul>
+
+        <div class="cf-h">報名流程</div>
+        <div class="cf-flow"><span>填寫線上報名表</span><i>→</i><span>匯款繳費（填帳號後 5 碼）</span><i>→</i><span>加入 LINE 群組</span></div>
+        <p class="cf-note">依繳費順序確認名額；營隊通知與行前說明都在 LINE 群組公告。<br>
+          退費辦法：開課前 10 日以前退還全額學費；7～9 日退還 8 成；4～6 日退還 5 成；1～3 日不予退費。若因颱風或人數不足等不可抗力因素停開或延期（於開課前 1～3 日通知），學員因此退選者學費全退。</p>
+        <p class="camp-org">主辦單位：國立陽明交通大學人工智慧專責辦公室、新竹市無人機創新科技協會</p>
+        <div class="cf-btns">
+          <a class="btn-blue" href="https://docs.google.com/forms/d/1Pl-W0dfejheaaLPiwcE7hB2VjO5CaDCwFGPHgg-Usoc/viewform" target="_blank" rel="noopener">立即報名</a>
+          <a class="btn-ghost" href="https://greenmail1011.github.io/camp2027/" target="_blank" rel="noopener">完整營隊介紹 ↗</a>
+          <a class="btn-ghost" href="tel:035403463">03-540-3463</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="camp-recap-head reveal">
+      <h3>精彩營隊回顧｜2026 AI無人機足球夏令營</h3>
+      <a href="https://youtu.be/4ndio8t8Lrg" target="_blank" rel="noopener">什麼是無人機足球？看影片 ↗</a>
+    </div>
+    <div class="camp-recap reveal">
+      <figure><img class="lightbox-trigger" src="images/camp/summer-2026-p4.jpg" alt="夏令營學員與教練在無人機足球場前合照" data-cap="2026 夏令營｜結營大合照" loading="lazy"><figcaption>結營大合照</figcaption></figure>
+      <figure><img class="lightbox-trigger" src="images/camp/summer-2026-p2.jpg" alt="學員在教室聆聽課程講解" data-cap="2026 夏令營｜課程講解" loading="lazy"><figcaption>課程講解</figcaption></figure>
+      <figure><img class="lightbox-trigger" src="images/camp/summer-2026-p5.jpg" alt="學員操控球型無人機飛過巧拼塔" data-cap="2026 夏令營｜飛行挑戰" loading="lazy"><figcaption>飛行挑戰</figcaption></figure>
+      <figure><img class="lightbox-trigger" src="images/camp/summer-2026-p1.jpg" alt="學員在教室拿著證書合照" data-cap="2026 夏令營｜頒發結營證書" loading="lazy"><figcaption>頒發結營證書</figcaption></figure>
+      <figure><img class="lightbox-trigger" src="images/camp/summer-2026-p3.jpg" alt="學員在陽明交大校園步道上排隊前進" data-cap="2026 夏令營｜交大校園巡禮" loading="lazy"><figcaption>交大校園巡禮</figcaption></figure>
+    </div>
+    <p class="camp-privacy">為保護學員隱私，照片中的人臉已以卡通貼紙遮蓋。點擊照片可放大。</p>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
@@ -1188,7 +1383,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li>分組闖關、團隊合作與友誼賽</li>
           <li>搭配 AI 模擬飛行系統闖關練習</li>
         </ul>
-        <a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="dc-btn alt">預約營隊</a>
+        <a href="#winter-camp" class="dc-btn alt">看 2027 冬令營 →</a>
       </div>
 
       <div class="dc-card reveal reveal-d1">
@@ -1510,8 +1705,9 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <div><div class="camp-season">冬令營</div><div class="camp-season-en">WINTER CAMP</div></div>
         </div>
         <div class="camp-body">
-          <p>寒假密集課程，結合趣味競賽與實作挑戰，在玩中學、學中玩。適合想在新學期前強化能力的學生。</p>
-          <div class="camp-tags"><span>程式設計</span><span>無人機闖關</span><span>團隊競賽</span></div>
+          <p>2027 AI創客無人機冬令營：1/25（一）～ 1/29（五）五日營隊，親手組裝 STEAM 飛行套件、AI 輔助寫 Python 自動飛行，最後兩天國際規格無人機足球競技場實戰。國小 3 年級以上，限量 30 名。</p>
+          <div class="camp-tags"><span>STEAM 組裝</span><span>AI × Python</span><span>無人機足球實戰</span></div>
+          <a class="camp-card-link" href="#winter-camp">看冬令營詳情與報名 →</a>
         </div>
       </div>
     </div>
@@ -1546,6 +1742,24 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="faq-item reveal">
         <button class="faq-q" onclick="toggleFaq(this)">學校或單位想開無人機社團、辦體驗活動或比賽，可以合作嗎？<span class="faq-icon">+</span></button>
         <div class="faq-a">歡迎！我們提供校園社團、團體體驗、師資培訓與賽事規劃（含 AI 賽事管理系統）。請來電 03-540-3463 洽詢。</div>
+      </div>
+
+      <div class="faq-group">2027 冬令營</div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">完全沒有無人機經驗可以參加冬令營嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">可以。課程從飛行安全與基本操作開始，國小 3 年級以上、無經驗皆可報名。</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">冬令營中午吃什麼？<span class="faq-icon">+</span></button>
+        <div class="faq-a">可以自備午餐，或選擇由老師代訂便當：每日 $150，五天共 $750。</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">程式課用的無人機需要自己準備嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">不用。Python 程式飛行課程使用營隊提供的程式教學無人機；帶回家的是遙控用的 STEAM 飛行套件。</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">打字很慢或沒寫過程式，也能上 AI 程式課嗎？<span class="faq-icon">+</span></button>
+        <div class="faq-a">可以。學員以 AI 作為 Python 程式助手，由 AI 協助產生與解釋程式，學員從修改數字、調整指令開始，循序漸進完成飛行任務。</div>
       </div>
 
       <div class="faq-group">程式課程</div>
@@ -1605,6 +1819,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><a href="#ai-systems">AI 賽事管理系統</a></li>
           <li><a href="#ai-systems">AI 模擬飛行系統</a></li>
           <li><a href="#drone-courses">無人機課程</a></li>
+          <li><a href="#winter-camp">2027 冬令營</a></li>
         </ul>
       </div>
       <div>
@@ -1706,6 +1921,36 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; }
   lb.addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+})();
+
+// 冬令營費用：依台灣時間標示目前優惠
+(function () {
+  const tiers = [
+    { id: 'tier-super', name: '超早鳥', price: '$8,800', label: '11/30', end: new Date('2026-11-30T23:59:59+08:00') },
+    { id: 'tier-early', name: '早鳥',   price: '$9,300', label: '12/31', end: new Date('2026-12-31T23:59:59+08:00') }
+  ];
+  const now = new Date();
+  let cur = null;
+  tiers.forEach(t => {
+    const el = document.getElementById(t.id);
+    if (!el) return;
+    if (now > t.end) el.classList.add('done');
+    else if (!cur) cur = t;
+  });
+  const target = document.getElementById(cur ? cur.id : 'tier-regular');
+  if (target) target.classList.add('now');
+  const hp = document.getElementById('hero-price'), hl = document.getElementById('hero-price-label');
+  if (hp && hl) {
+    hp.textContent = cur ? cur.price : '$9,800';
+    hl.textContent = cur ? cur.name + '・' + cur.label + ' 前' : '每位學員';
+  }
+  if (!cur) return;
+  const day = d => { const t = new Date(d.getTime() + 8 * 3600000); return Date.UTC(t.getUTCFullYear(), t.getUTCMonth(), t.getUTCDate()); };
+  const days = Math.round((day(cur.end) - day(now)) / 86400000);
+  const eb = document.getElementById('camp-eb');
+  document.getElementById('camp-eb-text').innerHTML =
+    cur.name + '優惠' + (days < 1 ? '今天截止' : '倒數 <b>' + days + '</b> 天') + '｜' + cur.label + ' 前報名繳費，每位 ' + cur.price;
+  eb.hidden = false;
 })();
 
 // FAQ
