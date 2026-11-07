@@ -861,6 +861,30 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .story-tag span { font-family:'Nunito',sans-serif; color:#fbbf24; }
 @media(max-width:960px){ .story-grid { grid-template-columns:1fr; gap:2.2rem; } .story-logo { max-width:260px; } }
 
+/* ── VISIT: 地點・停車・匯款 ── */
+.visit-section { background:white; }
+.visit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.4rem; }
+.visit-card { border:1px solid var(--gray-200); border-radius:20px; padding:1.6rem; display:flex; flex-direction:column; box-shadow:var(--shadow); background:white; }
+.visit-card.pay { border:2px solid var(--blue-mid); }
+.visit-k { font-size:0.74rem; font-weight:800; letter-spacing:0.12em; color:var(--blue-mid); }
+.visit-card h3 { font-size:1.3rem; font-weight:900; color:var(--blue-dark); margin:0.35rem 0 0.8rem; }
+.visit-addr { font-size:1.08rem; font-weight:800; color:var(--gray-900); line-height:1.6; }
+.visit-card p { font-size:0.9rem; color:var(--gray-700); line-height:1.8; }
+.visit-steps { list-style:none; counter-reset:vs; display:grid; gap:0.55rem; margin:0.2rem 0 0.4rem; }
+.visit-steps li { counter-increment:vs; position:relative; padding-left:2.3rem; font-size:0.92rem; color:var(--gray-700); line-height:1.6; min-height:1.7rem; }
+.visit-steps li::before { content:counter(vs); position:absolute; left:0; top:0; width:1.7rem; height:1.7rem; border-radius:50%; background:var(--blue-mid); color:white; font-weight:900; font-size:0.85rem; display:flex; align-items:center; justify-content:center; }
+.visit-steps b { color:var(--blue-dark); }
+.visit-btns { display:flex; flex-direction:column; gap:0.6rem; margin-top:auto; padding-top:1.2rem; }
+.visit-btns a { display:block; text-align:center; text-decoration:none; font-weight:800; font-size:0.92rem; padding:0.75rem 1rem; border-radius:50px; min-height:44px; }
+.visit-btns .p { background:var(--blue-mid); color:white; }
+.visit-btns .p:hover { background:var(--blue-dark); }
+.visit-btns .s { border:2px solid var(--blue-mid); color:var(--blue-mid); background:white; }
+.visit-btns .s:hover { background:var(--blue-sky); }
+.visit-note { text-align:center; font-size:0.85rem; color:var(--gray-500); margin-top:1.6rem; }
+.visit-note a, .visit-card p a { color:var(--blue-mid); font-weight:700; text-decoration:none; }
+.nav-links > li > a.nav-visit { color:var(--blue-dark); }
+@media(max-width:960px){ .visit-grid { grid-template-columns:1fr; } }
+
 /* ── LIGHTBOX ── */
 #lightbox {
   display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999;
@@ -973,6 +997,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
     <li><a href="#achievements">榮耀</a></li>
     <li><a href="#faq">常見問題</a></li>
     <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener" class="nav-ext">富志二站 ↗</a></li>
+    <li><a href="#visit" class="nav-visit">停車・匯款</a></li>
     <li><a href="https://pse.is/8rujak" target="_blank" rel="noopener" class="nav-cta">預約課程</a></li>
   </ul>
 </nav>
@@ -1840,6 +1865,52 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   </div>
 </section>
 
+<!-- VISIT：上課地點・停車・匯款 -->
+<section class="section visit-section" id="visit">
+  <div class="section-inner">
+    <div class="section-head reveal">
+      <span class="section-label">VISIT &amp; PAYMENT · 停車・匯款</span>
+      <h2 class="section-title">上課地點、停車與匯款</h2>
+      <p class="section-sub">第一次來上課、要繳學費，看這裡就對了。</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card reveal reveal-d1">
+        <span class="visit-k">LOCATION · 上課地點</span>
+        <h3>教室地址</h3>
+        <p class="visit-addr">新竹市經國路三段 78 巷 23-6 號</p>
+        <p>電話 <a href="tel:035403463">03-540-3463</a></p>
+        <div class="visit-btns">
+          <a class="p" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E5%B8%82%E7%B6%93%E5%9C%8B%E8%B7%AF%E4%B8%89%E6%AE%B578%E5%B7%B723-6%E8%99%9F" target="_blank" rel="noopener">Google 地圖導航 ↗</a>
+          <a class="s" href="tel:035403463">撥打電話</a>
+        </div>
+      </div>
+      <div class="visit-card reveal reveal-d2">
+        <span class="visit-k">PARKING · 停車資訊</span>
+        <h3>開車接送與停車</h3>
+        <p>停車位置與進出路線，請看停車圖解與相簿。</p>
+        <div class="visit-btns">
+          <a class="p" href="https://www.fuzhitech.com/parking" target="_blank" rel="noopener">看停車圖解 ↗</a>
+          <a class="s" href="https://photos.app.goo.gl/PB6xniJ5KFsCe9wK7" target="_blank" rel="noopener">停車相簿 ↗</a>
+        </div>
+      </div>
+      <div class="visit-card pay reveal reveal-d3">
+        <span class="visit-k">PAYMENT · 匯款資訊</span>
+        <h3>學費匯款三步驟</h3>
+        <ol class="visit-steps">
+          <li>查看<b>匯款帳號</b>，用 ATM、網銀或臨櫃匯款</li>
+          <li>記下你的<b>匯款帳號後 5 碼</b></li>
+          <li>填寫<b>學生姓名＋後 5 碼</b>回報，老師核對入帳</li>
+        </ol>
+        <div class="visit-btns">
+          <a class="p" href="https://www.fuzhitech.com/customerservice" target="_blank" rel="noopener">查看匯款帳號 ↗</a>
+          <a class="s" href="https://docs.google.com/forms/d/e/1FAIpQLSeir2kclQe2I9de1eWS4aWUOyX-HH57tQk0bUcetbKjLjsyjg/viewform" target="_blank" rel="noopener">回報匯款後 5 碼 ↗</a>
+        </div>
+      </div>
+    </div>
+    <p class="visit-note">匯款或停車有問題，請來電 <a href="tel:035403463">03-540-3463</a>。</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-blob cta-blob1"></div>
@@ -1900,7 +1971,8 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><a href="#camps">夏令營・冬令營</a></li>
           <li><a href="#achievements">參賽殊榮</a></li>
           <li><a href="#faq">常見問題</a></li>
-          <li><a href="https://www.fuzhitech.com/parking" target="_blank" rel="noopener">停車資訊</a></li>
+          <li><a href="#visit">停車資訊</a></li>
+          <li><a href="#visit">匯款資訊・回報後 5 碼</a></li>
           <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener">富志二站（程式教育）↗</a></li>
         </ul>
       </div>
