@@ -28,6 +28,7 @@
  "name": "未來斑馬 AI 創新學苑",
  "alternateName": [
   "Future Zebra",
+  "未來斑馬程式設計學苑",
   "未來斑馬",
   "富志科技",
   "Fu Zhi Tech",
@@ -39,7 +40,7 @@
  "logo": "https://www.futurezebra.com/images/brand/zebra-logo-navy.png",
  "image": "https://www.futurezebra.com/images/og-cover.jpg",
  "slogan": "從 0 和 1 開始，創造無限未來",
- "description": "未來斑馬 AI 創新學苑（Future Zebra）由新竹市富志科技經營，提供程式教育（Scratch Jr.、Scratch 3.0、Python、C/C++、APCS）與 AI 無人機教育（無人機足球認證課程、競賽班、校園社團、營隊），並以 AI 自主開發無人機足球賽事管理系統與模擬飛行系統。品牌名稱中斑馬的黑白條紋象徵電腦世界的 0 與 1；FZT 代表 Future Zebra Technology，也呼應富志的拼音 Fu Zhi。",
+ "description": "未來斑馬 AI 創新學苑（Future Zebra）由新竹市富志科技經營，提供程式教育（Scratch Jr.、Scratch 3.0、Python、C/C++、APCS）與 AI 無人機教育（無人機足球認證課程、競賽班、校園社團、營隊），並以 AI 自主開發無人機足球賽事管理系統與模擬飛行系統。品牌名稱中斑馬的黑白條紋象徵電腦世界的 0 與 1；FZT 代表 Future Zebra Technology，也呼應富志的拼音 Fu Zhi。品牌從 1.0「未來斑馬程式設計學苑」進化為 2.0「未來斑馬 AI 創新學苑」。",
  "telephone": "+886-3-540-3463",
  "email": "greenmail1011@gmail.com",
  "address": {
@@ -819,6 +820,27 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .story-grid { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:3.5rem; align-items:center; }
 .story-logo { margin:0 auto; max-width:380px; width:100%; }
 .story-logo img { display:block; width:100%; height:auto; }
+.story-evo { margin-top:4rem; padding-top:3rem; border-top:1px solid rgba(255,255,255,0.12); }
+.evo-head { text-align:center; margin-bottom:2rem; }
+.evo-head h3 { font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:900; }
+.evo-head h3 span { font-family:'Nunito',sans-serif; color:#fbbf24; }
+.evo-head p { color:rgba(255,255,255,0.75); margin-top:0.5rem; line-height:1.8; }
+.evo-row { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:1.4rem; align-items:stretch; max-width:980px; margin:0 auto; }
+.evo-card { border:1px solid rgba(255,255,255,0.16); border-radius:20px; padding:1.6rem 1.4rem; background:rgba(255,255,255,0.04);
+  display:flex; flex-direction:column; align-items:center; text-align:center; }
+.evo-card.now { border:2px solid #fbbf24; background:rgba(251,191,36,0.06); }
+.evo-card picture, .evo-card img { display:block; height:200px; width:auto; max-width:100%; }
+.evo-ver { display:inline-block; margin-top:1.2rem; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.85rem; letter-spacing:0.12em;
+  padding:0.15rem 0.8rem; border-radius:50px; background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.85); }
+.evo-card.now .evo-ver { background:#fbbf24; color:#0b1424; }
+.evo-card b { display:block; font-size:1.15rem; font-weight:900; margin-top:0.6rem; }
+.evo-card p { font-size:0.9rem; color:rgba(255,255,255,0.72); line-height:1.8; margin-top:0.4rem; max-width:22rem; }
+.evo-arrow { display:flex; align-items:center; font-size:1.8rem; font-weight:900; color:#fbbf24; }
+@media(max-width:760px){
+  .evo-row { grid-template-columns:1fr; gap:0.8rem; }
+  .evo-arrow { justify-content:center; transform:rotate(90deg); }
+  .evo-card picture, .evo-card img { height:170px; }
+}
 .story-section .section-label { background:rgba(255,255,255,0.12); color:white; }
 .story-title { font-size:clamp(1.7rem,3.2vw,2.4rem); font-weight:900; line-height:1.35; margin-bottom:1.2rem; }
 .story-title span { color:#fbbf24; }
@@ -1071,6 +1093,33 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <div><small>富志科技</small><b><i>F</i>u <i>Z</i>hi <i>T</i>ech</b></div>
         </div>
         <p class="story-tag">從 <span>0</span> 和 <span>1</span> 開始，創造無限未來！</p>
+      </div>
+    </div>
+    <div class="story-evo reveal">
+      <div class="evo-head">
+        <h3>從 <span>1.0</span> 到 <span>2.0</span>，進入 AI 世代</h3>
+        <p>我們從 1.0 的程式設計世代，進入 2.0 的 AI 世代。</p>
+      </div>
+      <div class="evo-row">
+        <div class="evo-card">
+          <picture>
+            <source type="image/webp" srcset="images/brand/zebra-logo-v1.webp">
+            <img src="images/brand/zebra-logo-v1.png" width="405" height="475" loading="lazy" alt="1.0 時期的未來斑馬程式設計學苑標誌：綠色橢圓與月桂葉環繞的斑馬頭">
+          </picture>
+          <span class="evo-ver">1.0</span>
+          <b>未來斑馬程式設計學苑</b>
+          <p>從程式教育出發，Scratch、Python、C/C++ 到 APCS，用 0 和 1 培養孩子的邏輯思考。</p>
+        </div>
+        <div class="evo-arrow" aria-hidden="true">→</div>
+        <div class="evo-card now">
+          <picture>
+            <source type="image/webp" srcset="images/brand/zebra-logo-white.webp">
+            <img src="images/brand/zebra-logo-white.png" width="885" height="1155" loading="lazy" alt="2.0 的未來斑馬 AI 創新學苑標誌：一半斑馬頭、一半 AI 晶片與電路">
+          </picture>
+          <span class="evo-ver">2.0</span>
+          <b>未來斑馬 AI 創新學苑</b>
+          <p>程式 × AI × 無人機，讓孩子用 AI 學習、創作，也在無人機足球場上競技。</p>
+        </div>
       </div>
     </div>
   </div>
