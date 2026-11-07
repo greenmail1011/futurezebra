@@ -883,6 +883,20 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
 .visit-note { text-align:center; font-size:0.85rem; color:var(--gray-500); margin-top:1.6rem; }
 .visit-note a, .visit-card p a { color:var(--blue-mid); font-weight:700; text-decoration:none; }
 .nav-links > li > a.nav-visit { color:var(--blue-dark); }
+.visit-img { display:block; width:100%; height:auto; border-radius:12px; border:1px solid var(--gray-200); margin:0.2rem 0 0.9rem; cursor:zoom-in; background:var(--gray-100); }
+.visit-photos { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin:0.2rem 0 0.9rem; }
+.visit-photos img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; object-position:center 62%; border-radius:10px; border:1px solid var(--gray-200); cursor:zoom-in; }
+.visit-card a[href^="tel"] { white-space:nowrap; }
+.visit-zoom { font-size:0.78rem; color:var(--gray-500); margin:-0.5rem 0 0.8rem; }
+.acct { background:var(--blue-pale); border-radius:14px; padding:0.9rem 1rem; margin:0.2rem 0 1rem; display:grid; grid-template-columns:auto 1fr; gap:0.35rem 0.9rem; font-size:0.92rem; }
+.acct dt { color:var(--gray-500); font-weight:700; }
+.acct dd { margin:0; color:var(--gray-900); font-weight:700; }
+.acct dd.no { font-family:'Nunito','Noto Sans TC',sans-serif; font-size:1.25rem; font-weight:900; letter-spacing:0.04em; color:var(--blue-dark); }
+.visit-btns button { font:inherit; font-weight:800; font-size:0.92rem; padding:0.75rem 1rem; border-radius:50px; min-height:44px; cursor:pointer; border:2px solid var(--blue-mid); background:var(--blue-mid); color:white; }
+.visit-btns button:hover { background:var(--blue-dark); }
+.visit-btns button.s { background:white; color:var(--blue-mid); }
+.visit-btns button.s:hover { background:var(--blue-sky); }
+#copy-acct-msg { text-align:center; font-size:0.82rem; color:#15803d; font-weight:700; min-height:1.2em; }
 @media(max-width:960px){ .visit-grid { grid-template-columns:1fr; } }
 
 /* ── LIGHTBOX ── */
@@ -1877,8 +1891,12 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="visit-card reveal reveal-d1">
         <span class="visit-k">LOCATION · 上課地點</span>
         <h3>教室地址</h3>
+        <div class="visit-photos">
+          <img class="lightbox-trigger" src="images/visit/storefront-front.jpg" width="420" height="560" loading="lazy" alt="富志科技教室正面：藍色招牌「富志科技股份有限公司」與玻璃門" data-cap="教室正面">
+          <img class="lightbox-trigger" src="images/visit/storefront-corner.jpg" width="420" height="560" loading="lazy" alt="富志科技教室轉角外觀：圓窗大樓一樓，藍色招牌" data-cap="教室轉角外觀">
+        </div>
         <p class="visit-addr">新竹市經國路三段 78 巷 23-6 號</p>
-        <p>電話 <a href="tel:035403463">03-540-3463</a></p>
+        <p>和平公園旁，一樓藍色招牌「富志科技」。電話 <a href="tel:035403463">03-540-3463</a></p>
         <div class="visit-btns">
           <a class="p" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E5%B8%82%E7%B6%93%E5%9C%8B%E8%B7%AF%E4%B8%89%E6%AE%B578%E5%B7%B723-6%E8%99%9F" target="_blank" rel="noopener">Google 地圖導航 ↗</a>
           <a class="s" href="tel:035403463">撥打電話</a>
@@ -1887,27 +1905,39 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
       <div class="visit-card reveal reveal-d2">
         <span class="visit-k">PARKING · 停車資訊</span>
         <h3>開車接送與停車</h3>
-        <p>停車位置與進出路線，請看停車圖解與相簿。</p>
+        <img class="visit-img lightbox-trigger" src="images/visit/parking-map.jpg" width="780" height="549" loading="lazy" alt="交通停車資訊地圖：教室在和平公園旁，周邊標示免費機車格、收費汽車格、白線區域與自動收費停車場" data-cap="交通停車資訊｜點圖外任意處關閉">
+        <p class="visit-zoom">點地圖可放大</p>
+        <p>教室在和平公園旁。公園周邊與牛埔東路 33 巷有免費機車格和收費汽車格，附近也有自動收費停車場，位置見地圖。</p>
         <div class="visit-btns">
-          <a class="p" href="https://www.fuzhitech.com/parking" target="_blank" rel="noopener">看停車圖解 ↗</a>
+          <a class="p" href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E7%AB%B9%E5%B8%82%E7%B6%93%E5%9C%8B%E8%B7%AF%E4%B8%89%E6%AE%B578%E5%B7%B723-6%E8%99%9F" target="_blank" rel="noopener">Google 地圖導航 ↗</a>
           <a class="s" href="https://photos.app.goo.gl/PB6xniJ5KFsCe9wK7" target="_blank" rel="noopener">停車相簿 ↗</a>
         </div>
       </div>
       <div class="visit-card pay reveal reveal-d3">
         <span class="visit-k">PAYMENT · 匯款資訊</span>
-        <h3>學費匯款三步驟</h3>
+        <h3>學費匯款帳戶</h3>
+        <dl class="acct">
+          <dt>戶名</dt><dd>富志科技股份有限公司</dd>
+          <dt>銀行</dt><dd>國泰世華銀行 頭份分行</dd>
+          <dt>代號</dt><dd>013</dd>
+          <dt>帳號</dt><dd class="no">245-03-500031-6</dd>
+        </dl>
         <ol class="visit-steps">
-          <li>查看<b>匯款帳號</b>，用 ATM、網銀或臨櫃匯款</li>
-          <li>記下你的<b>匯款帳號後 5 碼</b></li>
-          <li>填寫<b>學生姓名＋後 5 碼</b>回報，老師核對入帳</li>
+          <li>用 ATM、網銀或臨櫃匯款到上面的帳戶</li>
+          <li>記下<b>你自己匯款帳號的後 5 碼</b>（存摺或網銀上的帳號最後 5 位數）</li>
+          <li>把<b>學生姓名＋後 5 碼</b>告訴老師，老師核對入帳</li>
         </ol>
         <div class="visit-btns">
-          <a class="p" href="https://www.fuzhitech.com/customerservice" target="_blank" rel="noopener">查看匯款帳號 ↗</a>
-          <a class="s" href="https://docs.google.com/forms/d/e/1FAIpQLSeir2kclQe2I9de1eWS4aWUOyX-HH57tQk0bUcetbKjLjsyjg/viewform" target="_blank" rel="noopener">回報匯款後 5 碼 ↗</a>
+          <button type="button" id="copy-acct" data-acct="245035000316">複製帳號</button>
+          <p id="copy-acct-msg" role="status" aria-live="polite"></p>
+          <button type="button" class="s" id="show-last5">後 5 碼在哪裡？看範例</button>
+          <img class="lightbox-trigger" id="last5-img" src="images/visit/last5-example.jpg" width="760" height="547" loading="lazy" alt="匯款後五碼範例：存摺上帳號的最後 5 位數" data-cap="匯款後 5 碼＝你存摺上帳號的最後 5 位數" hidden>
+          <img class="lightbox-trigger" id="acct-img" src="images/visit/payment-account.jpg" width="780" height="439" loading="lazy" alt="富志科技匯款帳戶：國泰世華銀行頭份分行（013），帳號 245-03-500031-6" data-cap="匯款帳戶（可長按存圖）" hidden>
+          <button type="button" class="s" id="show-acct">匯款帳戶圖（可存圖）</button>
         </div>
       </div>
     </div>
-    <p class="visit-note">匯款或停車有問題，請來電 <a href="tel:035403463">03-540-3463</a>。</p>
+    <p class="visit-note">匯款完成後，請在 LINE 或來電 <a href="tel:035403463">03-540-3463</a> 告知學生姓名與後 5 碼；線上回報系統建置中。</p>
   </div>
 </section>
 
@@ -1972,7 +2002,7 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
           <li><a href="#achievements">參賽殊榮</a></li>
           <li><a href="#faq">常見問題</a></li>
           <li><a href="#visit">停車資訊</a></li>
-          <li><a href="#visit">匯款資訊・回報後 5 碼</a></li>
+          <li><a href="#visit">匯款資訊</a></li>
           <li><a href="https://www.fuzhitech.com" target="_blank" rel="noopener">富志二站（程式教育）↗</a></li>
         </ul>
       </div>
@@ -2052,6 +2082,20 @@ footer { background:var(--blue-dark); color:white; padding:4rem 2rem 2rem; }
   function closeLightbox() { lb.style.display = 'none'; document.body.style.overflow = ''; }
   lb.addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+})();
+
+// 匯款：複製帳號、開啟範例圖
+(function () {
+  const btn = document.getElementById('copy-acct'), msg = document.getElementById('copy-acct-msg');
+  if (btn) btn.addEventListener('click', async () => {
+    const v = btn.dataset.acct;
+    try { await navigator.clipboard.writeText(v); msg.textContent = '已複製帳號 ' + v; }
+    catch (e) { msg.textContent = '請手動複製：' + v; }
+  });
+  [['show-last5', 'last5-img'], ['show-acct', 'acct-img']].forEach(([b, i]) => {
+    const el = document.getElementById(b), img = document.getElementById(i);
+    if (el && img) el.addEventListener('click', () => img.click());
+  });
 })();
 
 // FAQ
