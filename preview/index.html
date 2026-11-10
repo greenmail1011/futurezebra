@@ -137,6 +137,47 @@
   </div>
 </nav>
 
+<!-- 捲動動畫首頁精簡版（與 drone.html #play 同一支 play.js，高度較短） -->
+<section class="play play-home" id="play" aria-label="看懂無人機足球">
+  <div class="play-sticky">
+    <canvas id="play-cv" aria-hidden="true"></canvas>
+    <div class="play-caps">
+      <div class="play-cap" style="opacity:1;visibility:visible">
+        <span class="eyebrow">看懂無人機足球</span>
+        <h2>6 × 3 × 3 公尺，<br>一座會飛的足球場。</h2>
+        <p>四周與上方都有防護網，兩端各有一個圓形球門。往下捲動，看一顆球怎麼得分。</p>
+      </div>
+      <div class="play-cap">
+        <span class="eyebrow">球型防撞護罩</span>
+        <h2>無人機就是那顆球。</h2>
+        <p>足球無人機外圍包著球型防撞護罩，碰撞也不怕，室內也能安全飛行。</p>
+      </div>
+      <div class="play-cap">
+        <span class="eyebrow">進攻・穿門得分</span>
+        <h2>穿過對方球門，<br>就得分。</h2>
+        <p>判斷球門角度與高度，正面或斜角切入，穿門後快速脫離、回到己方半場，再發動下一波進攻。</p>
+      </div>
+      <div class="play-cap">
+        <span class="eyebrow">3 對 3 團體競賽</span>
+        <h2>前鋒、輔助、防守，<br>三人一隊。</h2>
+        <p>依 FAI F9A-B 國際規則，練的是操控，也是攻守轉換、團隊溝通與臨場判斷。</p>
+      </div>
+      <div class="play-cap">
+        <span class="eyebrow">從第一次起飛開始</span>
+        <h2>先考認證，<br>再站上賽場。</h2>
+        <div class="btns center">
+          <a class="btn btn-y" href="drone.html">看無人機課程</a>
+          <a class="btn btn-line" style="border-color:rgba(255,255,255,.5);color:#fff;" href="drone.html#cert">看 8 堂認證班</a>
+        </div>
+      </div>
+    </div>
+    <div class="play-score" aria-hidden="true"><small>SCORE</small><b id="play-score">0</b></div>
+    <span class="play-hint" aria-hidden="true">往下捲動播放・往上倒帶</span>
+    <div class="play-track" aria-hidden="true"><i id="play-bar"></i></div>
+  </div>
+  <script src="play.js"></script>
+</section>
+
 <!-- 入口大方塊 -->
 <section class="tiles" aria-label="主要服務">
   <article class="tile tile-dark wide rv">
