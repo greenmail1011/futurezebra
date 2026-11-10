@@ -688,3 +688,63 @@ ul, ol { margin: 0; padding: 0; }
 .about-banner img { box-shadow: 0 0 0 1px #e5e5ea; }
 .award { grid-template-columns: minmax(0, 1fr); }
 .award img { aspect-ratio: 16 / 10; height: auto; }
+
+/* ==========================================================
+   上課資訊頁
+   ========================================================== */
+.jump3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 56px; text-align: left; }
+.jump3 a { display: block; background: var(--soft); border-radius: 22px; padding: 22px 24px; text-decoration: none; color: inherit; transition: background .2s; }
+.jump3 a:hover { background: #ebebf0; }
+.jump3 small { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; color: var(--y-ink); }
+.jump3 b { display: block; font-size: 17px; margin-top: 6px; line-height: 1.45; }
+.jump3 b::after { content: ' ›'; color: var(--y-ink); }
+.jump3 span { display: block; font-size: 14px; color: var(--mute); margin-top: 4px; }
+@media (max-width: 760px) { .jump3 { grid-template-columns: minmax(0, 1fr); margin-top: 36px; } }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.split.flip > :first-child { order: 2; }
+@media (max-width: 900px) { .split { grid-template-columns: minmax(0, 1fr); gap: 36px; } .split.flip > :first-child { order: 0; } }
+.visit-photos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.visit-photos img { width: 100%; border-radius: 20px; }
+.visit-photos img:last-child { margin-top: 48px; }
+.addr { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 700; line-height: 1.35; margin-top: 20px; }
+.lead a { color: var(--y-ink); }
+.park-map { margin: 0; }
+.park-map img { width: 100%; border-radius: 22px; box-shadow: 0 0 0 1px #e5e5ea; }
+.park-map figcaption { font-size: 13px; color: var(--mute); margin-top: 10px; text-align: center; }
+.park-keys { list-style: none; margin-top: 24px; border-top: 1px solid var(--line); }
+.park-keys li { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.park-keys span { color: var(--mute); text-align: right; }
+
+.pay { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; align-items: start; max-width: 1000px; margin: 0 auto; }
+.pay-card { background: var(--card-d); border-radius: 28px; padding: 32px; }
+.acct { display: grid; grid-template-columns: max-content minmax(0, 1fr); margin: 0; }
+.acct dt, .acct dd { margin: 0; padding: 14px 0; border-bottom: 1px solid #333336; font-size: 17px; }
+.acct dt { color: var(--mute-d); padding-right: 28px; }
+.acct dd.no { font-size: clamp(1.6rem, 3.2vw, 2.3rem); font-weight: 700; color: var(--y); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; border-bottom: 0; }
+.pay-card .btns { margin-top: 18px; }
+#copy-acct-msg { color: var(--y); font-size: 14px; margin-top: 10px; min-height: 1.4em; }
+.pay-steps { list-style: none; counter-reset: ps; }
+.pay-steps li { counter-increment: ps; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 2px 14px; padding: 18px 0; border-bottom: 1px solid #333336; }
+.pay-steps li::before { content: counter(ps); grid-row: span 2; width: 36px; height: 36px; border-radius: 50%; background: var(--y); color: #000; font-weight: 700; display: grid; place-items: center; }
+.pay-steps b { font-size: 18px; }
+.pay-steps span { color: var(--mute-d); font-size: 15px; }
+.pay-steps strong { color: #fff; }
+.pay .linkbtn { margin-top: 18px; }
+.pay-note { text-align: center; color: var(--mute-d); font-size: 15px; margin-top: 40px; }
+.pay-note a { color: var(--y); }
+@media (max-width: 900px) { .pay { grid-template-columns: minmax(0, 1fr); } .pay-card { padding: 24px; } }
+
+.camp { display: flex; flex-direction: column; align-items: flex-start; }
+.camp h3 { font-size: 28px; }
+.camp p { color: var(--ink2); margin: 10px 0 18px; font-size: 16px; }
+.camp .chips { margin-bottom: 22px; }
+.camp > .more, .camp > .btn { margin-top: auto; }
+.camp-w { background: #000; color: #f5f5f7; }
+.camp-w .eyebrow { color: var(--y); }
+.camp-w p { color: #d2d2d7; }
+.camp-w .chips span { background: var(--card-d); color: #f5f5f7; }
+.faq-g { font-size: 14px; font-weight: 700; color: var(--mute); letter-spacing: 0.06em; margin: 48px 0 6px; }
+.faq-g:first-of-type { margin-top: 0; }
+.acct dd.no { white-space: nowrap; font-size: clamp(1.3rem, 5.6vw, 2.3rem); }
+.lead a { white-space: nowrap; }
+@media (max-width: 400px) { .acct dt { padding-right: 18px; } }
