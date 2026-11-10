@@ -591,3 +591,100 @@ ul, ol { margin: 0; padding: 0; }
 @keyframes simdash { to { stroke-dashoffset: -40; } }
 @media (prefers-reduced-motion: reduce) { .sim-route { animation: none; } }
 @media (max-width: 760px) { .stat-n { word-break: keep-all; } }
+
+/* ==========================================================
+   關於我們頁
+   ========================================================== */
+.about-kick { font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 700; margin-top: 16px; letter-spacing: 0.04em; }
+.about-banner { margin: 56px auto 0; max-width: 980px; position: relative; }
+.about-banner img { width: 100%; border-radius: 24px; }
+.about-banner figcaption { position: absolute; left: 18px; top: 18px; background: #000; color: var(--y); font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: 980px; }
+.pillar { display: flex; flex-direction: column; }
+.pillar .eyebrow { font-size: 13px; }
+.pillar h3 { font-size: 21px; line-height: 1.4; }
+.pillar p { color: var(--ink2); font-size: 15px; margin: 10px 0 18px; }
+.pillar .more { margin-top: auto; }
+
+.story { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 64px; align-items: center; }
+.story-logo { margin: 0; }
+.story-logo img { width: 100%; max-width: 360px; margin: 0 auto; }
+.bits { display: flex; gap: 6px; margin: 24px 0 8px; }
+.bits i { font-style: normal; width: 30px; height: 40px; display: grid; place-items: center; font-weight: 700; font-size: 18px; border-radius: 6px; background: #fff; color: #000; }
+.bits i:nth-child(even) { background: #000; color: #fff; box-shadow: inset 0 0 0 1px #48484a; }
+.story-p { color: #d2d2d7; font-size: 17px; margin-top: 16px; }
+.story-p b { color: var(--y); }
+.story-h { font-size: 20px; margin-top: 32px; }
+.fzt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.fzt div { background: var(--card-d); border-radius: 16px; padding: 16px 18px; }
+.fzt small { color: var(--mute-d); font-size: 13px; }
+.fzt b { display: block; font-size: 18px; margin-top: 2px; }
+.fzt i { font-style: normal; color: var(--y); }
+.story-tag { margin-top: 28px; font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 700; }
+.story-tag span { color: var(--y); }
+.evo { margin-top: 96px; padding-top: 64px; border-top: 1px solid #333336; }
+.evo-head { text-align: center; }
+.evo-head h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+.evo-head h3 span { color: var(--y); }
+.evo-head p { color: var(--mute-d); margin-top: 8px; }
+.evo-row { display: grid; grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr); align-items: stretch; gap: 12px; margin-top: 40px; }
+.evo-card { background: var(--card-d); border-radius: 24px; padding: 28px; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 22px; align-items: center; }
+.evo-card img { width: 96px; height: auto; }
+.evo-card:not(.now) img { filter: grayscale(1); opacity: 0.7; }
+.evo-card.now { box-shadow: inset 0 0 0 2px var(--y); }
+.evo-ver { display: inline-block; font-size: 13px; font-weight: 700; padding: 1px 10px; border-radius: 980px; background: #333336; color: #d2d2d7; }
+.now .evo-ver { background: var(--y); color: #000; }
+.evo-card b { display: block; font-size: 19px; margin-top: 8px; }
+.evo-card p { color: var(--mute-d); font-size: 14.5px; margin-top: 6px; }
+.evo-arrow { position: relative; }
+.evo-arrow::before { content: ''; position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; border-top: 2px solid var(--y); border-right: 2px solid var(--y); transform: translate(-70%, -50%) rotate(45deg); }
+@media (max-width: 900px) {
+  .story { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .story-logo img { max-width: 220px; }
+  .evo-row { grid-template-columns: minmax(0, 1fr); }
+  .evo-arrow { height: 28px; }
+  .evo-arrow::before { transform: translate(-50%, -70%) rotate(135deg); }
+}
+@media (max-width: 520px) { .fzt { grid-template-columns: minmax(0, 1fr); } .evo-card { grid-template-columns: 64px minmax(0, 1fr); padding: 20px; gap: 16px; } .evo-card img { width: 64px; } }
+
+/* 師資 */
+.tcs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.tc { background: var(--soft); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; }
+.tc img { width: 100%; aspect-ratio: 600 / 620; object-fit: cover; }
+.tc-b { padding: 20px 22px 24px; }
+.tc h3 { font-size: 22px; }
+.tc-role { color: var(--y-ink); font-weight: 700; font-size: 14px; }
+.tc-school { font-size: 14px; color: var(--ink2); margin-top: 10px; line-height: 1.6; }
+.tc ul { list-style: none; margin-top: 12px; border-top: 1px solid #e5e5ea; padding-top: 10px; }
+.tc li { font-size: 13.5px; color: var(--ink2); padding: 3px 0 3px 14px; position: relative; line-height: 1.55; }
+.tc li::before { content: ''; position: absolute; left: 0; top: 0.85em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink); }
+.tc-skill { font-size: 13px; color: var(--mute); margin-top: 12px; line-height: 1.6; }
+.tc-skill b { display: block; color: var(--ink); font-size: 12px; letter-spacing: 0.06em; }
+.tc-more { background: #000; color: #f5f5f7; text-decoration: none; padding: 28px; justify-content: flex-end; min-height: 240px; }
+.tc-more .eyebrow { color: var(--y); font-size: 13px; }
+.tc-more b { font-size: 22px; line-height: 1.35; }
+.tc-more .more { color: var(--y); margin-top: 14px; }
+@media (max-width: 1000px) { .tcs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .tcs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .tc-b { padding: 16px; } .tc h3 { font-size: 19px; } }
+
+/* 獎項 */
+.award { background: #fff; border-radius: 24px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
+.award img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.award-b { padding: 28px 26px; display: flex; flex-direction: column; justify-content: center; }
+.award-y { font-size: 13px; font-weight: 700; color: var(--y-ink); }
+.award h3 { font-size: 20px; line-height: 1.45; margin-top: 4px; }
+.award h3 span { display: inline-block; margin-top: 8px; background: var(--y); padding: 2px 12px; border-radius: 980px; font-size: 16px; }
+.award p { color: var(--mute); font-size: 14px; margin-top: 12px; }
+@media (max-width: 1000px) { .award { grid-template-columns: minmax(0, 1fr); } .award img { aspect-ratio: 4 / 3; height: auto; } }
+
+/* 課程剪影 */
+.gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 900px; margin: 0 auto; }
+.gal img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px; }
+
+/* 程式頁：APCS 成績證明 */
+.certs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 40px; }
+.certs img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 12px; background: #fff; }
+.certs-t { margin-top: 56px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--mute-d); }
+@media (max-width: 760px) { .certs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.about-banner img { box-shadow: 0 0 0 1px #e5e5ea; }
+.award { grid-template-columns: minmax(0, 1fr); }
+.award img { aspect-ratio: 16 / 10; height: auto; }
