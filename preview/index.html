@@ -17,6 +17,8 @@ a{color:#0b5cad;text-decoration:none}a:hover{text-decoration:underline}
 .fz-foot a{color:#424245}
 
 .fz-stat{font-size:34px}
+.fz-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.fz-grid{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:600px){
   .fz-stat{font-size:24px}
   .fz-route{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:16px!important}
@@ -69,7 +71,7 @@ a{color:#0b5cad;text-decoration:none}a:hover{text-decoration:underline}
 
   <!-- TILES -->
   <section aria-label="課程與活動" style="padding: 12px; background: #ffffff;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 12px;">
+    <div class="fz-grid" style="display: grid; gap: 12px; max-width: 1680px; margin: 0 auto;">
 
       <!-- Tile: 冬令營 -->
       <article class="fz-tile" id="camp" style="background: #f5f5f7; text-align: center; padding: 56px 28px; min-height: 520px; display: flex; flex-direction: column; align-items: center;">
