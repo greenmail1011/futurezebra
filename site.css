@@ -1,5 +1,5 @@
 /* ==========================================================
-   未來斑馬 AI 創新學苑｜改版預覽共用樣式
+   未來斑馬 AI 創新學苑｜全站共用樣式（Apple 風格改版）
    黑・白・灰＋黃色重點；字體只用 Noto Sans TC
    ========================================================== */
 :root {
@@ -21,7 +21,6 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 body {
   margin: 0; font-family: 'Noto Sans TC', -apple-system, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
   color: var(--ink); background: #fff; line-height: 1.7; -webkit-font-smoothing: antialiased;
-  padding-bottom: 32px; /* 預覽提示列 */
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
@@ -31,9 +30,6 @@ ul, ol { margin: 0; padding: 0; }
 .wrap-n { max-width: 860px; margin: 0 auto; padding: 0 22px; }
 .nw { white-space: nowrap; }
 
-/* ---------- 預覽提示列 ---------- */
-.preview-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 300; background: var(--y); color: #000; text-align: center; font-size: 13px; font-weight: 500; padding: 6px 12px; }
-.preview-bar a { color: #000; margin-left: 6px; }
 
 /* ---------- 全站導覽 ---------- */
 .gnav { position: sticky; top: 0; z-index: 200; height: var(--nav-h); background: rgba(255,255,255,0.86); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0,0,0,0.08); }
