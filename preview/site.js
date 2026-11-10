@@ -51,3 +51,18 @@
     b.addEventListener('click', function () { var t = document.getElementById(b.dataset.open); if (t) t.click(); });
   });
 })();
+
+// 分頁切換（data-tabs）
+document.querySelectorAll('[data-tabs]').forEach(function (box) {
+  var tabs = box.querySelectorAll('[role="tab"]');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (o) {
+        var on = o === t;
+        o.setAttribute('aria-selected', on);
+        var p = document.getElementById(o.getAttribute('aria-controls'));
+        if (p) p.hidden = !on;
+      });
+    });
+  });
+});
