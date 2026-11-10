@@ -179,7 +179,7 @@
   </article>
 </section>
 
-<!-- 【測試】3D 示範賽：sky-striker 的 AI 示範賽（live/，由 dev/make-live.py 產生），文字照原本 5 段隨捲動切換 -->
+<!-- 【測試】3D 示範賽：sky-striker 錄好的進球片段（live/，由 dev/make-live.py 產生、clip.json 由 dev/record-clip.py 錄），捲動控制播放、往回捲倒轉 -->
 <section class="play play-home play-live" id="play" aria-label="看懂無人機足球">
   <div class="play-sticky">
     <div class="live-stage" aria-hidden="true"><iframe id="live-frame" title="無人機足球 3D 示範賽" tabindex="-1" data-src="live/"></iframe></div>
@@ -213,7 +213,7 @@
         </div>
       </div>
     </div>
-    <span class="play-hint" aria-hidden="true">AI 即時對戰示範・進球自動重播</span>
+    <span class="play-hint" aria-hidden="true">往下捲動播放・往上倒帶</span>
     <div class="play-track" aria-hidden="true"><i id="play-bar"></i></div>
   </div>
   <script>
@@ -222,6 +222,7 @@
     var caps = sec.querySelectorAll('.play-cap'), bar = document.getElementById('play-bar');
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) { fr.parentNode.remove(); return; }
+    var lastP = 0;
     var ranges = [[0,.02,.15,.2],[.18,.22,.31,.35],[.33,.37,.6,.64],[.62,.67,.84,.88],[.86,.9,1.01,1.02]];
     function seg(p,a,b){ return Math.max(0, Math.min(1, (p-a)/(b-a))); }
     function onScroll(){
@@ -233,6 +234,7 @@
         el.style.visibility = o > .01 ? 'visible' : 'hidden';
       });
       bar.style.transform = 'scaleX(' + p + ')';
+      lastP = p; send('fz-p:' + p.toFixed(4));
     }
     addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); onScroll();
     // 快捲到時才載入（模型與貼圖約 6MB）；看不到時暫停繪圖
@@ -242,7 +244,7 @@
     }, {rootMargin: '100% 0px'});
     near.observe(sec);
     new IntersectionObserver(function(e){ send(e[0].isIntersecting ? 'fz-play' : 'fz-pause'); }).observe(sec);
-    fr.addEventListener('load', function(){ var r = sec.getBoundingClientRect(); send(r.bottom > 0 && r.top < innerHeight ? 'fz-play' : 'fz-pause'); });
+    fr.addEventListener('load', function(){ var r = sec.getBoundingClientRect(); send(r.bottom > 0 && r.top < innerHeight ? 'fz-play' : 'fz-pause'); send('fz-p:' + lastP.toFixed(4)); });
   })();
   </script>
 </section>
