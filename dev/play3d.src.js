@@ -38,7 +38,7 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 
   var YEL = 0xFFD60A, GRY = 0xc7c7cc, WHT = 0xf5f5f7;
 
-  renderer.setClearColor(0x000000, 1);
+  renderer.setClearColor(0x0b1d3a, 1);
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.autoClear = false;
   var scene = new THREE.Scene();
@@ -77,15 +77,15 @@ import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
   // ---- 地板與標線 ----
   // 場內地板半透明（看得到倒影）；場外另一片不透明並向外淡出，倒影只出現在場內
   var floor = new THREE.Mesh(new THREE.PlaneGeometry(6.06, 3.06),
-    new THREE.MeshStandardMaterial({ color: 0x161619, roughness: 0.42, metalness: 0.3, envMapIntensity: 0.25, transparent: true, opacity: 0.84 }));
+    new THREE.MeshStandardMaterial({ color: 0x10264a, roughness: 0.42, metalness: 0.3, envMapIntensity: 0.25, transparent: true, opacity: 0.84 }));
   floor.rotation.x = -Math.PI / 2; floor.renderOrder = -3; scene.add(floor);
   var apronShape = new THREE.Shape(); apronShape.absarc(0, 0, 16, 0, Math.PI * 2, false);
   var hole = new THREE.Path(); hole.moveTo(-3.03, -1.53); hole.lineTo(-3.03, 1.53); hole.lineTo(3.03, 1.53); hole.lineTo(3.03, -1.53); hole.closePath(); apronShape.holes.push(hole);
   var apronGeo = new THREE.ShapeGeometry(apronShape, 48), auv = apronGeo.attributes.uv;
   for (var ai = 0; ai < auv.count; ai++) auv.setXY(ai, auv.getX(ai) / 32 + 0.5, auv.getY(ai) / 32 + 0.5);
-  var apron = new THREE.Mesh(apronGeo, new THREE.MeshStandardMaterial({ color: 0x161619, roughness: 0.42, metalness: 0.3, envMapIntensity: 0.25, transparent: true, alphaMap: fadeTex }));
+  var apron = new THREE.Mesh(apronGeo, new THREE.MeshStandardMaterial({ color: 0x10264a, roughness: 0.42, metalness: 0.3, envMapIntensity: 0.25, transparent: true, alphaMap: fadeTex }));
   apron.rotation.x = -Math.PI / 2; apron.renderOrder = -3; stat.add(apron);
-  var lineMat = new THREE.MeshBasicMaterial({ color: 0x55555a });
+  var lineMat = new THREE.MeshBasicMaterial({ color: 0x3d5a87 });
   function strip(w, d, x, z) { var m = new THREE.Mesh(new THREE.PlaneGeometry(w, d), lineMat); m.rotation.x = -Math.PI / 2; m.position.set(x, 0.003, z); stat.add(m); }
   strip(6, 0.02, 0, 1.5); strip(6, 0.02, 0, -1.5); strip(0.02, 3, 3, 0); strip(0.02, 3, -3, 0); strip(0.02, 3, 0, 0);
   var cc = new THREE.Mesh(new THREE.RingGeometry(0.49, 0.51, 72), lineMat); cc.rotation.x = -Math.PI / 2; cc.position.y = 0.003; stat.add(cc);
