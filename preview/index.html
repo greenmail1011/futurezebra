@@ -1234,6 +1234,24 @@ footer { background: var(--soft); color: var(--mute); border-top: 1px solid var(
 .footer-bottom { border-top-color: var(--line); }
 .footer-copy { color: #86868b; }
 
+/* 學習地圖（重新繪製，內容取自原圖 learning-map.png） */
+.lmap { max-width: 980px; margin: 0 auto; }
+.lmap-kicker { text-align: center; font-weight: 700; font-size: 1.15rem; margin-bottom: 1.6rem; }
+.lmap-phase { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 1.4rem; padding: 1.6rem 0; border-top: 1px solid var(--line); }
+.lmap-ph { font-size: 1.05rem; font-weight: 700; color: var(--ink); position: relative; padding-top: 1.1rem; }
+.lmap-ph::before { content: ''; position: absolute; left: 0; top: 0; width: 36px; height: 6px; border-radius: 3px; background: var(--yellow); }
+.lmap-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.lmap-list li { display: grid; grid-template-columns: 2.4rem minmax(0, 15rem) 7.5rem minmax(0, 1fr); align-items: center; gap: 0.8rem; background: #fff; border-radius: 14px; padding: 0.85rem 1.1rem; }
+.lmap-n { font-weight: 700; color: var(--yellow-ink); font-variant-numeric: tabular-nums; }
+.lmap-stage { color: var(--ink); font-size: 0.98rem; }
+.lmap-grade { color: var(--mute); font-size: 0.86rem; }
+.lmap-course { color: var(--ink2); font-size: 0.9rem; }
+@media (max-width: 760px) {
+  .lmap-phase { grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
+  .lmap-list li { grid-template-columns: 2.2rem minmax(0, 1fr); row-gap: 0.15rem; }
+  .lmap-grade, .lmap-course { grid-column: 2; }
+}
+
 </style>
 </head>
 <body>
@@ -2018,8 +2036,36 @@ footer { background: var(--soft); color: var(--mute); border-top: 1px solid var(
       <h2 class="section-title">程式教育學習地圖</h2>
       <p class="section-sub">完整的學習路線規劃，從初階到競賽，每一步都有明確方向。</p>
     </div>
-    <img class="map-img reveal lightbox-trigger" src="../images/learning-map.png" alt="程式教育學習地圖" data-cap="程式教育學習地圖">
-    <p style="text-align:center; margin-top:0.8rem; font-size:0.85rem; color:var(--gray-500);">點擊圖片可放大查看｜<a href="https://drive.google.com/file/d/11vOCr0lbJ03mIMbAXyjZGqo1cNMaxS4V/view?usp=share_link" target="_blank" rel="noopener" style="color:var(--blue-mid);">下載高解析度版本</a></p>
+    <div class="lmap reveal" role="region" aria-label="程式教育學習地圖：培訓專才黃金課程">
+  <p class="lmap-kicker">培訓專才黃金課程</p>
+  <div class="lmap-phase">
+    <h3 class="lmap-ph">Scratch 圖形化程式</h3>
+    <ol class="lmap-list">
+      <li><span class="lmap-n">01</span><b class="lmap-stage">初階 1</b><span class="lmap-grade">適合 1–2 年級</span><span class="lmap-course">Scratch Junior 專業課程 24 堂</span></li>
+      <li><span class="lmap-n">02</span><b class="lmap-stage">進階 1</b><span class="lmap-grade">適合 2–3 年級</span><span class="lmap-course">Scratch 3.0（基礎邏輯引導）專業課程 24 堂</span></li>
+      <li><span class="lmap-n">03</span><b class="lmap-stage">進階 2</b><span class="lmap-grade">適合 3–4 年級</span><span class="lmap-course">Scratch 3.0（任務式引導）專業課程 24 堂</span></li>
+      <li><span class="lmap-n">04</span><b class="lmap-stage">進階 3</b><span class="lmap-grade">適合 4–5 年級</span><span class="lmap-course">Scratch 3.0（專案式引導）專業課程 24 堂</span></li>
+      <li><span class="lmap-n">05</span><b class="lmap-stage">貓咪盃選手班</b><span class="lmap-grade">適合 5–6 年級</span><span class="lmap-course">Scratch 3.0（競賽技巧引導）專業課程 24 堂</span></li>
+    </ol>
+  </div>
+  <div class="lmap-phase">
+    <h3 class="lmap-ph">Python 文字程式</h3>
+    <ol class="lmap-list">
+      <li><span class="lmap-n">06</span><b class="lmap-stage">高階 1</b><span class="lmap-grade">適合 6–7 年級</span><span class="lmap-course">Python 專精基礎邏輯 專業課程 24 堂</span></li>
+      <li><span class="lmap-n">07</span><b class="lmap-stage">高階 2</b><span class="lmap-grade">適合 7–8 年級</span><span class="lmap-course">Python 專精進階應用 專業課程 24 堂</span></li>
+      <li><span class="lmap-n">08</span><b class="lmap-stage">高階 3</b><span class="lmap-grade">適合 8–9 年級</span><span class="lmap-course">Pygame 物件導向專案 專業課程 24 堂</span></li>
+    </ol>
+  </div>
+  <div class="lmap-phase">
+    <h3 class="lmap-ph">APCS 大學程式能力檢測</h3>
+    <ol class="lmap-list">
+      <li><span class="lmap-n">09</span><b class="lmap-stage">APCS 一階｜大學程式能力測驗</b><span class="lmap-grade">適合 9–10 年級</span><span class="lmap-course">C、C++ 觀念題培訓 專業課程 24 堂</span></li>
+      <li><span class="lmap-n">10</span><b class="lmap-stage">APCS 二階｜大學程式能力測驗</b><span class="lmap-grade">適合 10–11 年級</span><span class="lmap-course">Python 實作解題技巧（語法／邏輯）專業課程 24 堂</span></li>
+      <li><span class="lmap-n">11</span><b class="lmap-stage">APCS 三階｜大學程式能力測驗</b><span class="lmap-grade">適合 11–12 年級</span><span class="lmap-course">Python 實作解題技巧（演算法實戰）專業課程 24 堂</span></li>
+    </ol>
+  </div>
+</div>
+    <p style="text-align:center; margin-top:0.8rem; font-size:0.85rem; color:var(--gray-500);"><a href="../images/learning-map.png" target="_blank" rel="noopener" style="color:var(--blue-mid);">看原版圖</a>｜<a href="https://drive.google.com/file/d/11vOCr0lbJ03mIMbAXyjZGqo1cNMaxS4V/view?usp=share_link" target="_blank" rel="noopener" style="color:var(--blue-mid);">下載高解析度版本</a></p>
   </div>
 </section>
 
