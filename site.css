@@ -756,3 +756,10 @@ ul, ol { margin: 0; padding: 0; }
 .play-home .play-sticky { top: var(--nav-h); height: calc(100vh - var(--nav-h)); }
 @media (max-width: 760px) { .play.play-home { height: 300vh; } }
 @media (prefers-reduced-motion: reduce) { .play.play-home { height: auto; } }
+
+/* ── 首頁 3D 示範賽（index.html #play.play-live，iframe 載入 live/） ── */
+.play-live .live-stage { position: absolute; inset: 0; overflow: hidden; }
+.play-live .live-stage iframe { position: absolute; left: 0; top: 20%; width: 100%; height: 100%; border: 0; display: block; pointer-events: none; background: var(--navy); }
+.play-live .play-caps { height: 44%; background: linear-gradient(var(--navy) 72%, rgba(11,29,58,0)); }
+.play-live .play-hint { color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
+@media (max-width: 760px) { .play-live .live-stage iframe { top: 26%; } .play-live .play-caps { height: 50%; } }

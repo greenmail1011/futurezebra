@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=20261111">
 <!-- 舊版單頁首頁的錨點（#faq、#visit…）轉到新的分頁，避免外部舊連結失效 -->
 <script>(function(){var m={about:'about.html#about',story:'about.html#story',teachers:'about.html#teachers',achievements:'about.html#honor','ai-systems':'ai.html',camps:'info.html#camps',visit:'info.html#visit',faq:'info.html#faq',courses:'code.html#courses',dm:'code.html#dm',drone:'drone.html','drone-courses':'drone.html','course-cert':'drone.html#cert','course-comp':'drone.html#comp'};var h=location.hash.slice(1);if(m[h])location.replace(m[h]);})();</script>
 <script type="application/ld+json">
@@ -170,10 +170,10 @@
   </article>
 </section>
 
-<!-- 捲動動畫首頁精簡版（與 drone.html #play 同一支 play.js，高度較短） -->
-<section class="play play-home" id="play" aria-label="看懂無人機足球">
+<!-- 首頁 3D 示範賽：sky-striker 錄好的進球片段（live/，由 dev/make-live.py 產生、clip.json 由 dev/record-clip.py 錄），捲動控制播放、往回捲倒轉 -->
+<section class="play play-home play-live" id="play" aria-label="看懂無人機足球">
   <div class="play-sticky">
-    <canvas id="play-cv" aria-hidden="true"></canvas>
+    <div class="live-stage" aria-hidden="true"><iframe id="live-frame" title="無人機足球 3D 示範賽" tabindex="-1" data-src="live/"></iframe></div>
     <div class="play-caps">
       <div class="play-cap" style="opacity:1;visibility:visible">
         <span class="eyebrow">看懂無人機足球</span>
@@ -204,11 +204,40 @@
         </div>
       </div>
     </div>
-    <div class="play-score" aria-hidden="true"><small>SCORE</small><b id="play-score">0</b></div>
     <span class="play-hint" aria-hidden="true">往下捲動播放・往上倒帶</span>
     <div class="play-track" aria-hidden="true"><i id="play-bar"></i></div>
   </div>
-  <script src="play3d.js"></script>
+  <script>
+  (function(){
+    var sec = document.getElementById('play'), fr = document.getElementById('live-frame');
+    var caps = sec.querySelectorAll('.play-cap'), bar = document.getElementById('play-bar');
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { fr.parentNode.remove(); return; }
+    var lastP = 0;
+    var ranges = [[0,.02,.15,.2],[.18,.22,.31,.35],[.33,.37,.6,.64],[.62,.67,.84,.88],[.86,.9,1.01,1.02]];
+    function seg(p,a,b){ return Math.max(0, Math.min(1, (p-a)/(b-a))); }
+    function onScroll(){
+      var r = sec.getBoundingClientRect(), total = sec.offsetHeight - innerHeight;
+      var p = Math.max(0, Math.min(1, -r.top / total));
+      caps.forEach(function(el, i){
+        var q = ranges[i], o = seg(p,q[0],q[1]) * (1 - seg(p,q[2],q[3]));
+        el.style.opacity = o; el.style.transform = 'translateY(' + (1-o)*16 + 'px)';
+        el.style.visibility = o > .01 ? 'visible' : 'hidden';
+      });
+      bar.style.transform = 'scaleX(' + p + ')';
+      lastP = p; send('fz-p:' + p.toFixed(4));
+    }
+    addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); onScroll();
+    // 快捲到時才載入（模型與貼圖約 6MB）；看不到時暫停繪圖
+    function send(m){ try{ fr.contentWindow.postMessage(m, '*'); }catch(e){} }
+    var near = new IntersectionObserver(function(e){
+      if (e[0].isIntersecting && !fr.src) { var sc = new URLSearchParams(location.search).get('scene'); fr.src = fr.dataset.src + (sc ? '?scene=' + encodeURIComponent(sc) : ''); near.disconnect(); }
+    }, {rootMargin: '100% 0px'});
+    near.observe(sec);
+    new IntersectionObserver(function(e){ send(e[0].isIntersecting ? 'fz-play' : 'fz-pause'); }).observe(sec);
+    fr.addEventListener('load', function(){ var r = sec.getBoundingClientRect(); send(r.bottom > 0 && r.top < innerHeight ? 'fz-play' : 'fz-pause'); send('fz-p:' + lastP.toFixed(4)); });
+  })();
+  </script>
 </section>
 
 <!-- 入口大方塊 -->
