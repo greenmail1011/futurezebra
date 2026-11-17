@@ -607,7 +607,7 @@ function renderTable() {
       <td class="n">${p.unit == null ? '—' : money(p.unit)}</td><td class="n">${sub == null ? (p.status === 'print' ? '自印' : '未定') : money(sub)}</td>
       <td>${badge(p.status)}</td><td>${p.url ? `<a href="${p.url}" target="_blank" rel="noopener">連結 ↗</a>` : '—'}</td></tr>`;
   }).join('');
-  ui('total').textContent = money(sum); ui('budget').textContent = money(5000 - sum);
+  ui('total').textContent = money(sum);
   document.querySelectorAll('tr[data-id]').forEach(r => r.onclick = e => { if (e.target.tagName !== 'A') select(r.dataset.id); });
 }
 
