@@ -1,0 +1,7 @@
+{
+  "name": "futurezebra-flix-3d",
+  "private": true,
+  "description": "FutureZebra（Flix）3D 組裝教學頁的原始碼",
+  "scripts": { "build": "python3 build.py" },
+  "devDependencies": { "esbuild": "^0.25.0", "three": "^0.187.0" }
+}
