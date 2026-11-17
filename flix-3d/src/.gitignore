@@ -1,0 +1,5 @@
+node_modules/
+meshes.js
+app.min.js
+index.html
+package-lock.json
